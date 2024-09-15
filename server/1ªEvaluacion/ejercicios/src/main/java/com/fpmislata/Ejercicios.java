@@ -7,7 +7,7 @@ public class Ejercicios {
 
     // Ejercicio 1
     // Dada una lista de enteros, usa programación funcional para calcular la suma de todos los elementos.
-    public int sumInteger(List<Integer> listIntegers) {
+    public Integer sumInteger(List<Integer> listIntegers) {
         return listIntegers
                 .stream()
                 //.reduce(0, Integer::sum);
@@ -97,6 +97,13 @@ public class Ejercicios {
                 .findFirst()
                 .orElse(null);
 
+    }
+
+    public Integer getFirstGreaterThan2(List<Integer> listIntegers, Integer value) {
+        return listIntegers
+                .stream()
+                .reduce((a, b) -> b > value ? b : a)
+                .orElse(null);
     }
 
     // Ejercicio 10
