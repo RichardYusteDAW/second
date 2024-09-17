@@ -96,7 +96,6 @@ public class Ejercicios {
                 .filter(n -> n > value)
                 .findFirst()
                 .orElse(null);
-
     }
 
     public Integer getFirstGreaterThan2(List<Integer> listIntegers, Integer value) {
