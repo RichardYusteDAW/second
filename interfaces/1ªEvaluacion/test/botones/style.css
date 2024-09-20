@@ -1,0 +1,51 @@
+td {
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+tr:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.button {
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+.main {
+    --color: blue;
+}
+
+.alternative {
+    --color: orange;
+}
+
+.danger {
+    --color: red;
+}
+
+.primary {
+    background-color: var(--color);
+    color: white;
+    border-color: var(--color);
+}
+
+.secondary {
+    background-color: white;
+    color: var(--color);
+    border-color: var(--color);
+}
+
+.tertiary {
+    background-color: white;
+    color: var(--color);
+    border: none;
+}
