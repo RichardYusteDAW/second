@@ -8,6 +8,7 @@ tr:hover {
     background-color: rgb(240, 240, 240);
 }
 
+/********************** BUTTONS **********************/
 .button {
     padding: 10px;
     cursor: pointer;
@@ -48,4 +49,78 @@ tr:hover {
     background-color: white;
     color: var(--color);
     border: none;
+}
+
+
+
+/********************** PANELS **********************/
+.c-panel {
+    /* Box Position */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Box Model */
+    width: 30%;
+    border: solid 1px rgb(214, 213, 213);
+    border-radius: 5px;
+}
+
+.c-panel--xl {
+    width: 70%;
+}
+
+.c-panel__title {
+    /* Box Model */
+    width: 100%;
+    padding: 10px 0;
+    background-color: rgb(247, 246, 246);
+
+    /* Typography */
+    font-size: 14px;
+    text-align: center;
+}
+
+.c-panel__title--xl {
+    font-size: 16px;
+}
+
+.c-panel__content {
+    /* Box Model */
+    width: 100%;
+    padding: 10px 0;
+
+    /* Typography */
+    text-align: center;
+}
+
+.c-panel__footer {
+    /* Box Model */
+    width: 100%;
+    padding: 10px 0;
+
+    /* Typography */
+    font-size: 12px;
+    text-align: center;
+}
+
+.c-panel__footer--xl {
+    font-size: 13px;
+}
+
+/********************** LAYOUT **********************/
+.l-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.l-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 4px;
 }
