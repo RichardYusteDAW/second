@@ -50,4 +50,14 @@ document.addEventListener('DOMContentLoaded', function () {
     createButton.addEventListener('click', createStudent);
     findButton.addEventListener('click', findStudent);
     deleteButton.addEventListener('click', deleteStudent);
+
+
+    /************** PROBLEM **************/
+    const numbers = [1, 4, 1, 4, 8, 9, 1, 8, 5];
+    let unics = [];
+    numbers.forEach((e, i) => {
+        if (!numbers.slice(numbers[0], i).includes(e)) unics.push(e);
+    })
+
+    console.log(unics);
 });
