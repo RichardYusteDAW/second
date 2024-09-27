@@ -1,0 +1,11 @@
+$colors: (
+    "rojo": #FF0000,
+    "verde": #00FF00,
+    "azul": #0000FF
+);
+
+@each $name, $color in $colors {
+    .background-#{$name} {
+        background-color: $color;
+    }
+}

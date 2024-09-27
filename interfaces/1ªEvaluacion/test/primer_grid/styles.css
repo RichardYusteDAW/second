@@ -1,0 +1,28 @@
+.l-piramide {
+    display: grid;
+    grid-template-areas:
+        ". superior ."
+        "izquierda . derecha";
+    justify-items: center;
+}
+
+.l-piramide div {
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+}
+
+.l-piramide__superior {
+    grid-area: superior;
+    background-color: red;
+}
+
+.l-piramide__izquierda {
+    grid-area: izquierda;
+    background-color: blue;
+}
+
+.l-piramide__derecha {
+    grid-area: derecha;
+    background-color: green;
+}
