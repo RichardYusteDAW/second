@@ -56,15 +56,21 @@ let alumnos = [
 
 const notasAlumno = () => {
     let nombre = prompt("Introduce el nombre del alumno:").trim();
-    const nombreMinus = nombre.toLowerCase()
-    let alumno = alumnos.find(alu => alu.nombre.toLowerCase() == nombreMinus);
+    let alumno = alumnos.find(alu => alu.nombre.toLowerCase() == nombre.toLowerCase());
     let calificaciones = alumno.calificaciones;
+    let notaMax = 0;
+    let notaMin = 10;
+    let acc = 0;
     if (alumno) {
-        const best = calificaciones.reduce((acc, calificacion) => acc.nota > calificacion.nota ? acc : calificacion);
-        const worst = calificaciones.reduce((acc, calificacion) => acc.nota < calificacion.nota ? acc : calificacion);
-        const avg = calificaciones.reduce((acc, calificacion) => acc + calificacion.nota, 0) / alumno.calificaciones.length;
-        console.log(`La mejor nota de ${nombre} es: ${best.nota}`)
-        console.log(`La peor peor de ${nombre} es: ${worst.nota}`)
+        calificaciones.forEach((n) => {
+            if (n.nota > notaMax) notaMax = n.nota;
+            if (n.nota < notaMin) notaMin = n.nota;
+            acc += n.nota;
+        })
+        const avg = acc / calificaciones.length
+
+        console.log(`La mejor nota de ${nombre} es: ${notaMax}`)
+        console.log(`La peor peor de ${nombre} es: ${notaMin}`)
         console.log(`La nota media de ${nombre} es: ${avg}`)
 
     } else {
@@ -81,8 +87,7 @@ const subeUnPunto = () => {
 
 const alumnosCiudad = () => {
     let ciudad = prompt("Introduce el nombre de la ciudad:").trim();
-    const ciudadMinus = ciudad.toLowerCase();
-    let alumno = alumnos.filter(alu => alu.ciudad.toLowerCase() == ciudadMinus);
+    let alumno = alumnos.filter(alu => alu.ciudad.toLowerCase() == ciudad.toLowerCase());
 
     if (alumno) {
         let mensaje = `Los alumnos de ${ciudad} son: `
@@ -90,6 +95,93 @@ const alumnosCiudad = () => {
         console.log(mensaje)
     } else {
         console.log("No hay alumnos en esa ciudad")
-
     }
 }
+
+const alumnosCurso = () => {
+    let codigo = prompt(`Introduce el código del curso:
+    DAW-1-2019
+    DAW-2-2019
+    DAW-1-2020
+    DAW-2-2020`).trim();
+    let alumno = alumnos.filter(alu => alu.codigo.toLowerCase() == codigo.toLowerCase());
+
+    if (alumno) {
+        let mensaje = `Los alumnos que cursan ${codigo} son: `
+        alumno.forEach((al) => mensaje += ` ${al.nombre}`)
+        console.log(mensaje)
+    } else {
+        console.log("No hay alumnos realizando ese curso")
+    }
+}
+
+const ordenaEdad = () => {
+    let alumnosOrdenado = alumnos.sort((a, b) => a.edad - b.edad);
+    console.log(alumnosOrdenado);
+};
+
+const ordenaNombreAsc = () => {
+    let alumnosOrdenado = alumnos.sort((a, b) => {
+        if (a.nombre > b.nombre) {
+            return 1;
+        } else if (a.nombre < b.nombre) {
+            return -1;
+        }
+        return 0;
+    });
+    console.log(alumnosOrdenado);
+};
+
+const ordenaNombreDesc = () => {
+    let alumnosOrdenado = alumnos.sort((a, b) => {
+        if (a.nombre < b.nombre) {
+            return 1;
+        } else if (a.nombre > b.nombre) {
+            return -1;
+        }
+        return 0;
+    });
+    console.log(alumnosOrdenado);
+};
+
+const borraAlumno = () => {
+    let nombre = prompt("Introduce el nombre del alumno:").trim();
+    let alumnoIndex = alumnos.findIndex(alu => alu.nombre.toLowerCase() == nombre.toLowerCase());
+
+    alumnos.splice(alumnoIndex, 1)
+    console.log(alumnos);
+};
+
+const nuevoAlumno = () => {
+    const codigo = prompt("Introduce un código:")
+    const nombre = prompt("Introduce un nombre:")
+    const ciudad = prompt("Introduce un ciudad:")
+    const edad = prompt("Introduce un edad:")
+
+    const alumno = { codigo, nombre, ciudad, edad }
+    alumnos.push(alumno);
+    console.log(alumnos);
+};
+
+const nuevaAsignatura = () => {
+    let nombre = prompt("Introduce el nombre del alumno:").trim();
+    let alumno = alumnos.find(alu => alu.nombre.toLowerCase() == nombre.toLowerCase());
+
+    if (alumno) {
+        let asignatura = prompt("Introduce el nombre de la asignatura:").trim();
+        let nota = parseInt(prompt("Introduce la nota de la asignatura:"));
+        if (nota < 0) nota = 0;
+        if (nota > 10) nota = 10;
+        let calificaciones = alumno.calificaciones
+        const calificacion = calificaciones.find((cal) => cal.asignatura.toLowerCase() == asignatura.toLowerCase())
+
+        if (calificacion) {
+            calificacion.nota = nota
+        } else {
+            calificaciones.push({ asignatura, nota })
+        }
+        console.log(alumno)
+    } else {
+        console.log("El alumno no existe")
+    }
+};
