@@ -89,8 +89,8 @@ const alumnosCiudad = () => {
     let ciudad = prompt("Introduce el nombre de la ciudad:").trim();
     let alumno = alumnos.filter(alu => alu.ciudad.toLowerCase() == ciudad.toLowerCase());
 
-    if (alumno) {
-        let mensaje = `Los alumnos de ${ciudad} son: `
+    if (alumno.length > 0) {
+        let mensaje = `Los alumnos de ${alumno[0].ciudad} son: `
         alumno.forEach((al) => mensaje += ` ${al.nombre}`)
         console.log(mensaje)
     } else {
@@ -106,8 +106,8 @@ const alumnosCurso = () => {
     DAW-2-2020`).trim();
     let alumno = alumnos.filter(alu => alu.codigo.toLowerCase() == codigo.toLowerCase());
 
-    if (alumno) {
-        let mensaje = `Los alumnos que cursan ${codigo} son: `
+    if (alumno.length > 0) {
+        let mensaje = `Los alumnos que cursan ${alumno[0].codigo} son: `
         alumno.forEach((al) => mensaje += ` ${al.nombre}`)
         console.log(mensaje)
     } else {
@@ -116,17 +116,14 @@ const alumnosCurso = () => {
 }
 
 const ordenaEdad = () => {
-    let alumnosOrdenado = alumnos.sort((a, b) => a.edad - b.edad);
-    console.log(alumnosOrdenado);
+    alumnos.sort((a, b) => a.edad - b.edad);
+    console.log(alumnos);
 };
 
 const ordenaNombreAsc = () => {
     let alumnosOrdenado = alumnos.sort((a, b) => {
-        if (a.nombre > b.nombre) {
-            return 1;
-        } else if (a.nombre < b.nombre) {
-            return -1;
-        }
+        if (a.nombre > b.nombre) return 1;
+        if (a.nombre < b.nombre) return -1;
         return 0;
     });
     console.log(alumnosOrdenado);
@@ -134,11 +131,8 @@ const ordenaNombreAsc = () => {
 
 const ordenaNombreDesc = () => {
     let alumnosOrdenado = alumnos.sort((a, b) => {
-        if (a.nombre < b.nombre) {
-            return 1;
-        } else if (a.nombre > b.nombre) {
-            return -1;
-        }
+        if (a.nombre < b.nombre) return 1;
+        if (a.nombre > b.nombre) return -1;
         return 0;
     });
     console.log(alumnosOrdenado);
@@ -148,17 +142,19 @@ const borraAlumno = () => {
     let nombre = prompt("Introduce el nombre del alumno:").trim();
     let alumnoIndex = alumnos.findIndex(alu => alu.nombre.toLowerCase() == nombre.toLowerCase());
 
+    if (alumnoIndex == -1) return console.log("El alumno no existe");
     alumnos.splice(alumnoIndex, 1)
     console.log(alumnos);
 };
 
 const nuevoAlumno = () => {
-    const codigo = prompt("Introduce un código:")
-    const nombre = prompt("Introduce un nombre:")
-    const ciudad = prompt("Introduce un ciudad:")
-    const edad = prompt("Introduce un edad:")
+    const codigo = prompt("Introduce un código:");
+    const nombre = prompt("Introduce un nombre:");
+    const ciudad = prompt("Introduce un ciudad:");
+    const edad = parseInt(prompt("Introduce un edad:"));
+    const calificaciones = []
 
-    const alumno = { codigo, nombre, ciudad, edad }
+    const alumno = { codigo, nombre, ciudad, calificaciones, edad }
     alumnos.push(alumno);
     console.log(alumnos);
 };
