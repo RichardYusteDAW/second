@@ -12,11 +12,13 @@ import fpmislata.bookstore.domain.model.Genre;
 import fpmislata.bookstore.domain.model.Publisher;
 import fpmislata.bookstore.domain.service.interfaceRep.BookRepository;
 import fpmislata.bookstore.domain.service.interfaceSer.BookService;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
 
-    BookRepository bookRepository;
+    private final BookRepository bookRepository;
 
     @Override
     public List<Book> findAll() {
@@ -40,13 +42,14 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Integer update(String ISBN, String title, String synopsis, BigDecimal price, Float discount, String cover,
+    public Boolean update(String ISBN, String title, String synopsis, BigDecimal price, Float discount, String cover,
             Publisher publisher, Category category, List<Author> authorList, List<Genre> genreList) {
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        return bookRepository.update(ISBN, title, synopsis, price, discount, cover, publisher, category, authorList,
+                genreList);
     }
 
     @Override
     public Boolean delete(String ISBN) {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        return bookRepository.delete(ISBN);
     }
 }

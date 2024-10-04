@@ -17,7 +17,7 @@ public interface BookRepository {
 
     Integer create(Book book);
 
-    Integer update(String ISBN, String title, String synopsis, BigDecimal price, Float discount, String cover,
+    Boolean update(String ISBN, String title, String synopsis, BigDecimal price, Float discount, String cover,
             Publisher publisher, Category category, List<Author> authorList, List<Genre> genreList);
 
     Boolean delete(String ISBN);

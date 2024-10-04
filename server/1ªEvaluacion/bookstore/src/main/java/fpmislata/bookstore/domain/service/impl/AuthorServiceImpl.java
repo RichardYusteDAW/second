@@ -5,34 +5,39 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import fpmislata.bookstore.domain.model.Author;
+import fpmislata.bookstore.domain.service.interfaceRep.AuthorRepository;
 import fpmislata.bookstore.domain.service.interfaceSer.AuthorService;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class AuthorServiceImpl implements AuthorService {
+
+    private final AuthorRepository authorRepository;
 
     @Override
     public List<Author> findAll() {
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+        return authorRepository.findAll();
     }
 
     @Override
     public Author findById(Integer id) {
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        return authorRepository.findById(id);
     }
 
     @Override
     public Integer create(long id, String name, String nationality, String biography, int birthYear, int deathYear) {
-        throw new UnsupportedOperationException("Unimplemented method 'create'");
+        Author author = new Author(id, name, nationality, biography, birthYear, deathYear);
+        return authorRepository.create(author);
     }
 
     @Override
     public Boolean update(long id, String name, String nationality, String biography, int birthYear, int deathYear) {
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        return authorRepository.update(id, name, nationality, biography, birthYear, deathYear);
     }
 
     @Override
     public Boolean delete(Integer id) {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        return authorRepository.delete(id);
     }
-
 }

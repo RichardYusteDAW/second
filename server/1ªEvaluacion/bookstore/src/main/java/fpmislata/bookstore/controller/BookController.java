@@ -18,16 +18,14 @@ import fpmislata.bookstore.domain.model.Category;
 import fpmislata.bookstore.domain.model.Genre;
 import fpmislata.bookstore.domain.model.Publisher;
 import fpmislata.bookstore.domain.service.interfaceSer.BookService;
+import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/books")
+@RequiredArgsConstructor
+@RequestMapping("/api/books")
 public class BookController {
 
-    BookService bookService;
-
-    BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
+    private final BookService bookService;
 
     // CRUD
     @GetMapping
@@ -35,8 +33,8 @@ public class BookController {
         return bookService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Book findById(@PathVariable String ISBN) {
+    @GetMapping("/{ISBN}")
+    public Book findByISBN(@PathVariable String ISBN) {
         return bookService.findByISBN(ISBN);
     }
 
@@ -57,8 +55,8 @@ public class BookController {
                 genreList);
     }
 
-    @PutMapping("/{id}")
-    public Integer update(
+    @PutMapping("/{ISBN}")
+    public Boolean update(
             @RequestParam String ISBN,
             @RequestParam String title,
             @RequestParam String synopsis,
@@ -74,9 +72,8 @@ public class BookController {
                 genreList);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{ISBN}")
     public Boolean delete(@PathVariable String ISBN) {
         return bookService.delete(ISBN);
     }
-
 }
