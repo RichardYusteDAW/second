@@ -13,6 +13,15 @@ public class Author {
     private String name;
     private String nationality;
     private String biography;
-    private int birthYear;
-    private int deathYear;
+    private Integer birthYear;
+    private Integer deathYear;
+
+    // Constructor
+    public Author(String name, String nationality, String biography, Integer birthYear, Integer deathYear) {
+        this.name = name;
+        this.nationality = nationality;
+        this.biography = biography;
+        this.birthYear = birthYear;
+        this.deathYear = deathYear;
+    }
 }
