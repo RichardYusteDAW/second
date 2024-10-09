@@ -34,7 +34,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
     @Override
     public Integer create(Author author) {
-        String sql = "INSERT INTO authors ( name, nationality, biography_es, birth_year, death_year)";
+        String sql = "INSERT INTO authors ( name, nationality, biography_es, birth_year, death_year) VALUES (?, ?, ?, ?, ?)";
         return jdbcTemplate.update(sql, author.getName(), author.getNationality(),
                 author.getBiography(), author.getBirthYear(), author.getDeathYear());
     }
@@ -42,8 +42,8 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     @Override
     public Boolean update(long id, String name, String nationality, String biography, Integer birthYear,
             Integer deathYear) {
-        String sql = "UPDATE authors SET name = ?, nationality = ?, biography = ?, birthYear = ?, deathYear = ?";
-        return jdbcTemplate.update(sql, name, nationality, biography, birthYear, deathYear) > 0;
+        String sql = "UPDATE authors SET name = ?, nationality = ?, biography_es = ?, birth_year = ?, death_year = ? WHERE id = ?";
+        return jdbcTemplate.update(sql, name, nationality, biography, birthYear, deathYear, id) > 0;
     }
 
     @Override
