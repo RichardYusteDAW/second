@@ -5,15 +5,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.lang.Nullable;
+import org.springframework.lang.NonNull;
 
 import fpmislata.bookstore.domain.model.Book;
 
 public class BookMapper implements RowMapper<Book> {
 
     @Override
-    @Nullable
-    public Book mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public Book mapRow(@NonNull ResultSet rs, int rowNum) throws SQLException {
         Book book = new Book();
         book.setISBN(rs.getString("books.isbn"));
         book.setTitle(rs.getString("books.title_es"));

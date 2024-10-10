@@ -4,15 +4,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.lang.Nullable;
+import org.springframework.lang.NonNull;
 
 import fpmislata.bookstore.domain.model.Author;
 
 public class AuthorMapper implements RowMapper<Author> {
 
     @Override
-    @Nullable
-    public Author mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public Author mapRow(@NonNull ResultSet rs, int rowNum) throws SQLException {
         return new Author(
                 rs.getInt("authors.id"),
                 rs.getString("authors.name"),
