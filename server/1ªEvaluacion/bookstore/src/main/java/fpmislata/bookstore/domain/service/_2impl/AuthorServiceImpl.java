@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import fpmislata.bookstore.common.exception.ResourceNotFoundException;
 import fpmislata.bookstore.domain.model.Author;
 import fpmislata.bookstore.domain.service._1interfaceSer.AuthorService;
 import fpmislata.bookstore.domain.service._3interfaceRep.AuthorRepository;
@@ -22,7 +23,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author findById(Integer id) {
-        return authorRepository.findById(id);
+        return authorRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Author does not exist"));
     }
 
     @Override

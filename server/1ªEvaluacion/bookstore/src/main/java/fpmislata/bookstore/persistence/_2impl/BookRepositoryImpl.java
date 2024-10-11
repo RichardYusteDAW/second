@@ -2,6 +2,7 @@ package fpmislata.bookstore.persistence._2impl;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -28,13 +29,13 @@ public class BookRepositoryImpl implements BookRepository {
     }
 
     @Override
-    public Book findByISBN(String ISBN) {
+    public Optional<Book> findByISBN(String ISBN) {
         try {
             String sql = "SELECT * FROM books WHERE isbn = ?";
-            return jdbcTemplate.queryForObject(sql, new BookMapper(), ISBN);
+            return Optional.of(jdbcTemplate.queryForObject(sql, new BookMapper(), ISBN));
 
         } catch (Exception e) {
-            return null;
+            return Optional.empty();
         }
     }
 

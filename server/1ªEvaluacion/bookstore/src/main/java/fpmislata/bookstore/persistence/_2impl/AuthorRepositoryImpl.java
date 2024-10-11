@@ -1,6 +1,7 @@
 package fpmislata.bookstore.persistence._2impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -23,12 +24,12 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     }
 
     @Override
-    public Author findById(Integer id) {
+    public Optional<Author> findById(Integer id) {
         try {
             String sql = "SELECT * FROM authors WHERE id = ?";
-            return jdbcTemplate.queryForObject(sql, new AuthorMapper(), id);
+            return Optional.of(jdbcTemplate.queryForObject(sql, new AuthorMapper(), id));
         } catch (Exception e) {
-            return null;
+            return Optional.empty();
         }
     }
 

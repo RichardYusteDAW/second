@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import fpmislata.bookstore.common.exception.ResourceNotFoundException;
 import fpmislata.bookstore.domain.model.Author;
 import fpmislata.bookstore.domain.model.Book;
 import fpmislata.bookstore.domain.model.Category;
@@ -27,7 +28,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book findByISBN(String ISBN) {
-        return bookRepository.findByISBN(ISBN);
+        return bookRepository.findByISBN(ISBN).orElseThrow(() -> new ResourceNotFoundException("Book does not exist"));
     }
 
     @Override

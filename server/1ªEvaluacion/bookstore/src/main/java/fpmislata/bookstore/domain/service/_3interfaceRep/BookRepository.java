@@ -2,6 +2,7 @@ package fpmislata.bookstore.domain.service._3interfaceRep;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import fpmislata.bookstore.domain.model.Author;
 import fpmislata.bookstore.domain.model.Book;
@@ -13,7 +14,7 @@ public interface BookRepository {
 
     List<Book> findAll();
 
-    Book findByISBN(String ISBN);
+    Optional<Book> findByISBN(String ISBN);
 
     Integer create(Book book);
 

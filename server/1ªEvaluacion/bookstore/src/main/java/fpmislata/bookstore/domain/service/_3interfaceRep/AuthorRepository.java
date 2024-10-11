@@ -1,6 +1,7 @@
 package fpmislata.bookstore.domain.service._3interfaceRep;
 
 import java.util.List;
+import java.util.Optional;
 
 import fpmislata.bookstore.domain.model.Author;
 
@@ -8,7 +9,7 @@ public interface AuthorRepository {
 
     List<Author> findAll();
 
-    Author findById(Integer id);
+    Optional<Author> findById(Integer id);
 
     Integer create(Author author);
 
