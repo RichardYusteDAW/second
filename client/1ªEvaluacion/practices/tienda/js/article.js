@@ -1,4 +1,4 @@
-class Articulo {
+class Article {
     id;
     name;
     description;
