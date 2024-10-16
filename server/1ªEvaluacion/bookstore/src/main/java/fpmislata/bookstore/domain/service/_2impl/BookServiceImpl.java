@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import fpmislata.bookstore.common.exception.ResourceNotFoundException;
-import fpmislata.bookstore.domain.model.Author;
+import fpmislata.bookstore.domain.model.AuthorCommand;
 import fpmislata.bookstore.domain.model.Book;
 import fpmislata.bookstore.domain.model.Category;
 import fpmislata.bookstore.domain.model.Genre;
@@ -33,7 +33,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Integer create(String ISBN, String title, String synopsis, BigDecimal price, Float discount, String cover,
-            Publisher publisher, Category category, List<Author> authorList, List<Genre> genreList) {
+            Publisher publisher, Category category, List<AuthorCommand> authorList, List<Genre> genreList) {
         // comprobar que el id sea un id
         // comprobar que el titulo no exista en la db
         // comprobar que la categoria existe
@@ -44,7 +44,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Boolean update(String ISBN, String title, String synopsis, BigDecimal price, Float discount, String cover,
-            Publisher publisher, Category category, List<Author> authorList, List<Genre> genreList) {
+            Publisher publisher, Category category, List<AuthorCommand> authorList, List<Genre> genreList) {
         return bookRepository.update(ISBN, title, synopsis, price, discount, cover, publisher, category, authorList,
                 genreList);
     }

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Author {
+public class AuthorQuery {
 
     private long id;
     private String name;
@@ -17,7 +17,8 @@ public class Author {
     private Integer deathYear;
 
     // Constructor
-    public Author(String name, String nationality, String biography, Integer birthYear, Integer deathYear) {
+    public AuthorQuery(String name, String nationality, String biography, Integer birthYear,
+            Integer deathYear) {
         this.name = name;
         this.nationality = nationality;
         this.biography = biography;

@@ -20,6 +20,6 @@ public class Book {
     private String cover;
     private Publisher publisher;
     private Category category;
-    private List<Author> authorList;
+    private List<AuthorCommand> authorList;
     private List<Genre> genreList;
 }

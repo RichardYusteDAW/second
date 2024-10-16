@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import fpmislata.bookstore.domain.model.Author;
+import fpmislata.bookstore.domain.model.AuthorCommand;
 import fpmislata.bookstore.domain.model.Book;
 import fpmislata.bookstore.domain.model.Category;
 import fpmislata.bookstore.domain.model.Genre;
@@ -50,7 +50,7 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public Boolean update(String ISBN, String title, String synopsis, BigDecimal price, Float discount, String cover,
-            Publisher publisher, Category category, List<Author> authorList, List<Genre> genreList) {
+            Publisher publisher, Category category, List<AuthorCommand> authorList, List<Genre> genreList) {
         String sql = "UPDATE books SET title_es = ?, synopsis_es = ?, price = ?, discount = ?, cover = ?, publisher_id = ?, category_id = ? WHERE isbn = ?";
 
         Integer rows = jdbcTemplate.update(sql, title, synopsis, price, discount, cover, publisher.getId(),

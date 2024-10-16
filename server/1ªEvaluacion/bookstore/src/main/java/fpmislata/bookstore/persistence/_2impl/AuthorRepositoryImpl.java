@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import fpmislata.bookstore.domain.model.Author;
+import fpmislata.bookstore.common.locale.LanguageUtils;
+import fpmislata.bookstore.domain.model.AuthorCommand;
+import fpmislata.bookstore.domain.model.AuthorQuery;
 import fpmislata.bookstore.domain.service._3interfaceRep.AuthorRepository;
 import fpmislata.bookstore.persistence._1mapper.AuthorMapper;
 import lombok.RequiredArgsConstructor;
@@ -18,15 +20,19 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     private final JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<Author> findAll() {
-        String sql = "SELECT * from authors";
+    public List<AuthorQuery> findAll() {
+        String language = LanguageUtils.getCurrentLanguage();
+        String sql = "SELECT id, name, nationality, biography_" + language
+                + "  AS biography, birth_year, death_year FROM authors";
         return jdbcTemplate.query(sql, new AuthorMapper());
     }
 
     @Override
-    public Optional<Author> findById(Integer id) {
+    public Optional<AuthorQuery> findById(Integer id) {
         try {
-            String sql = "SELECT * FROM authors WHERE id = ?";
+            String language = LanguageUtils.getCurrentLanguage();
+            String sql = "SELECT id, name, nationality, biography_" + language
+                    + "  AS biography, birth_year, death_year FROM authors WHERE id = ?";
             return Optional.of(jdbcTemplate.queryForObject(sql, new AuthorMapper(), id));
         } catch (Exception e) {
             return Optional.empty();
@@ -34,10 +40,10 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     }
 
     @Override
-    public Integer create(Author author) {
-        String sql = "INSERT INTO authors ( name, nationality, biography_es, birth_year, death_year) VALUES (?, ?, ?, ?, ?)";
+    public Integer create(AuthorCommand author) {
+        String sql = "INSERT INTO authors ( name, nationality, biography_en, biography_es, birth_year, death_year) VALUES (?, ?, ?, ?, ?)";
         return jdbcTemplate.update(sql, author.getName(), author.getNationality(),
-                author.getBiography(), author.getBirthYear(), author.getDeathYear());
+                author.getBiography_en(), author.getBiography_es(), author.getBirthYear(), author.getDeathYear());
     }
 
     @Override

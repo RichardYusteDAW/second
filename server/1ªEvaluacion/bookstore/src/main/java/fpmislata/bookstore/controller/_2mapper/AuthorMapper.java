@@ -5,14 +5,14 @@ import org.mapstruct.factory.Mappers;
 
 import fpmislata.bookstore.controller._1model.AuthorCollection;
 import fpmislata.bookstore.controller._1model.AuthorDetail;
-import fpmislata.bookstore.domain.model.Author;
+import fpmislata.bookstore.domain.model.AuthorQuery;
 
 @Mapper
 public interface AuthorMapper {
 
     AuthorMapper INSTANCE = Mappers.getMapper(AuthorMapper.class);
 
-    AuthorCollection toAuthorCollection(Author author);
+    AuthorCollection toAuthorCollection(AuthorQuery author);
 
-    AuthorDetail toAuthorDetail(Author author);
+    AuthorDetail toAuthorDetail(AuthorQuery author);
 }

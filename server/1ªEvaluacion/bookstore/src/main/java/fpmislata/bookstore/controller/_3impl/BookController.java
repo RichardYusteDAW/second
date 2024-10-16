@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fpmislata.bookstore.controller._1model.BookCollection;
 import fpmislata.bookstore.controller._1model.BookDetail;
 import fpmislata.bookstore.controller._2mapper.BookMapper;
-import fpmislata.bookstore.domain.model.Author;
+import fpmislata.bookstore.domain.model.AuthorCommand;
 import fpmislata.bookstore.domain.model.Book;
 import fpmislata.bookstore.domain.model.Category;
 import fpmislata.bookstore.domain.model.Genre;
@@ -58,7 +58,7 @@ public class BookController {
             @RequestParam String cover,
             @RequestParam Publisher publisher,
             @RequestParam Category category,
-            @RequestParam List<Author> authorList,
+            @RequestParam List<AuthorCommand> authorList,
             @RequestParam List<Genre> genreList) {
 
         return bookService.create(ISBN, title, synopsis, price, discount, cover, publisher, category, authorList,
@@ -75,7 +75,7 @@ public class BookController {
             @RequestParam String cover,
             @RequestParam Publisher publisher,
             @RequestParam Category category,
-            @RequestParam List<Author> authorList,
+            @RequestParam List<AuthorCommand> authorList,
             @RequestParam List<Genre> genreList) {
 
         return bookService.update(ISBN, title, synopsis, price, discount, cover, publisher, category, authorList,

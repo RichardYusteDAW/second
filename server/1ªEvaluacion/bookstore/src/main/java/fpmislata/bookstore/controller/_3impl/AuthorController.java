@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import fpmislata.bookstore.controller._1model.AuthorCollection;
 import fpmislata.bookstore.controller._1model.AuthorDetail;
 import fpmislata.bookstore.controller._2mapper.AuthorMapper;
-import fpmislata.bookstore.domain.model.Author;
+import fpmislata.bookstore.domain.model.AuthorCommand;
+import fpmislata.bookstore.domain.model.AuthorQuery;
 import fpmislata.bookstore.domain.service._1interfaceSer.AuthorService;
 import lombok.RequiredArgsConstructor;
 
@@ -35,7 +36,7 @@ public class AuthorController {
 
     @GetMapping("/{id}")
     public AuthorDetail findById(@PathVariable Integer id) {
-        Author author = authorService.findById(id);
+        AuthorQuery author = authorService.findById(id);
         if (author == null) {
             System.out.println("El autor no existe");
         }
