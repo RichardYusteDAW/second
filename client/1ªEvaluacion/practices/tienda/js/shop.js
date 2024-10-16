@@ -22,30 +22,38 @@ const displayArticles = (order) => {
     let copyListaArticulos = listaArticulos.slice();
 
     if (order === "1") {
-        copyListaArticulos.sort((a, b) => a.precio - b.precio)
+        copyListaArticulos.sort((a, b) => a.price - b.price)
     } else if (order === "2") {
-        copyListaArticulos.sort((a, b) => b.precio - a.precio)
+        copyListaArticulos.sort((a, b) => b.price - a.price)
     }
 
     copyListaArticulos.forEach(a => {
         articles += `<div class="col">
                         <div class="card" style="display: flex;">
-                            <img src="assets/${a.codigo}.jpg" class="card-img-top" alt="${a.nombre}">
+                            <img src="assets/${a.code}.jpg" class="card-img-top" alt="${a.name}">
                             <div class="card-body">
-                            <h5 class="card-title">${a.nombre}</h5>
+                            <h5 class="card-title">${a.name}</h5>
                             <p class="card-text">${a.description}</p>
-                            <p class="card-text text-center"><b>${a.precio}€</b></p>
+                            <p class="card-text text-center"><b>${a.price}€</b></p>
                             </div>
-                            <button id="m1" class="btn btn-success">Comprar</button>
+                            <button id="${a.code}" class="btn btn-success">Comprar</button>
                         </div>
                     </div>`
     });
     container.innerHTML = articles;
+
+    const buttons = document.querySelectorAll(".btn-success");
+    buttons.forEach(b => {
+        b.addEventListener("click", () => {
+            addArticleToCart(b.id);
+        })
+    })
 }
 
 
-const addArticleToCart = () => {
-
+const addArticleToCart = (code) => {
+    const article = listaArticulos.find(a => a.code === code);
+    if (article) cart.add(article);
 }
 
 
@@ -64,4 +72,10 @@ window.onload = () => {
 
     const cartImg = document.getElementById("cart");
     cartImg.addEventListener("click", viewCart)
+
+    const dialog = document.getElementById("miDialogo");
+    const btnCierraDialog = document.getElementById("btnCierraDialog");
+    btnCierraDialog.addEventListener("click", () => {
+        dialog.close();
+    })
 }
