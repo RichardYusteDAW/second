@@ -13,7 +13,8 @@ public interface AuthorService {
     Integer create(String name, String nationality, String biography_en, String biography_es, Integer birthYear,
             Integer deathYear);
 
-    Boolean update(long id, String name, String nationality, String biography, Integer birthYear, Integer deathYear);
+    Boolean update(long id, String name, String nationality, String biography_en, String biography_es,
+            Integer birthYear, Integer deathYear);
 
     Boolean delete(Integer id);
 }

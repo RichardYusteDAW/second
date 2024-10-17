@@ -35,9 +35,9 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Boolean update(long id, String name, String nationality, String biography, Integer birthYear,
-            Integer deathYear) {
-        return authorRepository.update(id, name, nationality, biography, birthYear, deathYear);
+    public Boolean update(long id, String name, String nationality, String biography_en, String biography_es,
+            Integer birthYear, Integer deathYear) {
+        return authorRepository.update(id, name, nationality, biography_en, biography_es, birthYear, deathYear);
     }
 
     @Override
