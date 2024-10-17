@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import fpmislata.bookstore.controller._1model.AuthorCollection;
 import fpmislata.bookstore.controller._1model.AuthorDetail;
 import fpmislata.bookstore.controller._2mapper.AuthorMapper;
-import fpmislata.bookstore.domain.model.AuthorCommand;
 import fpmislata.bookstore.domain.model.AuthorQuery;
 import fpmislata.bookstore.domain.service._1interfaceSer.AuthorService;
 import lombok.RequiredArgsConstructor;
@@ -47,23 +46,25 @@ public class AuthorController {
     public Integer create(
             @RequestParam String name,
             @RequestParam String nationality,
-            @RequestParam String biography,
+            @RequestParam String biography_en,
+            @RequestParam String biography_es,
             @RequestParam Integer birthYear,
             @RequestParam Integer deathYear) {
 
-        return authorService.create(name, nationality, biography, birthYear, deathYear);
+        return authorService.create(name, nationality, biography_en, biography_es, birthYear, deathYear);
     }
 
     @PutMapping("/{id}")
     public Boolean update(
-            @RequestParam Integer id,
+            @PathVariable Integer id,
             @RequestParam String name,
             @RequestParam String nationality,
-            @RequestParam String biography,
+            @RequestParam String biography_en,
+            @RequestParam String biography_es,
             @RequestParam Integer birthYear,
             @RequestParam Integer deathYear) {
 
-        return authorService.update(id, name, nationality, biography, birthYear, deathYear);
+        return authorService.update(id, name, nationality, biography_en, biography_es, birthYear, deathYear);
     }
 
     @DeleteMapping("/{id}")

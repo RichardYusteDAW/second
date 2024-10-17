@@ -29,11 +29,14 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
     @Override
     public Optional<AuthorQuery> findById(Integer id) {
+
         try {
             String language = LanguageUtils.getCurrentLanguage();
             String sql = "SELECT id, name, nationality, biography_" + language
                     + "  AS biography, birth_year, death_year FROM authors WHERE id = ?";
+
             return Optional.of(jdbcTemplate.queryForObject(sql, new AuthorMapper(), id));
+
         } catch (Exception e) {
             return Optional.empty();
         }
@@ -41,21 +44,28 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
     @Override
     public Integer create(AuthorCommand author) {
-        String sql = "INSERT INTO authors ( name, nationality, biography_en, biography_es, birth_year, death_year) VALUES (?, ?, ?, ?, ?)";
-        return jdbcTemplate.update(sql, author.getName(), author.getNationality(),
-                author.getBiography_en(), author.getBiography_es(), author.getBirthYear(), author.getDeathYear());
+        String sql = "INSERT INTO authors ( name, nationality, biography_en, biography_es, birth_year, death_year) VALUES (?, ?, ?, ?, ?, ?)";
+        Integer rows = jdbcTemplate.update(sql, author.getName(), author.getNationality(), author.getBiography_en(),
+                author.getBiography_es(), author.getBirthYear(), author.getDeathYear());
+
+        return rows;
     }
 
     @Override
-    public Boolean update(long id, String name, String nationality, String biography, Integer birthYear,
-            Integer deathYear) {
-        String sql = "UPDATE authors SET name = ?, nationality = ?, biography_es = ?, birth_year = ?, death_year = ? WHERE id = ?";
-        return jdbcTemplate.update(sql, name, nationality, biography, birthYear, deathYear, id) > 0;
+    public Boolean update(long id, String name, String nationality, String biography_en, String biography_es,
+            Integer birthYear, Integer deathYear) {
+        String sql = "UPDATE authors SET name = ?, nationality = ?, biography_en = ?, biography_es = ?, birth_year = ?, death_year = ? WHERE id = ?";
+        Integer rows = jdbcTemplate.update(sql, name, nationality, biography_en, biography_es, birthYear, deathYear,
+                id);
+
+        return rows > 0;
     }
 
     @Override
     public Boolean delete(Integer id) {
         String sql = "DELETE FROM authors WHERE id = ?";
-        return jdbcTemplate.update(sql, id) > 0;
+        Integer rows = jdbcTemplate.update(sql, id);
+
+        return rows > 0;
     }
 }
