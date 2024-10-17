@@ -1,7 +1,33 @@
-const criteria = ["Sin ordenar", "Ascendente por precio", "Descendente por precio"]
 let cart;
 
+
+/******************WINDOW/ONLOAD******************/
+window.onload = () => {
+    // 1º Create cart
+    cart = new Cart();
+
+    // 2º Show articles
+    displayArticles();
+
+    // 3º Insert options in select
+    createCriteriaList();
+
+    // 4º DOM Elements
+    const cartImg = document.getElementById("cart");
+    const dialog = document.getElementById("miDialogo");
+    const btnCierraDialog = document.getElementById("btnCierraDialog");
+    const btnEfectuaPedido = document.getElementById("btnEfectuaPedido");
+
+    // 5º Listeners
+    cartImg.addEventListener("click", viewCart)
+    btnCierraDialog.addEventListener("click", () => dialog.close())
+    btnEfectuaPedido.addEventListener("click", placeOrder)
+}
+
+
+/******************METHODS/******************/
 const createCriteriaList = () => {
+    const criteria = ["Sin ordenar", "Ascendente por precio", "Descendente por precio"]
     const select = document.getElementById("criteriosOrdenacion");
     let options = ""
     for (let i = 0; i < criteria.length; i++) {
@@ -36,7 +62,7 @@ const displayArticles = (order) => {
                             <p class="card-text">${a.description}</p>
                             <p class="card-text text-center"><b>${a.price}€</b></p>
                             </div>
-                            <button id="${a.code}" class="btn btn-success">Comprar</button>
+                            <button value="${a.code}" class="btn btn-success">Comprar</button>
                         </div>
                     </div>`
     });
@@ -45,7 +71,7 @@ const displayArticles = (order) => {
     const buttons = document.querySelectorAll(".btn-success");
     buttons.forEach(b => {
         b.addEventListener("click", () => {
-            addArticleToCart(b.id);
+            addArticleToCart(b.value);
         })
     })
 }
@@ -58,24 +84,15 @@ const addArticleToCart = (code) => {
 
 
 const viewCart = () => {
+    if (cart.getTotalArticles() === 0) {
+        alert("El carrito está vacío")
+        return;
+    }
+
     cart.show();
 }
 
+
 const placeOrder = () => {
-
-}
-
-window.onload = () => {
-    cart = new Cart();
-    displayArticles();
-    createCriteriaList();
-
-    const cartImg = document.getElementById("cart");
-    cartImg.addEventListener("click", viewCart)
-
-    const dialog = document.getElementById("miDialogo");
-    const btnCierraDialog = document.getElementById("btnCierraDialog");
-    btnCierraDialog.addEventListener("click", () => {
-        dialog.close();
-    })
+    console.log(JSON.stringify(cart.articles))
 }
