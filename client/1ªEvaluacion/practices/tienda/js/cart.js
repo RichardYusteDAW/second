@@ -10,23 +10,20 @@ class Cart {
         this.articles = [];
     }
 
+
     // methods
     add(article) {
-        const { code, name, description, price } = article;
-        let foundArticle = this.articles.find(a => a.code === code)
-
-        if (foundArticle)
-            this.update(code, 1);
+        if (this.articles.find(a => a.code === article.code))
+            this.update(article.code, 1);
         else
             this.articles.push({
-                code,
-                name,
-                description,
-                price,
+                ...article,
                 units: 1,
-                total: price
+                total: article.price
             });
+        this.show();
     }
+
 
     delete(code) {
         const index = this.articles.findIndex((a) => a.code === code);
@@ -36,6 +33,7 @@ class Cart {
             this.show();
         }
     }
+
 
     update(code, n) {
         let article = this.articles.find(article => article.code === code);
@@ -50,9 +48,10 @@ class Cart {
         }
     }
 
+
     show() {
-        const dialog = document.getElementById("miDialogo");
         const dialogContent = document.getElementById("dialogContent");
+        const total = document.getElementById("total");
 
         let content = `<table class='table'>
                            <tr>
@@ -82,7 +81,16 @@ class Cart {
         content += "</table>";
 
         dialogContent.innerHTML = content;
+        total.innerHTML = this.getTotal();
 
         dialog.showModal();
+    }
+
+    getTotalArticles = () => {
+        return this.articles.length;
+    }
+
+    getTotal = () => {
+        return this.articles.reduce((acc, b) => acc + b.total, 0)
     }
 }
