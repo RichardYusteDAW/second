@@ -6,6 +6,7 @@ const emailErrorDiv = document.getElementById("errorEmail");
 const button = document.getElementById("btn");
 
 
+
 /*************** Mehods ***************/
 const isEmpty = (text) => {
     return text.trim() == "";
@@ -22,18 +23,17 @@ const isEmail = (email) => {
 
 const showError = (element, error) => {
     element.innerHTML = error;
-    element.style.display = "block"
+    element.style.display = "block";
 }
 
-const showData = () => {
-
+const showData = (data) => {
+    console.log(JSON.stringify(data));
 }
 
 
-/*************** Submit form ***************/
-button.addEventListener("click", (e) => {
-    e.preventDefault();
-    /*************** Check name errors ***************/
+
+/*************** Check name errors ***************/
+nameInput.addEventListener("input", (e) => {
     let nameError;
     const name = nameInput.value;
     if (isEmpty(name)) {
@@ -42,10 +42,14 @@ button.addEventListener("click", (e) => {
     } else if (lessThan5(name)) {
         nameError = "El campo nombre tiene menos de 5 caracteres"
         showError(nameErrorDiv, nameError)
+    } else {
+        nameErrorDiv.style.display = "none";
     }
+});
 
 
-    /*************** Check email errors ***************/
+/*************** Check email errors ***************/
+emailInput.addEventListener("input", (e) => {
     let emailError;
     const email = emailInput.value;
     if (isEmpty(email)) {
@@ -54,5 +58,16 @@ button.addEventListener("click", (e) => {
     } else if (!isEmail(email)) {
         emailError = "El email no es un email válido"
         showError(emailErrorDiv, emailError)
+    } else {
+        emailErrorDiv.style.display = "none";
     }
 });
+
+/*************** Form ***************/
+button.addEventListener('click', (e) => {
+    e.preventDefault();
+    showData({
+        name: nameInput.value,
+        email: emailInput.value
+    })
+})

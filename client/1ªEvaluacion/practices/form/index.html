@@ -10,15 +10,15 @@
 </head>
 
 <body>
-    <form action="" method="">
+    <form action="" method="" class="mt-4 ms-4">
         <label for="name">Introduce tu nombre:</label>
-        <input type="text" name="name" id="name">
-        <div id="errorName" class="alert alert-danger"></div>
-        <br>
+        <input type="text" name="name" id="name" class="form-control mb-3" style="width: 300px;">
+        <div id="errorName" class="alert alert-danger mb-3" style="width: 500px; display: none;"></div>
+
         <label for="email">Introduce tu email:</label>
-        <input type="email" name="email" id="email">
-        <div id="errorEmail" class="alert alert-danger"></div>
-        <br>
+        <input type="email" name="email" id="email" class="form-control mb-3" style="width: 300px;">
+        <div id="errorEmail" class="alert alert-danger mb-3" style="width: 500px; display: none;"></div>
+
         <button id="btn" class="btn btn-primary">Enviar</button>
     </form>
 </body>
