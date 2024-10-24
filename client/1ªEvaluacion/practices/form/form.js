@@ -33,8 +33,8 @@ const showData = (data) => {
 
 
 /*************** Check name errors ***************/
+let nameError;
 nameInput.addEventListener("input", (e) => {
-    let nameError;
     const name = nameInput.value;
     if (isEmpty(name)) {
         nameError = "El campo nombre está vacío";
@@ -44,13 +44,14 @@ nameInput.addEventListener("input", (e) => {
         showError(nameErrorDiv, nameError)
     } else {
         nameErrorDiv.style.display = "none";
+        nameError = "";
     }
 });
 
 
 /*************** Check email errors ***************/
+let emailError;
 emailInput.addEventListener("input", (e) => {
-    let emailError;
     const email = emailInput.value;
     if (isEmpty(email)) {
         emailError = "El campo email está vacío";
@@ -60,14 +61,17 @@ emailInput.addEventListener("input", (e) => {
         showError(emailErrorDiv, emailError)
     } else {
         emailErrorDiv.style.display = "none";
+        emailError = "";
     }
 });
 
 /*************** Form ***************/
 button.addEventListener('click', (e) => {
     e.preventDefault();
-    showData({
-        name: nameInput.value,
-        email: emailInput.value
-    })
+    if (!nameError && !emailError) {
+        showData({
+            name: nameInput.value,
+            email: emailInput.value
+        })
+    }
 })
