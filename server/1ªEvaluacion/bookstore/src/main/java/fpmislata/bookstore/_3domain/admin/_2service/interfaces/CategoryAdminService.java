@@ -1,10 +1,9 @@
-package fpmislata.bookstore._3domain.admin.service._1interfaceSer;
+package fpmislata.bookstore._3domain.admin._2service.interfaces;
 
+import fpmislata.bookstore._3domain.admin._1model.Category;
 import java.util.List;
 
-import fpmislata.bookstore._3domain.model.Category;
-
-public interface CategoryService {
+public interface CategoryAdminService {
 
     List<Category> findAll();
 

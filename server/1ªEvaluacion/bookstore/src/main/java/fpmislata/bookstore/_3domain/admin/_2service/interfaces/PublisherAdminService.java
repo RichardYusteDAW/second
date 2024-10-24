@@ -1,10 +1,9 @@
-package fpmislata.bookstore._3domain.admin.service._1interfaceSer;
+package fpmislata.bookstore._3domain.admin._2service.interfaces;
 
+import fpmislata.bookstore._3domain.admin._1model.Publisher;
 import java.util.List;
 
-import fpmislata.bookstore._3domain.model.Publisher;
-
-public interface PublisherService {
+public interface PublisherAdminService {
 
     List<Publisher> findAll();
 

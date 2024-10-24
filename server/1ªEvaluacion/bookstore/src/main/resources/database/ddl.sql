@@ -50,8 +50,8 @@ CREATE TABLE authors (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     nationality VARCHAR(255),
-    biography_en TEXT,
     biography_es TEXT,
+    biography_en TEXT,
     birth_year INT,
     death_year INT
 );

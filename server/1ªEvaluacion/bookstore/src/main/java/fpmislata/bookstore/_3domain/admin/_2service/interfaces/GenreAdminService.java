@@ -1,10 +1,10 @@
-package fpmislata.bookstore._3domain.admin.service._1interfaceSer;
+package fpmislata.bookstore._3domain.admin._2service.interfaces;
 
 import java.util.List;
 
-import fpmislata.bookstore._3domain.model.Genre;
+import fpmislata.bookstore._3domain.admin._1model.Genre;
 
-public interface GenreService {
+public interface GenreAdminService {
 
     List<Genre> findAll();
 
