@@ -1,0 +1,11 @@
+@each $name, $value in $widths {
+    .g--width-#{$name} {
+        width: var(--width-#{$name})
+    }
+}
+
+@each $value in $widths-perc {
+    .g--width-#{$value} {
+        width: var(--width-#{$value})
+    }
+}

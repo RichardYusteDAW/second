@@ -1,0 +1,51 @@
+.l-flex {
+    display: flex;
+    gap: 16px;
+
+    // Direcciones de flex
+    &--horizontal-reverse {
+        flex-direction: row-reverse;
+    }
+
+    &--vertical {
+        flex-direction: column;
+    }
+
+    &--vertical-reverse {
+        flex-direction: column-reverse;
+    }
+
+    // Alineación a lo largo del eje principal
+    &--justify-start {
+        justify-content: flex-start;
+    }
+
+    &--justify-end {
+        justify-content: flex-end;
+    }
+
+    &--justify-center {
+        justify-content: center;
+    }
+
+    &--justify-between {
+        justify-content: space-between;
+    }
+
+    &--justify-around {
+        justify-content: space-around;
+    }
+
+    &--justify-evenly {
+        justify-content: space-evenly;
+    }
+
+    // Alineación a lo largo del eje transversal (cross axis)
+    &--align-start {
+        align-items: flex-start;
+    }
+
+    &--align-end {
+        align-items: flex-end;
+    }
+}

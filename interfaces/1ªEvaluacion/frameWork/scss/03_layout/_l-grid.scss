@@ -1,0 +1,157 @@
+.l-grid {
+    display: grid;
+
+    // Configuración básica de filas y columnas
+    &--cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    &--cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    &--cols-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    &--cols-6 {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    &--cols-auto {
+        grid-template-columns: auto;
+    }
+
+    &--rows-2 {
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    &--rows-3 {
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    &--rows-4 {
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    &--rows-auto {
+        grid-template-rows: auto;
+    }
+
+    // Espaciado entre filas y columnas (gap)
+    &--gap-small {
+        gap: 8px;
+    }
+
+    &--gap-medium {
+        gap: 16px;
+    }
+
+    &--gap-large {
+        gap: 32px;
+    }
+
+    // Justificación de contenido en el eje principal (horizontal)
+    &--justify-start {
+        justify-items: start;
+    }
+
+    &--justify-center {
+        justify-items: center;
+    }
+
+    &--justify-end {
+        justify-items: end;
+    }
+
+    &--justify-stretch {
+        justify-items: stretch;
+    }
+
+    &--justify-space-between {
+        justify-items: space-between;
+    }
+
+    &--justify-space-around {
+        justify-items: space-around;
+    }
+
+    &--justify-space-evenly {
+        justify-items: space-evenly;
+    }
+
+    // Alineación de contenido en el eje transversal (vertical)
+    &--align-start {
+        align-items: start;
+    }
+
+    &--align-center {
+        align-items: center;
+    }
+
+    &--align-end {
+        align-items: end;
+    }
+
+    &--align-stretch {
+        align-items: stretch;
+    }
+
+    &--align-space-between {
+        align-items: space-between;
+    }
+
+    &--align-space-around {
+        align-items: space-around;
+    }
+
+    &--align-space-evenly {
+        align-items: space-evenly;
+    }
+
+    // Posicionamiento de elementos individuales dentro del grid
+    &--align-items-start {
+        align-items: start;
+    }
+
+    &--align-items-center {
+        align-items: center;
+    }
+
+    &--align-items-end {
+        align-items: end;
+    }
+
+    &--align-items-stretch {
+        align-items: stretch; // default
+    }
+
+    // Distribución de elementos individuales en el eje horizontal
+    &--justify-items-start {
+        justify-items: start;
+    }
+
+    &--justify-items-center {
+        justify-items: center;
+    }
+
+    &--justify-items-end {
+        justify-items: end;
+    }
+
+    &--justify-items-stretch {
+        justify-items: stretch; // default
+    }
+
+    // Control de áreas de grid
+    &--areas {
+        grid-template-areas:
+            "header header"
+            "sidebar items"
+            "footer footer";
+    }
+
+    &--areas-none {
+        grid-template-areas: none;
+    }
+}

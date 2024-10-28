@@ -1,0 +1,5 @@
+@each $value in $index {
+    .g--z-index-#{$value} {
+        z-index: #{$value}px;
+    }
+}

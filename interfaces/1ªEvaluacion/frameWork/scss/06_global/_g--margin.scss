@@ -1,0 +1,21 @@
+@each $name, $value in $margin {
+    .g--margin-#{$name} {
+        margin: var(--margin-#{$name})
+    }
+
+    .g--margin-top-#{$name} {
+        margin-top: var(--margin-#{$name})
+    }
+
+    .g--margin-bottom-#{$name} {
+        margin-bottom: var(--margin-#{$name})
+    }
+
+    .g--margin-right-#{$name} {
+        margin-right: var(--margin-#{$name})
+    }
+
+    .g--margin-left-#{$name} {
+        margin-left: var(--margin-#{$name})
+    }
+}
