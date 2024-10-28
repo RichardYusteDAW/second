@@ -15,8 +15,7 @@ public interface AuthorDao {
 
     Integer create(Author author);
 
-    Boolean update(long id, String name, String nationality, String biography_en, String biography_es,
-            Integer birthYear, Integer deathYear);
+    Boolean update(Author author);
 
     Boolean delete(Integer id);
 }

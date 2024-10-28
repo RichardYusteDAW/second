@@ -35,18 +35,35 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Integer create(String name, String nationality, String biographyEs, String biographyEn, Integer birthYear,
             Integer deathYear) {
+
         Author author = new Author(name, nationality, biographyEs, biographyEn, birthYear, deathYear);
-        return authorRepository.create(author);
+        Integer authorId = authorRepository.create(author);
+        if (authorId == null) {
+            throw new ResourceNotFoundException("Author could not be created");
+        }
+        return authorId;
     }
 
     @Override
     public Boolean update(Integer id, String name, String nationality, String biographyEn, String biographyEs,
             Integer birthYear, Integer deathYear) {
-        return authorRepository.update(id, name, nationality, biographyEn, biographyEs, birthYear, deathYear);
+
+        Author author = new Author(id, name, nationality, biographyEn, biographyEs, birthYear, deathYear);
+
+        Boolean status = authorRepository.update(author);
+        if (!status) {
+            throw new ResourceNotFoundException("Author could not be updated");
+        }
+        return status;
     }
 
     @Override
     public Boolean delete(Integer id) {
-        return authorRepository.delete(id);
+
+        Boolean status = authorRepository.delete(id);
+        if (!status) {
+            throw new ResourceNotFoundException("Author could not be deleted");
+        }
+        return status;
     }
 }

@@ -3,19 +3,27 @@ package fpmislata.bookstore.b_presentation.admin.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import fpmislata.bookstore.b_presentation.admin.mapper.AuthorMapper;
 import fpmislata.bookstore.b_presentation.admin.model.AuthorCollection;
+import fpmislata.bookstore.b_presentation.admin.model.AuthorDetail;
 import fpmislata.bookstore.b_presentation.common.Paginator;
 import fpmislata.bookstore.c_domain.model.Author;
+import fpmislata.bookstore.c_domain.usecase.author.interfaces.AuthorCreateUseCase;
+import fpmislata.bookstore.c_domain.usecase.author.interfaces.AuthorDeleteUseCase;
 import fpmislata.bookstore.c_domain.usecase.author.interfaces.AuthorFindAllUseCase;
 import fpmislata.bookstore.c_domain.usecase.author.interfaces.AuthorFindByIdUseCase;
+import fpmislata.bookstore.c_domain.usecase.author.interfaces.AuthorUpdateUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,6 +31,9 @@ public class AuthorController {
 
     private final AuthorFindAllUseCase authorFindAllUseCase;
     private final AuthorFindByIdUseCase authorFindByIdUseCase;
+    private final AuthorCreateUseCase authorCreateUseCase;
+    private final AuthorUpdateUseCase authorUpdateUseCase;
+    private final AuthorDeleteUseCase authorDeleteUseCase;
 
     @Value("${baseUrl}")
     private String baseUrl;
@@ -32,18 +43,59 @@ public class AuthorController {
             @RequestParam(defaultValue = "1") Integer page,
             @RequestParam(required = false) Integer size) {
 
-        List<Author> authorList = authorFindAllUseCase.execute(page, size);
-        List<AuthorCollection> authorCollectionList = AuthorMapper.INSTANCE.toAuthorCollectionList(authorList);
-        Paginator<AuthorCollection> paginator = new Paginator<>(authorCollectionList, 10, page, size,
-                baseUrl + "/authors");
+        try {
+            List<Author> authorList = authorFindAllUseCase.execute(page, size);
+            List<AuthorCollection> authorCollectionList = AuthorMapper.INSTANCE.toAuthorCollectionList(authorList);
+            Paginator<AuthorCollection> paginator = new Paginator<>(authorCollectionList, 10, page, size,
+                    baseUrl + "/authors");
 
-        return ResponseEntity.ok(paginator);
+            return ResponseEntity.ok(paginator);
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @GetMapping("/api/authors/{id}")
-    public ResponseEntity<Author> findById(@PathVariable Integer id) {
+    public ResponseEntity<AuthorDetail> findById(@PathVariable Integer id) {
 
-        return ResponseEntity.ok(authorFindByIdUseCase.execute(id));
+        try {
+            Author author = authorFindByIdUseCase.execute(id);
+            AuthorDetail authorDetail = AuthorMapper.INSTANCE.toAuthorDetail(author);
+            return ResponseEntity.ok(authorDetail);
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
+    @PostMapping("/api/authors")
+    public Integer create(
+            @RequestParam String name,
+            @RequestParam String nationality,
+            @RequestParam String biographyEs,
+            @RequestParam String biographyEn,
+            @RequestParam Integer birthYear,
+            @RequestParam Integer deathYear) {
+
+        return authorCreateUseCase.execute(name, nationality, biographyEs, biographyEn, birthYear, deathYear);
+    }
+
+    @PutMapping("api/authors/{id}")
+    public Boolean update(
+            @PathVariable Integer id,
+            @RequestParam String name,
+            @RequestParam String nationality,
+            @RequestParam String biographyEs,
+            @RequestParam String biographyEn,
+            @RequestParam Integer birthYear,
+            @RequestParam Integer deathYear) {
+
+        return authorUpdateUseCase.execute(id, name, nationality, biographyEs, biographyEn, birthYear, deathYear);
+    }
+
+    @DeleteMapping("api/authors/{id}")
+    public Boolean delete(@PathVariable Integer id) {
+        return authorDeleteUseCase.execute(id);
+    }
 }

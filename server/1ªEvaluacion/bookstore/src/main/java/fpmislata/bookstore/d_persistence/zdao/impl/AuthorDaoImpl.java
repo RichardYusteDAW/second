@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
+import java.sql.PreparedStatement;
 
 import fpmislata.bookstore.c_domain.model.Author;
 import fpmislata.bookstore.d_persistence.repository.impl.mapper.AuthorRowMapper;
@@ -28,52 +31,85 @@ public class AuthorDaoImpl implements AuthorDao {
     @Override
     public Optional<Author> findById(Integer id) {
 
-        String sql = "SELECT * FROM authors WHERE id = ?";
-        Author author = jdbcTemplate.queryForObject(sql, new AuthorRowMapper(), id);
+        try {
+            String sql = "SELECT * FROM authors WHERE id = ?";
+            Author author = jdbcTemplate.queryForObject(sql, new AuthorRowMapper(), id);
 
-        return Optional.ofNullable(author);
+            return Optional.of(author);
+
+        } catch (Exception e) {
+            return Optional.empty();
+        }
     }
 
     @Override
     public Optional<Author> findByBookISBN(Integer ISBN) {
 
-        String sql = "SELECT * FROM authors INNER JOIN books_authors ON authors.id = books_authors.author_id WHERE ISBN = ?";
-        Author author = jdbcTemplate.queryForObject(sql, new AuthorRowMapper(), ISBN);
+        try {
+            String sql = "SELECT * FROM authors INNER JOIN books_authors ON authors.id = books_authors.author_id WHERE ISBN = ?";
+            Author author = jdbcTemplate.queryForObject(sql, new AuthorRowMapper(), ISBN);
 
-        return Optional.ofNullable(author);
+            return Optional.of(author);
+
+        } catch (Exception e) {
+            return Optional.empty();
+        }
     }
 
     @Override
     public Integer create(Author author) {
 
-        String sql = "INSERT INTO authors (name, nationality, biography_es, biography_en, birthYear, deathYear) VALUES (?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, author.getName(), author.getNationality(), author.getBiographyEs(),
-                author.getBiographyEn(), author.getBirthYear(), author.getDeathYear());
+        try {
+            String sql = "INSERT INTO authors (name, nationality, biography_es, biography_en, birth_year, death_year) VALUES (?, ?, ?, ?, ?, ?)";
 
-        jdbcTemplate.update(sql, author.getId(), author.getName(), author.getNationality(),
-                author.getBiographyEs(), author.getBiographyEn(), author.getBirthYear(), author.getDeathYear());
+            KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        return author.getId();
-    }
+            jdbcTemplate.update(connection -> {
+                PreparedStatement ps = connection.prepareStatement(sql, new String[] { "id" });
+                ps.setString(1, author.getName());
+                ps.setString(2, author.getNationality());
+                ps.setString(3, author.getBiographyEs());
+                ps.setString(4, author.getBiographyEn());
+                ps.setInt(5, author.getBirthYear());
+                ps.setInt(6, author.getDeathYear());
+                return ps;
+            }, keyHolder);
+
+            Number key = keyHolder.getKey();
+            return (key != null) ? key.intValue() : null;
+
+        } catch (Exception e) {
+            return null;
+        }
+    };
 
     @Override
-    public Boolean update(long id, String name, String nationality, String biographyEn, String biographyEs,
-            Integer birthYear, Integer deathYear) {
+    public Boolean update(Author author) {
 
-        String sql = "UPDATE authors SET name = ?, nationality = ?, biography_en = ?, biography_es = ?, birthYear = ?, deathYear = ?";
-        Integer rowsAffected = jdbcTemplate.update(sql, name, nationality, biographyEn, biographyEs, birthYear,
-                deathYear, id);
+        try {
+            String sql = "UPDATE authors SET name = ?, nationality = ?, biography_en = ?, biography_es = ?, birth_year = ?, death_year = ? WHERE id = ?";
+            Integer rowsAffected = jdbcTemplate.update(sql, author.getName(), author.getNationality(),
+                    author.getBiographyEn(), author.getBiographyEs(), author.getBirthYear(), author.getDeathYear(),
+                    author.getId());
 
-        return rowsAffected > 0;
+            return rowsAffected > 0;
+
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
     public Boolean delete(Integer id) {
 
-        String sql = "DELETE FROM authors WHERE id = ?";
-        Integer rowsAffected = jdbcTemplate.update(sql, id);
+        try {
+            String sql = "DELETE FROM authors WHERE id = ?";
+            Integer rowsAffected = jdbcTemplate.update(sql, id);
 
-        return rowsAffected > 0;
+            return rowsAffected > 0;
+
+        } catch (Exception e) {
+            return false;
+        }
     }
-
 }

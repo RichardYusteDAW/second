@@ -37,9 +37,8 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     }
 
     @Override
-    public Boolean update(Integer id, String name, String nationality, String biographyEn, String biographyEs,
-            Integer birthYear, Integer deathYear) {
-        return authorDao.update(id, name, nationality, biographyEn, biographyEs, birthYear, deathYear);
+    public Boolean update(Author author) {
+        return authorDao.update(author);
     }
 
     @Override
