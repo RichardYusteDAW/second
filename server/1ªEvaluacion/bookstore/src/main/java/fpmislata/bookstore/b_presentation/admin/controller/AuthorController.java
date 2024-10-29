@@ -70,7 +70,7 @@ public class AuthorController {
     }
 
     @PostMapping("/api/authors")
-    public Integer create(
+    public ResponseEntity<Integer> create(
             @RequestParam String name,
             @RequestParam String nationality,
             @RequestParam String biographyEs,
@@ -78,11 +78,18 @@ public class AuthorController {
             @RequestParam Integer birthYear,
             @RequestParam Integer deathYear) {
 
-        return authorCreateUseCase.execute(name, nationality, biographyEs, biographyEn, birthYear, deathYear);
+        try {
+            Integer authorId = authorCreateUseCase.execute(name, nationality, biographyEs, biographyEn, birthYear,
+                    deathYear);
+            return ResponseEntity.ok(authorId);
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @PutMapping("api/authors/{id}")
-    public Boolean update(
+    public ResponseEntity<Boolean> update(
             @PathVariable Integer id,
             @RequestParam String name,
             @RequestParam String nationality,
@@ -91,11 +98,22 @@ public class AuthorController {
             @RequestParam Integer birthYear,
             @RequestParam Integer deathYear) {
 
-        return authorUpdateUseCase.execute(id, name, nationality, biographyEs, biographyEn, birthYear, deathYear);
+        try {
+            Boolean status = authorUpdateUseCase.execute(id, name, nationality, biographyEs, biographyEn, birthYear,
+                    deathYear);
+            return ResponseEntity.ok(status);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @DeleteMapping("api/authors/{id}")
-    public Boolean delete(@PathVariable Integer id) {
-        return authorDeleteUseCase.execute(id);
+    public ResponseEntity<Boolean> delete(@PathVariable Integer id) {
+        try {
+            Boolean status = authorDeleteUseCase.execute(id);
+            return ResponseEntity.ok(status);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 }

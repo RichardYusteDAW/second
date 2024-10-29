@@ -15,10 +15,7 @@ public interface BookService {
 
         Book findByISBN(String ISBN);
 
-        Integer create(String isbn, String titleEs, String titleEn, String synopsisEs, String synopsisEn,
-                        BigDecimal price,
-                        float discount, String cover, Publisher publisher, Category category, List<Genre> genres,
-                        List<Author> authors);
+        Integer create(Book book);
 
         Boolean update(String ISBN, String title, String synopsis, BigDecimal price, Float discount, String cover,
                         Publisher publisher, Category category, List<Author> authorList, List<Genre> genreList);
