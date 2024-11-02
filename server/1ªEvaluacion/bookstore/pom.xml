@@ -63,6 +63,14 @@
 			<version>0.2.0</version>
 		</dependency>
 
+		<!-- MapStruct Processor is used to process MapStruct annotations -->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>1.6.2</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<!-- Spring Boot Data JPA is used to connect to the database -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -111,8 +119,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>21</source>
-					<target>21</target>
+					<release>21</release>
 					<annotationProcessorPaths>
 						<path>
 							<groupId>org.projectlombok</groupId>
@@ -130,6 +137,9 @@
 							<version>1.6.2</version>
 						</path>
 					</annotationProcessorPaths>
+					<!-- <compilerArgs>
+						<arg>-Amapstruct.verbose=true</arg>
+					</compilerArgs> -->
 				</configuration>
 			</plugin>
 		</plugins>

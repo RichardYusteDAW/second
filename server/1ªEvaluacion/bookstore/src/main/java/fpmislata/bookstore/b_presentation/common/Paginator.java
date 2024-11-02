@@ -8,14 +8,14 @@ public class Paginator<T> {
 
     // Attributes
     private List<T> data;
-    private int total;
-    private int currentPage;
-    private int pageSize;
+    private Integer total;
+    private Integer currentPage;
+    private Integer pageSize;
     private String next;
     private String previous;
 
     // Constructor
-    public Paginator(List<T> data, int total, int currentPage, int pageSize, String baseUrl) {
+    public Paginator(List<T> data, Integer total, Integer currentPage, Integer pageSize, String baseUrl) {
         this.data = data;
         this.total = total;
         this.currentPage = currentPage;

@@ -2,8 +2,10 @@ package fpmislata.bookstore.d_persistence.repository.impl.mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import org.springframework.jdbc.core.RowMapper;
-import fpmislata.bookstore.c_domain.model.Author;
+
+import fpmislata.bookstore.c_domain._2service.model.Author;
 
 public class AuthorRowMapper implements RowMapper<Author> {
 

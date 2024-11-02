@@ -2,13 +2,12 @@ package fpmislata.bookstore.d_persistence.repository.impl;
 
 import java.util.List;
 import java.util.Optional;
-
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import fpmislata.bookstore.c_domain.model.Author;
-import fpmislata.bookstore.c_domain.repository.AuthorRepository;
+import fpmislata.bookstore.c_domain._2service.model.Author;
+import fpmislata.bookstore.d_persistence.repository.interfaces.AuthorRepository;
 import fpmislata.bookstore.d_persistence.zdao.interfaces.AuthorDao;
-import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor

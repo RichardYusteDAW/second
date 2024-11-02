@@ -1,11 +1,11 @@
-package fpmislata.bookstore.d_persistence.zdao.interfaces;
+package fpmislata.bookstore.d_persistence.repository.interfaces;
 
 import java.util.List;
 import java.util.Optional;
 
 import fpmislata.bookstore.c_domain._2service.model.Author;
 
-public interface AuthorDao {
+public interface AuthorRepository {
 
     List<Author> findAll();
 

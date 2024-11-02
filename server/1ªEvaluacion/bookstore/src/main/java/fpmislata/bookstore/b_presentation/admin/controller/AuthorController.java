@@ -1,7 +1,7 @@
 package fpmislata.bookstore.b_presentation.admin.controller;
 
 import java.util.List;
-
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,14 +17,12 @@ import fpmislata.bookstore.b_presentation.admin.mapper.AuthorMapper;
 import fpmislata.bookstore.b_presentation.admin.model.AuthorCollection;
 import fpmislata.bookstore.b_presentation.admin.model.AuthorDetail;
 import fpmislata.bookstore.b_presentation.common.Paginator;
-import fpmislata.bookstore.c_domain.model.Author;
-import fpmislata.bookstore.c_domain.usecase.author.interfaces.AuthorCreateUseCase;
-import fpmislata.bookstore.c_domain.usecase.author.interfaces.AuthorDeleteUseCase;
-import fpmislata.bookstore.c_domain.usecase.author.interfaces.AuthorFindAllUseCase;
-import fpmislata.bookstore.c_domain.usecase.author.interfaces.AuthorFindByIdUseCase;
-import fpmislata.bookstore.c_domain.usecase.author.interfaces.AuthorUpdateUseCase;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PutMapping;
+import fpmislata.bookstore.c_domain._1usecase.admin.author.interfaces.AuthorCreateUseCase;
+import fpmislata.bookstore.c_domain._1usecase.admin.author.interfaces.AuthorDeleteUseCase;
+import fpmislata.bookstore.c_domain._1usecase.admin.author.interfaces.AuthorFindAllUseCase;
+import fpmislata.bookstore.c_domain._1usecase.admin.author.interfaces.AuthorFindByIdUseCase;
+import fpmislata.bookstore.c_domain._1usecase.admin.author.interfaces.AuthorUpdateUseCase;
+import fpmislata.bookstore.c_domain._2service.model.Author;
 
 @RestController
 @RequiredArgsConstructor
@@ -35,8 +34,8 @@ public class AuthorController {
     private final AuthorUpdateUseCase authorUpdateUseCase;
     private final AuthorDeleteUseCase authorDeleteUseCase;
 
-    @Value("${baseUrl}")
-    private String baseUrl;
+    @Value("${url}")
+    private String url;
 
     @GetMapping("/api/authors")
     public ResponseEntity<Paginator<AuthorCollection>> findAll(
@@ -47,7 +46,7 @@ public class AuthorController {
             List<Author> authorList = authorFindAllUseCase.execute(page, size);
             List<AuthorCollection> authorCollectionList = AuthorMapper.INSTANCE.toAuthorCollectionList(authorList);
             Paginator<AuthorCollection> paginator = new Paginator<>(authorCollectionList, 10, page, size,
-                    baseUrl + "/authors");
+                    url + "/authors");
 
             return ResponseEntity.ok(paginator);
 
@@ -88,7 +87,7 @@ public class AuthorController {
         }
     }
 
-    @PutMapping("api/authors/{id}")
+    @PutMapping("/api/authors/{id}")
     public ResponseEntity<Boolean> update(
             @PathVariable Integer id,
             @RequestParam String name,
@@ -107,7 +106,7 @@ public class AuthorController {
         }
     }
 
-    @DeleteMapping("api/authors/{id}")
+    @DeleteMapping("/api/authors/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable Integer id) {
         try {
             Boolean status = authorDeleteUseCase.execute(id);
