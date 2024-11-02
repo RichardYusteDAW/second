@@ -29,7 +29,35 @@ public class AuthorDaoImpl implements AuthorDao {
     }
 
     @Override
-    public Optional<Author> findById(Integer id) {
+    public List<Author> findAllById(List<Long> authorIdList) {
+
+        try {
+            String sql = "SELECT * FROM authors WHERE id IN (?)";
+            List<Author> authors = jdbcTemplate.query(sql, new AuthorRowMapper(), authorIdList);
+
+            return authors;
+
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Author> findAllByBookId(Long bookId) {
+
+        try {
+            String sql = "SELECT * FROM authors INNER JOIN books_authors ON authors.id = books_authors.author_id WHERE book_id = ?";
+            List<Author> authors = jdbcTemplate.query(sql, new AuthorRowMapper(), bookId);
+
+            return authors;
+
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public Optional<Author> findById(Long id) {
 
         try {
             String sql = "SELECT * FROM authors WHERE id = ?";
@@ -57,7 +85,7 @@ public class AuthorDaoImpl implements AuthorDao {
     }
 
     @Override
-    public Integer create(Author author) {
+    public Long create(Author author) {
 
         try {
             String sql = "INSERT INTO authors (name, nationality, biography_es, biography_en, birth_year, death_year) VALUES (?, ?, ?, ?, ?, ?)";
@@ -76,7 +104,7 @@ public class AuthorDaoImpl implements AuthorDao {
             }, keyHolder);
 
             Number key = keyHolder.getKey();
-            return (key != null) ? key.intValue() : null;
+            return (key != null) ? key.longValue() : null;
 
         } catch (Exception e) {
             return null;
@@ -100,7 +128,7 @@ public class AuthorDaoImpl implements AuthorDao {
     }
 
     @Override
-    public Boolean delete(Integer id) {
+    public Boolean delete(Long id) {
 
         try {
             String sql = "DELETE FROM authors WHERE id = ?";

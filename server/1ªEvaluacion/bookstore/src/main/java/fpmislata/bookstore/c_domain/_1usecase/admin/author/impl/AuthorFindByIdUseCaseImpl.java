@@ -14,7 +14,7 @@ public class AuthorFindByIdUseCaseImpl implements AuthorFindByIdUseCase {
     private final AuthorService authorService;
 
     @Override
-    public Author execute(Integer id) {
+    public Author execute(Long id) {
         return authorService.findById(id);
     }
 }

@@ -4,5 +4,5 @@ import fpmislata.bookstore.c_domain._2service.model.Author;
 
 public interface AuthorFindByIdUseCase {
 
-    Author execute(Integer id);
+    Author execute(Long id);
 }

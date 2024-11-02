@@ -5,5 +5,5 @@ import java.util.List;
 import fpmislata.bookstore.c_domain._2service.model.Author;
 
 public interface BookInsertAuthorsAdminUseCase {
-    void execute(Integer id, List<Author> authors);
+    void execute(Long id, List<Author> authors);
 }

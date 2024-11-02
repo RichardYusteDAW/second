@@ -22,7 +22,23 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author findById(Integer id) {
+    public List<Author> findAllById(List<Author> authorList) {
+        // Convert List<Author> to ArrayList<Integer>
+        List<Long> ids = authorList.stream().map(author -> author.getId()).toList();
+
+        // Find all authors by id
+        List<Author> foundAuthors = authorRepository.findAllById(ids);
+
+        // Check if all authors were found
+        if (foundAuthors.size() != authorList.size()) {
+            throw new ResourceNotFoundException("Some authors were not found");
+        }
+
+        return foundAuthors;
+    }
+
+    @Override
+    public Author findById(Long id) {
         return authorRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Author does not exist"));
     }
 
@@ -33,11 +49,11 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Integer create(String name, String nationality, String biographyEs, String biographyEn, Integer birthYear,
+    public Long create(String name, String nationality, String biographyEs, String biographyEn, Integer birthYear,
             Integer deathYear) {
 
         Author author = new Author(name, nationality, biographyEs, biographyEn, birthYear, deathYear);
-        Integer authorId = authorRepository.create(author);
+        Long authorId = authorRepository.create(author);
         if (authorId == null) {
             throw new ResourceNotFoundException("Author could not be created");
         }
@@ -45,7 +61,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Boolean update(Integer id, String name, String nationality, String biographyEn, String biographyEs,
+    public Boolean update(Long id, String name, String nationality, String biographyEn, String biographyEs,
             Integer birthYear, Integer deathYear) {
 
         Author author = new Author(id, name, nationality, biographyEn, biographyEs, birthYear, deathYear);
@@ -58,7 +74,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Boolean delete(Integer id) {
+    public Boolean delete(Long id) {
 
         Boolean status = authorRepository.delete(id);
         if (!status) {

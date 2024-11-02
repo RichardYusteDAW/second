@@ -8,15 +8,17 @@ public interface AuthorService {
 
         List<Author> findAll();
 
-        Author findById(Integer id);
+        List<Author> findAllById(List<Author> authorList);
+
+        Author findById(Long id);
 
         Author findByBookISBN(Integer bookISBN);
 
-        Integer create(String name, String nationality, String biographyEs, String biographyEn, Integer birthYear,
+        Long create(String name, String nationality, String biographyEs, String biographyEn, Integer birthYear,
                         Integer deathYear);
 
-        Boolean update(Integer id, String name, String nationality, String biographyEs, String biographyEn,
+        Boolean update(Long id, String name, String nationality, String biographyEs, String biographyEn,
                         Integer birthYear, Integer deathYear);
 
-        Boolean delete(Integer id);
+        Boolean delete(Long id);
 }

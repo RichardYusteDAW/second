@@ -15,6 +15,7 @@ public class BookFindByIsbnAdminUseCaseImpl implements BookFindByIsbnAdminUseCas
 
     @Override
     public Book execute(String isbn) {
-        return bookService.findByIsbn(isbn);
+        return bookService.findByIsbn(isbn)
+                .orElseThrow(() -> new RuntimeException("Book not found"));
     }
 }

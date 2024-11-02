@@ -29,14 +29,15 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public Integer count() {
-        throw new UnsupportedOperationException("Unimplemented method 'count'");
+    public Integer count(Integer page, Integer size) {
+        String sql = "SELECT COUNT(*) FROM books";
+        return jdbcTemplate.queryForObject(sql, Integer.class);
     }
 
     @Override
     public Optional<Book> findByIsbn(String isbn) {
         try {
-            String sql = "SELECT * FROM book WHERE isbn = ?";
+            String sql = "SELECT * FROM books INNER JOIN publishers ON books.publisher_id = publishers.id WHERE isbn = ?";
             Book book = jdbcTemplate.queryForObject(sql, new BookRowMapper(), isbn);
 
             return Optional.of(book);

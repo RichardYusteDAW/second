@@ -13,7 +13,7 @@ public class AuthorCreateUseCaseImpl implements AuthorCreateUseCase {
     private final AuthorService authorService;
 
     @Override
-    public Integer execute(String name, String nationality, String biographyEs, String biographyEn, Integer birthYear,
+    public Long execute(String name, String nationality, String biographyEs, String biographyEn, Integer birthYear,
             Integer deathYear) {
         return authorService.create(name, nationality, biographyEs, biographyEn, birthYear, deathYear);
     }

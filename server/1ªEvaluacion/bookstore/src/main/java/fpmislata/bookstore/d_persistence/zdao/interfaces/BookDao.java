@@ -9,7 +9,7 @@ public interface BookDao {
 
     List<Book> getAll(Integer page, Integer size);
 
-    Integer count();
+    Integer count(Integer page, Integer size);
 
     Optional<Book> findByIsbn(String isbn);
 

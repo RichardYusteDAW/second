@@ -21,7 +21,12 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     }
 
     @Override
-    public Optional<Author> findById(Integer id) {
+    public List<Author> findAllById(List<Long> authorIdList) {
+        return authorDao.findAllById(authorIdList);
+    }
+
+    @Override
+    public Optional<Author> findById(Long id) {
         return authorDao.findById(id);
     }
 
@@ -31,7 +36,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     }
 
     @Override
-    public Integer create(Author author) {
+    public Long create(Author author) {
         return authorDao.create(author);
     }
 
@@ -41,7 +46,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     }
 
     @Override
-    public Boolean delete(Integer id) {
+    public Boolean delete(Long id) {
         return authorDao.delete(id);
     }
 

@@ -9,13 +9,15 @@ public interface AuthorRepository {
 
     List<Author> findAll();
 
-    Optional<Author> findById(Integer id);
+    List<Author> findAllById(List<Long> authorIdList);
+
+    Optional<Author> findById(Long id);
 
     Optional<Author> findByBookISBN(Integer ISBN);
 
-    Integer create(Author author);
+    Long create(Author author);
 
     Boolean update(Author author);
 
-    Boolean delete(Integer id);
+    Boolean delete(Long id);
 }

@@ -13,7 +13,7 @@ public class AuthorRowMapper implements RowMapper<Author> {
     @SuppressWarnings("null")
     public Author mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new Author(
-                rs.getInt("authors.id"),
+                rs.getLong("authors.id"),
                 rs.getString("authors.name"),
                 rs.getString("authors.nationality"),
                 rs.getString("authors.biography_es"),

@@ -13,7 +13,7 @@ public class AuthorDeleteUseCaseImpl implements AuthorDeleteUseCase {
     private final AuthorService authorService;
 
     @Override
-    public Boolean execute(Integer id) {
+    public Boolean execute(Long id) {
         return authorService.delete(id);
     }
 }

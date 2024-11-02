@@ -56,7 +56,7 @@ public class AuthorController {
     }
 
     @GetMapping("/api/authors/{id}")
-    public ResponseEntity<AuthorDetail> findById(@PathVariable Integer id) {
+    public ResponseEntity<AuthorDetail> findById(@PathVariable Long id) {
 
         try {
             Author author = authorFindByIdUseCase.execute(id);
@@ -69,7 +69,7 @@ public class AuthorController {
     }
 
     @PostMapping("/api/authors")
-    public ResponseEntity<Integer> create(
+    public ResponseEntity<Long> create(
             @RequestParam String name,
             @RequestParam String nationality,
             @RequestParam String biographyEs,
@@ -78,7 +78,7 @@ public class AuthorController {
             @RequestParam Integer deathYear) {
 
         try {
-            Integer authorId = authorCreateUseCase.execute(name, nationality, biographyEs, biographyEn, birthYear,
+            Long authorId = authorCreateUseCase.execute(name, nationality, biographyEs, biographyEn, birthYear,
                     deathYear);
             return ResponseEntity.ok(authorId);
 
@@ -89,7 +89,7 @@ public class AuthorController {
 
     @PutMapping("/api/authors/{id}")
     public ResponseEntity<Boolean> update(
-            @PathVariable Integer id,
+            @PathVariable Long id,
             @RequestParam String name,
             @RequestParam String nationality,
             @RequestParam String biographyEs,
@@ -107,7 +107,7 @@ public class AuthorController {
     }
 
     @DeleteMapping("/api/authors/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable Integer id) {
+    public ResponseEntity<Boolean> delete(@PathVariable Long id) {
         try {
             Boolean status = authorDeleteUseCase.execute(id);
             return ResponseEntity.ok(status);

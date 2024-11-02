@@ -13,7 +13,7 @@ public class AuthorUpdateUseCaseImpl implements AuthorUpdateUseCase {
     private final AuthorService authorService;
 
     @Override
-    public Boolean execute(Integer id, String name, String nationality, String biographyEn, String biographyEs,
+    public Boolean execute(Long id, String name, String nationality, String biographyEn, String biographyEs,
             Integer birthYear, Integer deathYear) {
         return authorService.update(id, name, nationality, biographyEs, biographyEn, birthYear, deathYear);
     }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Author {
 
-    private Integer id;
+    private Long id;
     private String name;
     private String nationality;
     private String biographyEs;

@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import fpmislata.bookstore.c_domain._2service.model.Author;
 import fpmislata.bookstore.c_domain._2service.model.Book;
-import fpmislata.bookstore.c_domain._2service.model.Genre;
 
 public interface BookService {
 
@@ -13,13 +12,11 @@ public interface BookService {
 
         Integer count();
 
-        Book findByIsbn(String isbn);
+        Optional<Book> findByIsbn(String isbn);
 
-        Book findById(Long id);
+        Optional<Book> findById(Long id);
 
         Optional<Long> save(Book book);
 
         void addAuthor(Book book, Author author);
-
-        void addGenre(Book book, Genre genre);
 }
