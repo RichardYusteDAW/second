@@ -1,21 +1,30 @@
-//border
 $borders: (
-    "xs": 1,
-    "s": 2,
-    "m": 3,
-    "l": 4,
-    "xl": 5
+    "none": 0,
+    "3xs": 1,
+    "2xs": 2,
+    "xs": 3,
+    "s": 4,
+    "m": 5,
+    "l": 6,
+    "xl": 8,
+    "2xl": 10,
+    "3xl": 12
 );
 
 $border-radius: (
-    "xs": 5,
-    "s": 10,
-    "m": 20,
-    "l": 30,
-    "xl": 40
+    "none": 0,
+    "3xs": 2,
+    "2xs": 4,
+    "xs": 6,
+    "s": 8,
+    "m": 12,
+    "l": 16,
+    "xl": 24,
+    "2xl": 30,
+    "3xl": 36,
+    "full": 9999
 );
 
-//color
 $colors: (
     "blue": ("#010519", "#010A50", "#010C8E", "#0007C7", "#0000FF", "#4238FF", "#8176FE", "#B9AFFE", "#EAE6FE"),
     "orange": ("#190C01", "#502B01", "#8E5101", "#C77B00", "#FFA600", "#FFC338", "#FEDA76", "#FEEDAF", "#FEFAE6"),
@@ -28,7 +37,6 @@ $colors: (
     "pink":("#FC88AE", "#FD96B3", "#FFA4BA", "#FFB3C2", "#FFC2CC", "#FFD1D6", "#FFE1E3", "#FFF0F0", "#FFFFFF")
 );
 
-//font
 $fonts: (
     "body": "Arial, sans-serif",
     "heading": "Georgia, serif",
@@ -38,65 +46,63 @@ $fonts: (
     "cursive": "'Comic Sans MS', cursive"
 );
 
-//font-size
 $font-size: (
-    "xs": 8,
-    "s": 10,
-    "m": 12,
-    "l": 14,
+    "5xs": 6,
+    "4xs": 8,
+    "3xs": 10,
+    "2xs": 12,
+    "xs": 14,
+    "s": 16,
+    "m": 18,
+    "l": 20,
+    "xl": 24,
+    "2xl": 36,
+    "3xl": 38,
+    "4xl": 48,
+    "5xl": 60
+);
+
+$margins: (
+    "none": 0,
+    "3xs": 2,
+    "2xs": 4,
+    "xs": 6,
+    "s": 8,
+    "m": 10,
+    "l": 12,
     "xl": 16,
-    "xxl":24
+    "2xl": 24,
+    "3xl": 36,
+    "4xl": 46,
+    "5xl": 60
 );
 
-//margin
-$margin: (
-    "xs": 1,
-    "s": 2,
-    "m": 6,
+$paddings: (
+    "none": 0,
+    "3xs": 2,
+    "2xs": 4,
+    "xs": 6,
+    "s": 8,
+    "m": 10,
     "l": 12,
-    "xl": 20
+    "xl": 16,
+    "2xl": 24,
+    "3xl": 36,
+    "4xl": 46,
+    "5xl": 60
 );
 
-//padding
-$padding: (
-    "xs": 1,
-    "s": 2,
-    "m": 6,
-    "l": 12,
-    "xl": 20
-);
-
-
-//z-index
-$index: (
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8
-);
-
-//width
 $widths: (
-    "xs": 1,
-    "s": 2,
-    "m": 6,
+    "none": 0,
+    "3xs": 2,
+    "2xs": 4,
+    "xs": 6,
+    "s": 8,
+    "m": 10,
     "l": 12,
-    "xl": 20
-);
-
-$widths-perc: (
-    10,
-    20,
-    30,
-    40,
-    50,
-    60,
-    70,
-    80,
-    90,
-    100
+    "xl": 16,
+    "2xl": 24,
+    "3xl": 36,
+    "4xl": 46,
+    "5xl": 60
 );

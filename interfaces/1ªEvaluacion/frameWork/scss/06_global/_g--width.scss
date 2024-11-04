@@ -4,8 +4,8 @@
     }
 }
 
-@each $value in $widths-perc {
-    .g--width-#{$value} {
-        width: var(--width-#{$value})
+@for $i from 1 through 10 {
+    .g--width-#{$i * 10} {
+        width: var(--width-#{$i * 10})
     }
 }

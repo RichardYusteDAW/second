@@ -1,8 +1,11 @@
 .l-flex {
     display: flex;
-    gap: 16px;
 
     // Direcciones de flex
+    &--horizontal {
+        flex-direction: row;
+    }
+
     &--horizontal-reverse {
         flex-direction: row-reverse;
     }
@@ -15,7 +18,7 @@
         flex-direction: column-reverse;
     }
 
-    // Alineación a lo largo del eje principal
+    // Alineación en el eje principal
     &--justify-start {
         justify-content: flex-start;
     }
@@ -40,12 +43,98 @@
         justify-content: space-evenly;
     }
 
-    // Alineación a lo largo del eje transversal (cross axis)
-    &--align-start {
+    // Alineación del contenido en el eje secundario
+    &--align-content-start {
+        align-content: flex-start;
+    }
+
+    &--align-content-end {
+        align-content: flex-end;
+    }
+
+    &--align-content-center {
+        align-content: center;
+    }
+
+    &--align-content-between {
+        align-content: space-between;
+    }
+
+    &--align-content-around {
+        align-content: space-around;
+    }
+
+    &--align-content-evenly {
+        align-content: space-evenly;
+    }
+
+    // Alineación de los elementos en el eje secundario
+    &--align-items-start {
         align-items: flex-start;
     }
 
-    &--align-end {
+    &--align-items-end {
         align-items: flex-end;
+    }
+
+    &--align-items-center {
+        align-items: center;
+    }
+
+    &--align-items-baseline {
+        align-items: baseline;
+    }
+
+    &--align-items-stretch {
+        align-items: stretch;
+    }
+
+    // Alineación de los elementos en el secundario
+    &__area--align-self-start {
+        align-self: flex-start;
+    }
+
+    &__area--align-self-end {
+        align-self: flex-end;
+    }
+
+    &__area--align-self-center {
+        align-self: center;
+    }
+
+    &__area--align-self-baseline {
+        align-self: baseline;
+    }
+
+    &__area--align-self-stretch {
+        align-self: stretch;
+    }
+
+    // Orden de los elementos
+    @for $i from 1 through 12 {
+        &__area--order-#{$i} {
+            order: $i;
+        }
+    }
+
+    // Tamaño de inicio de los elementos
+    @for $i from 1 through 12 {
+        &__area--basis-#{$i} {
+            flex-basis: calc($i * 100% / 12);
+        }
+    }
+
+    // Crecimiento de los elementos
+    @for $i from 1 through 12 {
+        &__area--grow-#{$i} {
+            flex-grow: $i;
+        }
+    }
+
+    // Encogimiento de los elementos
+    @for $i from 1 through 12 {
+        &__area--shrink-#{$i} {
+            flex-shrink: $i;
+        }
     }
 }

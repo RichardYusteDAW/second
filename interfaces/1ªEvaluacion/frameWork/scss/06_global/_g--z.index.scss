@@ -1,5 +1,5 @@
-@each $value in $index {
-    .g--z-index-#{$value} {
-        z-index: #{$value}px;
+@for $i from 1 through 10 {
+    .g--z-index-#{$i} {
+        z-index: var(--z-index-#{$i})
     }
 }

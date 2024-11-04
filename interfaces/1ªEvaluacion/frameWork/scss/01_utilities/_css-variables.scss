@@ -24,11 +24,11 @@
         --font-size-#{$name}: #{$value}px;
     }
 
-    @each $name, $value in $margin {
+    @each $name, $value in $margins {
         --margin-#{$name}: #{$value}px;
     }
 
-    @each $name, $value in $padding {
+    @each $name, $value in $paddings {
         --padding-#{$name}: #{$value}px;
     }
 
@@ -36,11 +36,11 @@
         --width-#{$name}: #{$value}px;
     }
 
-    @each $value in $widths-perc {
-        --width-#{$value}: #{$value + '%'};
+    @for $i from 1 through 10 {
+        --width-#{$i*10}: #{$i * 10%};
     }
 
-    @each $z in $index {
-        --z-index-#{$z}: #{$z};
+    @for $i from 1 through 10 {
+        --z-index-#{$i}: #{$i};
     }
 }

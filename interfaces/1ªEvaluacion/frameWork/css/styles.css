@@ -1,14 +1,25 @@
 :root {
-  --border-xs: 1px;
-  --border-s: 2px;
-  --border-m: 3px;
-  --border-l: 4px;
-  --border-xl: 5px;
-  --border-radius-xs: 5px;
-  --border-radius-s: 10px;
-  --border-radius-m: 20px;
-  --border-radius-l: 30px;
-  --border-radius-xl: 40px;
+  --border-none: 0px;
+  --border-3xs: 1px;
+  --border-2xs: 2px;
+  --border-xs: 3px;
+  --border-s: 4px;
+  --border-m: 5px;
+  --border-l: 6px;
+  --border-xl: 8px;
+  --border-2xl: 10px;
+  --border-3xl: 12px;
+  --border-radius-none: 0px;
+  --border-radius-3xs: 2px;
+  --border-radius-2xs: 4px;
+  --border-radius-xs: 6px;
+  --border-radius-s: 8px;
+  --border-radius-m: 12px;
+  --border-radius-l: 16px;
+  --border-radius-xl: 24px;
+  --border-radius-2xl: 30px;
+  --border-radius-3xl: 36px;
+  --border-radius-full: 9999px;
   --color-blue-10: #010519;
   --color-blue-20: #010A50;
   --color-blue-30: #010C8E;
@@ -96,27 +107,55 @@
   --font-secondary: 'Helvetica Neue', sans-serif;
   --font-display: 'Impact', sans-serif;
   --font-cursive: 'Comic Sans MS', cursive;
-  --font-size-xs: 8px;
-  --font-size-s: 10px;
-  --font-size-m: 12px;
-  --font-size-l: 14px;
-  --font-size-xl: 16px;
-  --font-size-xxl: 24px;
-  --margin-xs: 1px;
-  --margin-s: 2px;
-  --margin-m: 6px;
+  --font-size-5xs: 6px;
+  --font-size-4xs: 8px;
+  --font-size-3xs: 10px;
+  --font-size-2xs: 12px;
+  --font-size-xs: 14px;
+  --font-size-s: 16px;
+  --font-size-m: 18px;
+  --font-size-l: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 36px;
+  --font-size-3xl: 38px;
+  --font-size-4xl: 48px;
+  --font-size-5xl: 60px;
+  --margin-none: 0px;
+  --margin-3xs: 2px;
+  --margin-2xs: 4px;
+  --margin-xs: 6px;
+  --margin-s: 8px;
+  --margin-m: 10px;
   --margin-l: 12px;
-  --margin-xl: 20px;
-  --padding-xs: 1px;
-  --padding-s: 2px;
-  --padding-m: 6px;
+  --margin-xl: 16px;
+  --margin-2xl: 24px;
+  --margin-3xl: 36px;
+  --margin-4xl: 46px;
+  --margin-5xl: 60px;
+  --padding-none: 0px;
+  --padding-3xs: 2px;
+  --padding-2xs: 4px;
+  --padding-xs: 6px;
+  --padding-s: 8px;
+  --padding-m: 10px;
   --padding-l: 12px;
-  --padding-xl: 20px;
-  --width-xs: 1px;
-  --width-s: 2px;
-  --width-m: 6px;
+  --padding-xl: 16px;
+  --padding-2xl: 24px;
+  --padding-3xl: 36px;
+  --padding-4xl: 46px;
+  --padding-5xl: 60px;
+  --width-none: 0px;
+  --width-3xs: 2px;
+  --width-2xs: 4px;
+  --width-xs: 6px;
+  --width-s: 8px;
+  --width-m: 10px;
   --width-l: 12px;
-  --width-xl: 20px;
+  --width-xl: 16px;
+  --width-2xl: 24px;
+  --width-3xl: 36px;
+  --width-4xl: 46px;
+  --width-5xl: 60px;
   --width-10: 10%;
   --width-20: 20%;
   --width-30: 30%;
@@ -135,154 +174,928 @@
   --z-index-6: 6;
   --z-index-7: 7;
   --z-index-8: 8;
+  --z-index-9: 9;
+  --z-index-10: 10;
+}
+
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/* Sections
+     ========================================================================== */
+/**
+   * Remove the margin in all browsers.
+   */
+body {
+  margin: 0;
+}
+
+/**
+   * Render the `main` element consistently in IE.
+   */
+main {
+  display: block;
+}
+
+/**
+   * Correct the font size and margin on `h1` elements within `section` and
+   * `article` contexts in Chrome, Firefox, and Safari.
+   */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+     ========================================================================== */
+/**
+   * 1. Add the correct box sizing in Firefox.
+   * 2. Show the overflow in Edge and IE.
+   */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/**
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
+pre {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/* Text-level semantics
+     ========================================================================== */
+/**
+   * Remove the gray background on active links in IE 10.
+   */
+a {
+  background-color: transparent;
+}
+
+/**
+   * 1. Remove the bottom border in Chrome 57-
+   * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+   */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+   * Add the correct font weight in Chrome, Edge, and Safari.
+   */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/**
+   * Add the correct font size in all browsers.
+   */
+small {
+  font-size: 80%;
+}
+
+/**
+   * Prevent `sub` and `sup` elements from affecting the line height in
+   * all browsers.
+   */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+     ========================================================================== */
+/**
+   * Remove the border on images inside links in IE 10.
+   */
+img {
+  border-style: none;
+}
+
+/* Forms
+     ========================================================================== */
+/**
+   * 1. Change the font styles in all browsers.
+   * 2. Remove the margin in Firefox and Safari.
+   */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+/**
+   * Show the overflow in IE.
+   * 1. Show the overflow in Edge.
+   */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+   * Remove the inheritance of text transform in Edge, Firefox, and IE.
+   * 1. Remove the inheritance of text transform in Firefox.
+   */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+   * Correct the inability to style clickable types in iOS and Safari.
+   */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+/**
+   * Remove the inner border and padding in Firefox.
+   */
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+   * Restore the focus styles unset by the previous rule.
+   */
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+   * Correct the padding in Firefox.
+   */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+   * 1. Correct the text wrapping in Edge and IE.
+   * 2. Correct the color inheritance from `fieldset` elements in IE.
+   * 3. Remove the padding so developers are not caught out when they zero out
+   *    `fieldset` elements in all browsers.
+   */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+/**
+   * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+   */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+   * Remove the default vertical scrollbar in IE 10+.
+   */
+textarea {
+  overflow: auto;
+}
+
+/**
+   * 1. Add the correct box sizing in IE 10.
+   * 2. Remove the padding in IE 10.
+   */
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+   * Correct the cursor style of increment and decrement buttons in Chrome.
+   */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+   * 1. Correct the odd appearance in Chrome and Safari.
+   * 2. Correct the outline style in Safari.
+   */
+[type=search] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/**
+   * Remove the inner padding in Chrome and Safari on macOS.
+   */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+   * 1. Correct the inability to style clickable types in iOS and Safari.
+   * 2. Change font properties to `inherit` in Safari.
+   */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/* Interactive
+     ========================================================================== */
+/*
+   * Add the correct display in Edge, IE 10+, and Firefox.
+   */
+details {
+  display: block;
+}
+
+/*
+   * Add the correct display in all browsers.
+   */
+summary {
+  display: list-item;
+}
+
+/* Misc
+     ========================================================================== */
+/**
+   * Add the correct display in IE 10+.
+   */
+template {
+  display: none;
+}
+
+/**
+   * Add the correct display in IE 10.
+   */
+[hidden] {
+  display: none;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 .l-flex {
   display: flex;
-  gap: 16px;
 }
+
+.l-flex--horizontal {
+  flex-direction: row;
+}
+
 .l-flex--horizontal-reverse {
   flex-direction: row-reverse;
 }
+
 .l-flex--vertical {
   flex-direction: column;
 }
+
 .l-flex--vertical-reverse {
   flex-direction: column-reverse;
 }
+
 .l-flex--justify-start {
   justify-content: flex-start;
 }
+
 .l-flex--justify-end {
   justify-content: flex-end;
 }
+
 .l-flex--justify-center {
   justify-content: center;
 }
+
 .l-flex--justify-between {
   justify-content: space-between;
 }
+
 .l-flex--justify-around {
   justify-content: space-around;
 }
+
 .l-flex--justify-evenly {
   justify-content: space-evenly;
 }
-.l-flex--align-start {
+
+.l-flex--align-content-start {
+  align-content: flex-start;
+}
+
+.l-flex--align-content-end {
+  align-content: flex-end;
+}
+
+.l-flex--align-content-center {
+  align-content: center;
+}
+
+.l-flex--align-content-between {
+  align-content: space-between;
+}
+
+.l-flex--align-content-around {
+  align-content: space-around;
+}
+
+.l-flex--align-content-evenly {
+  align-content: space-evenly;
+}
+
+.l-flex--align-items-start {
   align-items: flex-start;
 }
-.l-flex--align-end {
+
+.l-flex--align-items-end {
   align-items: flex-end;
+}
+
+.l-flex--align-items-center {
+  align-items: center;
+}
+
+.l-flex--align-items-baseline {
+  align-items: baseline;
+}
+
+.l-flex--align-items-stretch {
+  align-items: stretch;
+}
+
+.l-flex__area--align-self-start {
+  align-self: flex-start;
+}
+
+.l-flex__area--align-self-end {
+  align-self: flex-end;
+}
+
+.l-flex__area--align-self-center {
+  align-self: center;
+}
+
+.l-flex__area--align-self-baseline {
+  align-self: baseline;
+}
+
+.l-flex__area--align-self-stretch {
+  align-self: stretch;
+}
+
+.l-flex__area--order-1 {
+  order: 1;
+}
+
+.l-flex__area--order-2 {
+  order: 2;
+}
+
+.l-flex__area--order-3 {
+  order: 3;
+}
+
+.l-flex__area--order-4 {
+  order: 4;
+}
+
+.l-flex__area--order-5 {
+  order: 5;
+}
+
+.l-flex__area--order-6 {
+  order: 6;
+}
+
+.l-flex__area--order-7 {
+  order: 7;
+}
+
+.l-flex__area--order-8 {
+  order: 8;
+}
+
+.l-flex__area--order-9 {
+  order: 9;
+}
+
+.l-flex__area--order-10 {
+  order: 10;
+}
+
+.l-flex__area--order-11 {
+  order: 11;
+}
+
+.l-flex__area--order-12 {
+  order: 12;
+}
+
+.l-flex__area--basis-1 {
+  flex-basis: 8.3333333333%;
+}
+
+.l-flex__area--basis-2 {
+  flex-basis: 16.6666666667%;
+}
+
+.l-flex__area--basis-3 {
+  flex-basis: 25%;
+}
+
+.l-flex__area--basis-4 {
+  flex-basis: 33.3333333333%;
+}
+
+.l-flex__area--basis-5 {
+  flex-basis: 41.6666666667%;
+}
+
+.l-flex__area--basis-6 {
+  flex-basis: 50%;
+}
+
+.l-flex__area--basis-7 {
+  flex-basis: 58.3333333333%;
+}
+
+.l-flex__area--basis-8 {
+  flex-basis: 66.6666666667%;
+}
+
+.l-flex__area--basis-9 {
+  flex-basis: 75%;
+}
+
+.l-flex__area--basis-10 {
+  flex-basis: 83.3333333333%;
+}
+
+.l-flex__area--basis-11 {
+  flex-basis: 91.6666666667%;
+}
+
+.l-flex__area--basis-12 {
+  flex-basis: 100%;
+}
+
+.l-flex__area--grow-1 {
+  flex-grow: 1;
+}
+
+.l-flex__area--grow-2 {
+  flex-grow: 2;
+}
+
+.l-flex__area--grow-3 {
+  flex-grow: 3;
+}
+
+.l-flex__area--grow-4 {
+  flex-grow: 4;
+}
+
+.l-flex__area--grow-5 {
+  flex-grow: 5;
+}
+
+.l-flex__area--grow-6 {
+  flex-grow: 6;
+}
+
+.l-flex__area--grow-7 {
+  flex-grow: 7;
+}
+
+.l-flex__area--grow-8 {
+  flex-grow: 8;
+}
+
+.l-flex__area--grow-9 {
+  flex-grow: 9;
+}
+
+.l-flex__area--grow-10 {
+  flex-grow: 10;
+}
+
+.l-flex__area--grow-11 {
+  flex-grow: 11;
+}
+
+.l-flex__area--grow-12 {
+  flex-grow: 12;
+}
+
+.l-flex__area--shrink-1 {
+  flex-shrink: 1;
+}
+
+.l-flex__area--shrink-2 {
+  flex-shrink: 2;
+}
+
+.l-flex__area--shrink-3 {
+  flex-shrink: 3;
+}
+
+.l-flex__area--shrink-4 {
+  flex-shrink: 4;
+}
+
+.l-flex__area--shrink-5 {
+  flex-shrink: 5;
+}
+
+.l-flex__area--shrink-6 {
+  flex-shrink: 6;
+}
+
+.l-flex__area--shrink-7 {
+  flex-shrink: 7;
+}
+
+.l-flex__area--shrink-8 {
+  flex-shrink: 8;
+}
+
+.l-flex__area--shrink-9 {
+  flex-shrink: 9;
+}
+
+.l-flex__area--shrink-10 {
+  flex-shrink: 10;
+}
+
+.l-flex__area--shrink-11 {
+  flex-shrink: 11;
+}
+
+.l-flex__area--shrink-12 {
+  flex-shrink: 12;
 }
 
 .l-grid {
   display: grid;
 }
+
 .l-grid--cols-2 {
   grid-template-columns: repeat(2, 1fr);
 }
+
 .l-grid--cols-3 {
   grid-template-columns: repeat(3, 1fr);
 }
+
 .l-grid--cols-4 {
   grid-template-columns: repeat(4, 1fr);
 }
+
 .l-grid--cols-6 {
   grid-template-columns: repeat(6, 1fr);
 }
+
 .l-grid--cols-auto {
   grid-template-columns: auto;
 }
+
 .l-grid--rows-2 {
   grid-template-rows: repeat(2, 1fr);
 }
+
 .l-grid--rows-3 {
   grid-template-rows: repeat(3, 1fr);
 }
+
 .l-grid--rows-4 {
   grid-template-rows: repeat(4, 1fr);
 }
+
 .l-grid--rows-auto {
   grid-template-rows: auto;
 }
+
 .l-grid--gap-small {
   gap: 8px;
 }
+
 .l-grid--gap-medium {
   gap: 16px;
 }
+
 .l-grid--gap-large {
   gap: 32px;
 }
+
 .l-grid--justify-start {
   justify-items: start;
 }
+
 .l-grid--justify-center {
   justify-items: center;
 }
+
 .l-grid--justify-end {
   justify-items: end;
 }
+
 .l-grid--justify-stretch {
   justify-items: stretch;
 }
+
 .l-grid--justify-space-between {
   justify-items: space-between;
 }
+
 .l-grid--justify-space-around {
   justify-items: space-around;
 }
+
 .l-grid--justify-space-evenly {
   justify-items: space-evenly;
 }
+
 .l-grid--align-start {
   align-items: start;
 }
+
 .l-grid--align-center {
   align-items: center;
 }
+
 .l-grid--align-end {
   align-items: end;
 }
+
 .l-grid--align-stretch {
   align-items: stretch;
 }
+
 .l-grid--align-space-between {
   align-items: space-between;
 }
+
 .l-grid--align-space-around {
   align-items: space-around;
 }
+
 .l-grid--align-space-evenly {
   align-items: space-evenly;
 }
+
 .l-grid--align-items-start {
   align-items: start;
 }
+
 .l-grid--align-items-center {
   align-items: center;
 }
+
 .l-grid--align-items-end {
   align-items: end;
 }
+
 .l-grid--align-items-stretch {
   align-items: stretch;
 }
+
 .l-grid--justify-items-start {
   justify-items: start;
 }
+
 .l-grid--justify-items-center {
   justify-items: center;
 }
+
 .l-grid--justify-items-end {
   justify-items: end;
 }
+
 .l-grid--justify-items-stretch {
   justify-items: stretch;
 }
+
 .l-grid--areas {
   grid-template-areas: "header header" "sidebar items" "footer footer";
 }
+
 .l-grid--areas-none {
   grid-template-areas: none;
 }
@@ -620,6 +1433,18 @@
   background-color: var(--color-pink-90);
 }
 
+.g--border-none {
+  border: var(--border-none);
+}
+
+.g--border-3xs {
+  border: var(--border-3xs);
+}
+
+.g--border-2xs {
+  border: var(--border-2xs);
+}
+
 .g--border-xs {
   border: var(--border-xs);
 }
@@ -638,6 +1463,14 @@
 
 .g--border-xl {
   border: var(--border-xl);
+}
+
+.g--border-2xl {
+  border: var(--border-2xl);
+}
+
+.g--border-3xl {
+  border: var(--border-3xl);
 }
 
 .g--border-color-blue-10 {
@@ -964,6 +1797,18 @@
   border-color: var(--color-pink-90);
 }
 
+.g--border-radius-none {
+  border-radius: var(--border-radius-none);
+}
+
+.g--border-radius-3xs {
+  border-radius: var(--border-radius-3xs);
+}
+
+.g--border-radius-2xs {
+  border-radius: var(--border-radius-2xs);
+}
+
 .g--border-radius-xs {
   border-radius: var(--border-radius-xs);
 }
@@ -982,6 +1827,18 @@
 
 .g--border-radius-xl {
   border-radius: var(--border-radius-xl);
+}
+
+.g--border-radius-2xl {
+  border-radius: var(--border-radius-2xl);
+}
+
+.g--border-radius-3xl {
+  border-radius: var(--border-radius-3xl);
+}
+
+.g--border-radius-full {
+  border-radius: var(--border-radius-full);
 }
 
 .g--color-blue-10 {
@@ -1332,6 +2189,22 @@
   font: var(--font-cursive);
 }
 
+.g--font-size-5xs {
+  font-size: var(--font-size-5xs);
+}
+
+.g--font-size-4xs {
+  font-size: var(--font-size-4xs);
+}
+
+.g--font-size-3xs {
+  font-size: var(--font-size-3xs);
+}
+
+.g--font-size-2xs {
+  font-size: var(--font-size-2xs);
+}
+
 .g--font-size-xs {
   font-size: var(--font-size-xs);
 }
@@ -1352,8 +2225,80 @@
   font-size: var(--font-size-xl);
 }
 
-.g--font-size-xxl {
-  font-size: var(--font-size-xxl);
+.g--font-size-2xl {
+  font-size: var(--font-size-2xl);
+}
+
+.g--font-size-3xl {
+  font-size: var(--font-size-3xl);
+}
+
+.g--font-size-4xl {
+  font-size: var(--font-size-4xl);
+}
+
+.g--font-size-5xl {
+  font-size: var(--font-size-5xl);
+}
+
+.g--margin-none {
+  margin: var(--margin-none);
+}
+
+.g--margin-top-none {
+  margin-top: var(--margin-none);
+}
+
+.g--margin-bottom-none {
+  margin-bottom: var(--margin-none);
+}
+
+.g--margin-right-none {
+  margin-right: var(--margin-none);
+}
+
+.g--margin-left-none {
+  margin-left: var(--margin-none);
+}
+
+.g--margin-3xs {
+  margin: var(--margin-3xs);
+}
+
+.g--margin-top-3xs {
+  margin-top: var(--margin-3xs);
+}
+
+.g--margin-bottom-3xs {
+  margin-bottom: var(--margin-3xs);
+}
+
+.g--margin-right-3xs {
+  margin-right: var(--margin-3xs);
+}
+
+.g--margin-left-3xs {
+  margin-left: var(--margin-3xs);
+}
+
+.g--margin-2xs {
+  margin: var(--margin-2xs);
+}
+
+.g--margin-top-2xs {
+  margin-top: var(--margin-2xs);
+}
+
+.g--margin-bottom-2xs {
+  margin-bottom: var(--margin-2xs);
+}
+
+.g--margin-right-2xs {
+  margin-right: var(--margin-2xs);
+}
+
+.g--margin-left-2xs {
+  margin-left: var(--margin-2xs);
 }
 
 .g--margin-xs {
@@ -1456,8 +2401,100 @@
   margin-left: var(--margin-xl);
 }
 
+.g--margin-2xl {
+  margin: var(--margin-2xl);
+}
+
+.g--margin-top-2xl {
+  margin-top: var(--margin-2xl);
+}
+
+.g--margin-bottom-2xl {
+  margin-bottom: var(--margin-2xl);
+}
+
+.g--margin-right-2xl {
+  margin-right: var(--margin-2xl);
+}
+
+.g--margin-left-2xl {
+  margin-left: var(--margin-2xl);
+}
+
+.g--margin-3xl {
+  margin: var(--margin-3xl);
+}
+
+.g--margin-top-3xl {
+  margin-top: var(--margin-3xl);
+}
+
+.g--margin-bottom-3xl {
+  margin-bottom: var(--margin-3xl);
+}
+
+.g--margin-right-3xl {
+  margin-right: var(--margin-3xl);
+}
+
+.g--margin-left-3xl {
+  margin-left: var(--margin-3xl);
+}
+
+.g--margin-4xl {
+  margin: var(--margin-4xl);
+}
+
+.g--margin-top-4xl {
+  margin-top: var(--margin-4xl);
+}
+
+.g--margin-bottom-4xl {
+  margin-bottom: var(--margin-4xl);
+}
+
+.g--margin-right-4xl {
+  margin-right: var(--margin-4xl);
+}
+
+.g--margin-left-4xl {
+  margin-left: var(--margin-4xl);
+}
+
+.g--margin-5xl {
+  margin: var(--margin-5xl);
+}
+
+.g--margin-top-5xl {
+  margin-top: var(--margin-5xl);
+}
+
+.g--margin-bottom-5xl {
+  margin-bottom: var(--margin-5xl);
+}
+
+.g--margin-right-5xl {
+  margin-right: var(--margin-5xl);
+}
+
+.g--margin-left-5xl {
+  margin-left: var(--margin-5xl);
+}
+
 .g--no-text-decoration {
   text-decoration: none;
+}
+
+.g--padding-none {
+  padding: var(--padding-none);
+}
+
+.g--padding-3xs {
+  padding: var(--padding-3xs);
+}
+
+.g--padding-2xs {
+  padding: var(--padding-2xs);
 }
 
 .g--padding-xs {
@@ -1480,6 +2517,34 @@
   padding: var(--padding-xl);
 }
 
+.g--padding-2xl {
+  padding: var(--padding-2xl);
+}
+
+.g--padding-3xl {
+  padding: var(--padding-3xl);
+}
+
+.g--padding-4xl {
+  padding: var(--padding-4xl);
+}
+
+.g--padding-5xl {
+  padding: var(--padding-5xl);
+}
+
+.g--width-none {
+  width: var(--width-none);
+}
+
+.g--width-3xs {
+  width: var(--width-3xs);
+}
+
+.g--width-2xs {
+  width: var(--width-2xs);
+}
+
 .g--width-xs {
   width: var(--width-xs);
 }
@@ -1498,6 +2563,22 @@
 
 .g--width-xl {
   width: var(--width-xl);
+}
+
+.g--width-2xl {
+  width: var(--width-2xl);
+}
+
+.g--width-3xl {
+  width: var(--width-3xl);
+}
+
+.g--width-4xl {
+  width: var(--width-4xl);
+}
+
+.g--width-5xl {
+  width: var(--width-5xl);
 }
 
 .g--width-10 {
@@ -1541,35 +2622,43 @@
 }
 
 .g--z-index-1 {
-  z-index: 1px;
+  z-index: var(--z-index-1);
 }
 
 .g--z-index-2 {
-  z-index: 2px;
+  z-index: var(--z-index-2);
 }
 
 .g--z-index-3 {
-  z-index: 3px;
+  z-index: var(--z-index-3);
 }
 
 .g--z-index-4 {
-  z-index: 4px;
+  z-index: var(--z-index-4);
 }
 
 .g--z-index-5 {
-  z-index: 5px;
+  z-index: var(--z-index-5);
 }
 
 .g--z-index-6 {
-  z-index: 6px;
+  z-index: var(--z-index-6);
 }
 
 .g--z-index-7 {
-  z-index: 7px;
+  z-index: var(--z-index-7);
 }
 
 .g--z-index-8 {
-  z-index: 8px;
+  z-index: var(--z-index-8);
+}
+
+.g--z-index-9 {
+  z-index: var(--z-index-9);
+}
+
+.g--z-index-10 {
+  z-index: var(--z-index-10);
 }
 
 /*# sourceMappingURL=styles.css.map */
