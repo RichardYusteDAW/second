@@ -13,7 +13,7 @@ class Cart {
 
     // methods
     add(article) {
-        if (this.articles.find(a => a.code === article.code))
+        if (this.articles.includes(article))
             this.update(article.code, 1);
         else
             this.articles.push({
