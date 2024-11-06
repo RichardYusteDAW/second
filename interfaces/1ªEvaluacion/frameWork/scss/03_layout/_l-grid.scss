@@ -2,36 +2,20 @@
     display: grid;
 
     // Configuración básica de filas y columnas
-    &--cols-2 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    &--cols-3 {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    &--cols-4 {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    &--cols-6 {
-        grid-template-columns: repeat(6, 1fr);
+    @for $i from 1 through 12 {
+        &--cols-#{ $i } {
+            grid-template-columns: repeat($i, 1fr)
+        }
     }
 
     &--cols-auto {
         grid-template-columns: auto;
     }
 
-    &--rows-2 {
-        grid-template-rows: repeat(2, 1fr);
-    }
-
-    &--rows-3 {
-        grid-template-rows: repeat(3, 1fr);
-    }
-
-    &--rows-4 {
-        grid-template-rows: repeat(4, 1fr);
+    @for $i from 1 through 12 {
+        &--rows-#{ $i } {
+            grid-template-rows: repeat($i, 1fr);
+        }
     }
 
     &--rows-auto {
@@ -39,16 +23,10 @@
     }
 
     // Espaciado entre filas y columnas (gap)
-    &--gap-small {
-        gap: 8px;
-    }
-
-    &--gap-medium {
-        gap: 16px;
-    }
-
-    &--gap-large {
-        gap: 32px;
+    @each $key, $value in $gaps {
+        &--gap-#{ $key } {
+            grid-gap: $value;
+        }
     }
 
     // Justificación de contenido en el eje principal (horizontal)
@@ -68,15 +46,15 @@
         justify-items: stretch;
     }
 
-    &--justify-space-between {
+    &--justify-between {
         justify-items: space-between;
     }
 
-    &--justify-space-around {
+    &--justify-around {
         justify-items: space-around;
     }
 
-    &--justify-space-evenly {
+    &--justify-evenly {
         justify-items: space-evenly;
     }
 
@@ -97,15 +75,15 @@
         align-items: stretch;
     }
 
-    &--align-space-between {
+    &--align-between {
         align-items: space-between;
     }
 
-    &--align-space-around {
+    &--align-around {
         align-items: space-around;
     }
 
-    &--align-space-evenly {
+    &--align-evenly {
         align-items: space-evenly;
     }
 
@@ -141,17 +119,5 @@
 
     &--justify-items-stretch {
         justify-items: stretch; // default
-    }
-
-    // Control de áreas de grid
-    &--areas {
-        grid-template-areas:
-            "header header"
-            "sidebar items"
-            "footer footer";
-    }
-
-    &--areas-none {
-        grid-template-areas: none;
     }
 }
