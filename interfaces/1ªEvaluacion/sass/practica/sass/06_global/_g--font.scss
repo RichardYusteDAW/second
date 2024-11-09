@@ -1,0 +1,7 @@
+@use "../01_utilities/scss-variables" as *;
+
+@each $name, $value in $fonts {
+    .g--font-#{$name} {
+        font: var(--font-#{$name});
+    }
+}

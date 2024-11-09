@@ -1,0 +1,34 @@
+.c-sidebar {
+    --c-sidebar-font-color: var(--color-blue-50);
+    --c-sidebar-background-color: var(--color-orange-80);
+
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+        display: flex;
+        border: 1px solid var(--c-sidebar-font-color);
+        border-radius: 10px;
+
+        &-icon {
+            color: var(--c-sidebar-font-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        &-title {
+            color: var(--c-sidebar-font-color);
+            font-weight: bolder;
+        }
+
+        &-subtitle {
+            color: var(--c-sidebar-font-color);
+        }
+    }
+
+    &__item:hover {
+        --c-sidebar-font-color: var(--color-red-50);
+        background-color: var(--c-sidebar-background-color);
+    }
+}

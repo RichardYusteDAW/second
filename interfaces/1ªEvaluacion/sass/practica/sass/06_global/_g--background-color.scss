@@ -1,0 +1,10 @@
+@use "../01_utilities/scss-variables" as *;
+@use 'sass:list';
+
+@each $name, $codes in $colors {
+    @for $i from 1 through list.length($codes) {
+        .g--background-color-#{$name}-#{$i*10} {
+            background-color: var(--color-#{$name}-#{$i*10});
+        }
+    }
+}

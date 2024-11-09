@@ -1,0 +1,7 @@
+@use "../01_utilities/scss-variables" as *;
+
+@each $name, $value in $borders {
+    .g--border-#{$name} {
+        border:var(--border-#{$name}) solid black;
+    }
+}
