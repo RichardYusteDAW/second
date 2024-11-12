@@ -1,34 +1,76 @@
 .c-sidebar {
-    --c-sidebar-font-color: var(--color-blue-50);
     --c-sidebar-background-color: var(--color-orange-80);
+    --c-sidebar-color-grey-10: var(--color-grey-10);
+    --c-sidebar-color-grey-30: var(--color-grey-30);
+    --c-sidebar-color-grey-90: var(--color-grey-90);
+    --c-sidebar-color-red-50: var(--color-red-50);
+    --c-sidebar-color-orange-40: var(--color-orange-40);
+    --c-sidebar-color-pink-80: var(--color-pink-80);
+    --c-sisdebar-font-primary: var(--font-primary);
+    --c-sisdebar-font-size-s: var(--font-size-s);
+    --c-sisdebar-font-size-xs: var(--font-size-xs);
+    --c-sisdebar-margin-m: var(--margin-m);
+    --c-sisdebar-padding-3xs: var(--padding-3xs);
+    --c-sisdebar-padding-m: var(--padding-m);
 
     display: flex;
     flex-direction: column;
 
+    // CHILDREN
     &__item {
-        display: flex;
-        border: 1px solid var(--c-sidebar-font-color);
+        padding: var(--c-sisdebar-padding-m);
+        margin-top: 10px;
         border-radius: 10px;
+        font-family: var(--c-sisdebar-font-primary);
 
+        // HOVER
+        &:hover {
+            background-color: var(--c-sidebar-color-grey-90);
+        }
+
+        // MODIFIERS
+        &--warning {
+            background-color: var(--c-sidebar-color-pink-80);
+            border: 1px solid var(--c-sidebar-color-orange-40);
+        }
+
+        // GRANDCHILDREN
         &-icon {
-            color: var(--c-sidebar-font-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            width: 30px;
+            color: var(--c-sidebar-color-red-50);
+
+            // MODIFIERS
+            &--warning {
+                color: var(--c-sidebar-color-orange-40);
+            }
         }
 
         &-title {
-            color: var(--c-sidebar-font-color);
+            margin: var(--margin-none);
+            padding: var(--c-sisdebar-padding-3xs);
+            color: var(--c-sidebar--color-grey-10);
+            font-size: var(--c-sisdebar-font-size-s);
             font-weight: bolder;
+
+            // MODIFIERS
+            &--warning {
+                color: var(--c-sidebar-color-orange-40);
+            }
         }
 
         &-subtitle {
-            color: var(--c-sidebar-font-color);
+            margin: var(--margin-none);
+            padding: var(--c-sisdebar-padding-3xs);
+            color: var(--c-sidebar-color-grey-30);
+            font-size: var(--c-sisdebar-font-size-xs);
+
+            // MODIFIERS
+            &--warning {
+                color: var(--c-sidebar-color-orange-40);
+            }
         }
+
     }
 
-    &__item:hover {
-        --c-sidebar-font-color: var(--color-red-50);
-        background-color: var(--c-sidebar-background-color);
-    }
+
 }
