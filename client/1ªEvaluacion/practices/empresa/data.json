@@ -1,0 +1,36 @@
+{
+  "proveedores": [
+    {
+      "id": "1",
+      "nombre": "Juan Pérez",
+      "idArticulo": 1
+    },
+    {
+      "id": "2",
+      "nombre": "Ana García",
+      "idArticulo": 2
+    },
+    {
+      "id": "3",
+      "nombre": "Luis Martínez",
+      "idArticulo": 3
+    }
+  ],
+  "articulos": [
+    {
+      "id": "1",
+      "nombre": "Portátil Acer Aspire 5",
+      "precio": 700
+    },
+    {
+      "id": "2",
+      "nombre": "Monitor LG 27 pulgadas",
+      "precio": 300
+    },
+    {
+      "id": "3",
+      "nombre": "Teclado mecánico Corsair K65",
+      "precio": 150
+    }
+  ]
+}
