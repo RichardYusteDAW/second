@@ -16,7 +16,7 @@ public class BookGetAllAdminUseCaseImpl implements BookGetAllAdminUseCase {
     private final BookService bookService;
 
     @Override
-    public List<Book> execute(Integer page, Integer pageSize) {
-        return bookService.getAll(page, pageSize);
+    public List<Book> execute(Integer page, Integer size) {
+        return bookService.getAll(page, size);
     }
 }

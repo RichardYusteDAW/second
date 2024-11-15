@@ -24,12 +24,12 @@ public class BookDaoImpl implements BookDao {
     @Override
     public List<Book> getAll(Integer page, Integer size) {
 
-        String sql = "SELECT * FROM books LIMIT ?, ?";
-        return jdbcTemplate.query(sql, new BookRowMapper(), page, size);
+        String sql = "SELECT * FROM books LIMIT ? OFFSET ?";
+        return jdbcTemplate.query(sql, new BookRowMapper(), size, page * size);
     }
 
     @Override
-    public Integer count(Integer page, Integer size) {
+    public Integer count() {
         String sql = "SELECT COUNT(*) FROM books";
         return jdbcTemplate.queryForObject(sql, Integer.class);
     }

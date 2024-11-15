@@ -28,12 +28,16 @@ public class BookRowMapper implements RowMapper<Book> {
         book.setDiscount(rs.getFloat("discount"));
         book.setCover(rs.getString("cover"));
 
-        // Set the book's publisher
-        Long publisherId = rs.getLong("publisher_id");
-        String publisherName = rs.getString("name");
-        String publisherSlug = rs.getString("slug");
-        book.setPublisher(new Publisher(publisherId, publisherName, publisherSlug));
+        try {
+            //Color.blue(String.valueOf(rs.findColumn("name")));
+            Long publisherId = rs.getLong("publisher_id");
+            String publisherName = rs.getString("name");
+            String publisherSlug = rs.getString("slug");
+            book.setPublisher(new Publisher(publisherId, publisherName, publisherSlug));
 
-        return book;
+            return book;
+        } catch (Exception e) {
+            return book;
+        }
     }
 }

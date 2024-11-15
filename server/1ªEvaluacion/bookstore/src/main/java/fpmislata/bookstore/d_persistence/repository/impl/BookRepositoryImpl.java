@@ -26,7 +26,7 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public Integer count() {
-        throw new UnsupportedOperationException("Unimplemented method 'count'");
+        return bookDao.count();
     }
 
     @Override
@@ -40,6 +40,7 @@ public class BookRepositoryImpl implements BookRepository {
         Book book = optionalBook.get();
         List<Author> authors = authorDao.findAllByBookId(book.getId());
         book.setAuthors(authors);
+
         return Optional.of(book);
     }
 

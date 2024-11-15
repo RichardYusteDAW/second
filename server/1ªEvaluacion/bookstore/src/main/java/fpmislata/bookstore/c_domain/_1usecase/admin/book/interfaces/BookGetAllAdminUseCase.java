@@ -6,5 +6,5 @@ import fpmislata.bookstore.c_domain._2service.model.Book;
 
 public interface BookGetAllAdminUseCase {
 
-    List<Book> execute(Integer page, Integer pageSize);
+    List<Book> execute(Integer page, Integer size);
 }

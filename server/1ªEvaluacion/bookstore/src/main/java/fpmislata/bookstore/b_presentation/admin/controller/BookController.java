@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fpmislata.bookstore.b_presentation.admin.mapper.BookMapper;
 import fpmislata.bookstore.b_presentation.admin.model.BookCollection;
 import fpmislata.bookstore.b_presentation.common.Paginator;
+import fpmislata.bookstore.c_domain._1usecase.admin.book.interfaces.BookCountAdminUseCase;
 import fpmislata.bookstore.c_domain._1usecase.admin.book.interfaces.BookFindByIsbnAdminUseCase;
 import fpmislata.bookstore.c_domain._1usecase.admin.book.interfaces.BookGetAllAdminUseCase;
 import fpmislata.bookstore.c_domain._1usecase.admin.book.interfaces.BookInsertAdminUseCase;
@@ -28,29 +29,26 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping(BookController.ENDPOINT)
 public class BookController {
 
-    private final BookFindByIsbnAdminUseCase bookFindByIsbnAdminUseCase;
     private final BookGetAllAdminUseCase bookGetAllAdminUseCase;
+    private final BookCountAdminUseCase bookCountUseCase;
+    private final BookFindByIsbnAdminUseCase bookFindByIsbnAdminUseCase;
     private final BookInsertAdminUseCase bookInsertAdminUseCase;
 
     @Value("${url}")
     private String URL;
-    private static final String ENDPOINT = "/api/books";
+    public static final String ENDPOINT = "/api/books";
 
     @GetMapping()
     public ResponseEntity<Paginator<BookCollection>> getAll(
             @RequestParam(defaultValue = "1") Integer page,
             @RequestParam(required = false) Integer size) {
 
-        try {
-            List<Book> bookList = bookGetAllAdminUseCase.execute(0, 10);
-            List<BookCollection> bookCollectionList = BookMapper.INSTANCE.toBookCollectionList(bookList);
-            Paginator<BookCollection> paginator = new Paginator<>(bookCollectionList, 20, page, size, URL + ENDPOINT);
-            return ResponseEntity.ok(paginator);
+        List<Book> bookList = bookGetAllAdminUseCase.execute(page, size);
+        List<BookCollection> bookCollectionList = BookMapper.INSTANCE.toBookCollectionList(bookList);
+        Integer total = bookCountUseCase.execute();
+        Paginator<BookCollection> paginator = new Paginator<>(bookCollectionList, total, page, size, URL + ENDPOINT);
 
-        } catch (Exception e) {
-            System.out.println(e);
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
+        return ResponseEntity.ok(paginator);
     }
 
     @GetMapping("/{isbn}")

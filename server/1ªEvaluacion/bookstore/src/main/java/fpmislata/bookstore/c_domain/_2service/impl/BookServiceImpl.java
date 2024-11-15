@@ -23,7 +23,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Integer count() {
-        throw new UnsupportedOperationException("Unimplemented method 'count'");
+        return bookRepository.count();
     }
 
     @Override
