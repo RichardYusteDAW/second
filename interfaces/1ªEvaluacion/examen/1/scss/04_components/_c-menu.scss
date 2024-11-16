@@ -1,0 +1,23 @@
+.c-menu {
+    display: flex;
+    width: 100%;
+
+    &__item {
+
+        &--left {
+            color: red;
+            margin-right: auto;
+        }
+
+        &--right {
+            color: blue;
+            margin-left: auto;
+        }
+
+        &--centre {
+            color: green;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
