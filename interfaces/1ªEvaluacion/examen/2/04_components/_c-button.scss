@@ -1,0 +1,10 @@
+.c-button {
+    --c-button-color-boton-texto: var(--color-boton-texto);
+    --c-button-color-boton-fondo: var(--color-boton-fondo);
+    --c-button-color-boton-borde: var(--color-boton-borde);
+
+    color: var(--c-button-color-boton-texto);
+    background-color: var(--c-button-color-boton-fondo);
+    border: 1px solid var(--c-button-color-boton-borde);
+    padding: 10px;
+}

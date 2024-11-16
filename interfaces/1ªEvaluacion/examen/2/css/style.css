@@ -1,3 +1,10 @@
+:root {
+  --color-boton-texto: #000000;
+  --color-boton-fondo: #E6EDFE;
+  --color-boton-borde: #0056b8;
+  --color-pagina-fondo: #000000;
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -472,22 +479,19 @@ table {
   border-spacing: 0;
 }
 
-.c-menu {
-  display: flex;
-  width: 100%;
+.c-body {
+  --c-body-color-pagina-fondo: var(--color-pagina-fondo);
+  background-color: var(--c-body-color-pagina-fondo);
 }
-.c-menu__item--left {
-  color: red;
-  margin-right: auto;
-}
-.c-menu__item--right {
-  color: blue;
-  margin-left: auto;
-}
-.c-menu__item--center {
-  color: green;
-  margin-left: auto;
-  margin-right: auto;
+
+.c-button {
+  --c-button-color-boton-texto: var(--color-boton-texto);
+  --c-button-color-boton-fondo: var(--color-boton-fondo);
+  --c-button-color-boton-borde: var(--color-boton-borde);
+  color: var(--c-button-color-boton-texto);
+  background-color: var(--c-button-color-boton-fondo);
+  border: 1px solid var(--c-button-color-boton-borde);
+  padding: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

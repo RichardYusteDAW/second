@@ -1,2 +1,2 @@
-## Diseña un menú horizontal utilizando HTML y SASS que permita la alineación de sus ítems a la izquierda, centro y derecha, tal y como se muestra en la siguiente imagen:  
-![Menú horizontal](menu-horizontal.png)
+## 1. Diseña un menú horizontal utilizando HTML y SASS que permita la alineación de sus ítems a la izquierda, centro y derecha, tal y como se muestra en la siguiente imagen:  
+![Menú horizontal](img/menu-horizontal.png)
