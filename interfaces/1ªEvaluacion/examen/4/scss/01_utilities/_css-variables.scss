@@ -1,0 +1,19 @@
+@use "./scss-variables" as *;
+@use "sass:list";
+
+:root {
+
+    @for $i from 1 through list.length($borderRadius) {
+        --border-radius-#{$i}: #{list.nth($borderRadius, $i)};
+    }
+
+    @each $color, $codes in $colors {
+        @for $i from 1 through list.length($codes) {
+            --color-#{$color}-#{$i*10}: #{list.nth($codes, $i)};
+        }
+    }
+
+    @for $i from 1 through list.length($spacing) {
+        --padding-#{$i}: #{list.nth($spacing, $i)};
+    }
+}

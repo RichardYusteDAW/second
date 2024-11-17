@@ -1,0 +1,49 @@
+.c-switch {
+    --c-switch-color-strong: var(--color-green-30);
+    --c-switch-color-weak: var(--color-blue-90);
+    --c-switch-padding-xs: var(--padding-1);
+    --c-switch-padding-s: var(--padding-2);
+    --c-switch-padding-m: var(--padding-3);
+    --c-switch-padding-l: var(--padding-4);
+    --c-switch-padding-xl: var(--padding-5);
+    --c-switch-border-radius-xs: var(--border-radius-1);
+    --c-switch-border-radius-s: var(--border-radius-2);
+    --c-switch-border-radius-m: var(--border-radius-3);
+    --c-switch-border-radius-l: var(--border-radius-4);
+    --c-switch-border-radius-xl: var(--border-radius-5);
+
+
+    display: flex;
+    width: fit-content;
+    padding: var(--c-switch-padding-s);
+    border-radius: var(--c-switch-border-radius-l);
+
+    &--weak {
+        background-color: var(--c-switch-color-weak);
+    }
+
+    &--dark {
+        background-color: var(--c-switch-color-strong);
+    }
+
+    &__item {
+        width: 25px;
+        padding: var(--c-switch-padding-s);
+        background-color: transparent;
+        color: var(--c-switch-color-weak);
+
+        &--selected-right {
+            border-bottom-right-radius: var(--c-switch-border-radius-m);
+            border-top-right-radius: var(--c-switch-border-radius-m);
+            background-color: var(--c-switch-color-weak);
+            color: var(--c-switch-color-strong);
+        }
+
+        &--selected-left {
+            border-bottom-left-radius: var(--c-switch-border-radius-m);
+            border-top-left-radius: var(--c-switch-border-radius-m);
+            background-color: var(--c-switch-color-weak);
+            color: var(--c-switch-color-strong);
+        }
+    }
+}
