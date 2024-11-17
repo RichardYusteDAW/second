@@ -1,0 +1,23 @@
+@use "./scss-variables" as *;
+@use "sass:list";
+@use "sass:map";
+
+$tonalidades: map.get($set-colores, "nombre-colores");
+$colores: map.get($set-colores, "colores");
+
+:root {
+    @each $color, $codigos in $colores {
+        @for $i from 1 through list.length($codigos) {
+            $code: list.nth($codigos, $i);
+            $tonalidad: list.nth($tonalidades, $i);
+
+            $separador: "-";
+
+            @if($tonalidad =="") {
+                $separador: "";
+            }
+
+            --color-#{$color}#{$separador}#{$tonalidad}: #{$code};
+        }
+    }
+}

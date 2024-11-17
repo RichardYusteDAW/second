@@ -4,8 +4,8 @@
 :root {
     @each $componente, $propiedades in $colores-componentes {
         @each $propiedad, $valores in $propiedades {
-            $valor: list.nth($valores, if($modo_oscuro, 1, 2));
-            --color-#{$componente}-#{$propiedad}: #{$valor};
+            $indice: if($modo_oscuro, 1, 2);
+            --color-#{$componente}-#{$propiedad}: list.nth($valores, $indice);
         }
     }
 }
