@@ -1,0 +1,31 @@
+.l-page {
+
+    display: grid;
+    grid-template-areas:
+        "header header header header header"
+        "nav content content content content"
+        "footer footer footer footer footer";
+
+    &--switch {
+        grid-template-areas:
+            "header header header header header"
+            "content content content content nav"
+            "footer footer footer footer footer";
+    }
+
+    &__header {
+        grid-area: header;
+    }
+
+    &__nav {
+        grid-area: nav;
+    }
+
+    &__content {
+        grid-area: content;
+    }
+
+    &__footer {
+        grid-area: footer;
+    }
+}
