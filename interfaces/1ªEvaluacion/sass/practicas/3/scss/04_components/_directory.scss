@@ -1,0 +1,28 @@
+.directory {
+    /* Box position */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    /* Box Model */
+    width: 200px;
+    height: 600px;
+    margin-left: 25px;
+    border: 1px solid black;
+    gap: 10px;
+
+    &__item {
+        /* Box position */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        /* Box Model */
+        width: 174px;
+        margin-left: 25px;
+        border: 1px solid black;
+        gap: 10px;
+    }
+}
