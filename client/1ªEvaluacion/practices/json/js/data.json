@@ -1,0 +1,31 @@
+{
+  "proveedores": [
+    {
+      "id": "1",
+      "nombre": "Juan Pérez",
+      "idArticulo": 8
+    },
+    {
+      "id": "2",
+      "nombre": "Ana García",
+      "idArticulo": 2
+    },
+    {
+      "id": "3",
+      "nombre": "Luis Martínez",
+      "idArticulo": 3
+    }
+  ],
+  "articulos": [
+    {
+      "nombre": "Portátil Acer Aspire 5",
+      "precio": "700",
+      "id": "1"
+    },
+    {
+      "id": "3",
+      "nombre": "Monitor TFT Sony",
+      "precio": 250
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulario de Alta de Artículos</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body class="d-flex flex-column align-items-center">
+
+  <h1 class="text-center"> Listado de artículos
+    <button id="btnNuevo" class="btn btn-primary">Nuevo articulo</button>
+  </h1>
+
+  <!-- Div para mostrar los articulos en una tabla-->
+  <div id="divArticulos" style="width: 80%;"></div>
+
+  <!-- Dialogo y formulario para nuevo articulo -->
+  <dialog id="dialogNuevo">
+    <div id="dialogHead">
+      <h3> Nuevo articulo<h3>
+    </div>
+    <div id="dialogContent" class="form-group">
+      <form id="formNuevo">
+        <label for="id">Id:</label>
+        <input type="text" class="form-control" id="id" name="id" required />
+
+        <label for="nombre">Nombre del artículo:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required />
+
+        <label for="precio">Precio del artículo:</label>
+        <input type="number" class="form-control" id="precio" name="precio" required />
+
+        <input type="submit" class="btn btn-primary" value="Grabar">
+        <input type="button" id="btnCancelarNuevo" class="btn btn-danger" value="Cancelar">
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Dialogo y formulario para modificar articulo -->
+  <dialog id="dialogModificar">
+    <div id="dialogHead">
+      <h3> Articulo<h3>
+    </div>
+    <div id="dialogContent" class="form-group">
+      <form id="formModificar">
+        <label for="id">Id:</label>
+        <input type="text" class="form-control" id="id" name="id" disabled />
+
+        <label for="nombre">Nombre del artículo:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required />
+
+        <label for="precio">Precio del artículo:</label>
+        <input type="number" class="form-control" id="precio" name="precio" required />
+
+        <input type="submit" class="btn btn-primary" value="Grabar">
+        <input type="button" id="btnCancelarModificar" class="btn btn-danger" value="Cancelar">
+      </form>
+    </div>
+  </dialog>
+</body>
+
+<script src="./js/data.json"></script>
+<script src="./js/empresa.js"></script>
+
+</html>
