@@ -7,18 +7,24 @@ import org.springframework.jdbc.core.RowMapper;
 
 import fpmislata.bookstore.c_domain._2service.model.Author;
 
-public class AuthorRowMapper implements RowMapper<Author> {
+public class AuthorRowmapper implements RowMapper<Author> {
 
     @Override
     @SuppressWarnings("null")
     public Author mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new Author(
-                rs.getLong("authors.id"),
-                rs.getString("authors.name"),
-                rs.getString("authors.nationality"),
-                rs.getString("authors.biography_es"),
-                rs.getString("authors.biography_en"),
-                rs.getInt("authors.birth_year"),
-                rs.getInt("authors.death_year"));
+
+        // Create a new Book
+        Author author = new Author();
+
+        // Set the book's attributes
+        author.setId(rs.getLong("id"));
+        author.setName(rs.getString("name"));
+        author.setNationality(rs.getString("nationality"));
+        author.setBiographyEs(rs.getString("biography_es"));
+        author.setBiographyEn(rs.getString("biography_en"));
+        author.setBirthYear(rs.getInt("birth_year"));
+        author.setDeathYear(rs.getInt("death_year"));
+
+        return author;
     }
 }

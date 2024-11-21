@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,14 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fpmislata.bookstore.b_presentation.admin.mapper.BookMapper;
 import fpmislata.bookstore.b_presentation.admin.model.BookCollection;
+import fpmislata.bookstore.b_presentation.admin.model.BookDetail;
 import fpmislata.bookstore.b_presentation.common.Paginator;
 import fpmislata.bookstore.c_domain._1usecase.admin.book.interfaces.BookCountAdminUseCase;
+import fpmislata.bookstore.c_domain._1usecase.admin.book.interfaces.BookCreateAdminUseCase;
 import fpmislata.bookstore.c_domain._1usecase.admin.book.interfaces.BookFindByIsbnAdminUseCase;
 import fpmislata.bookstore.c_domain._1usecase.admin.book.interfaces.BookGetAllAdminUseCase;
-import fpmislata.bookstore.c_domain._1usecase.admin.book.interfaces.BookInsertAdminUseCase;
-import fpmislata.bookstore.c_domain._2service.model.Author;
+import fpmislata.bookstore.c_domain._1usecase.admin.book.interfaces.BookUpdateAdminUseCase;
 import fpmislata.bookstore.c_domain._2service.model.Book;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,9 +33,10 @@ import lombok.RequiredArgsConstructor;
 public class BookController {
 
     private final BookGetAllAdminUseCase bookGetAllAdminUseCase;
-    private final BookCountAdminUseCase bookCountUseCase;
     private final BookFindByIsbnAdminUseCase bookFindByIsbnAdminUseCase;
-    private final BookInsertAdminUseCase bookInsertAdminUseCase;
+    private final BookCreateAdminUseCase bookCreateAdminUseCase;
+    private final BookUpdateAdminUseCase bookUpdateAdminUseCase;
+    private final BookCountAdminUseCase bookCountAdminUseCase;
 
     @Value("${url}")
     private String URL;
@@ -43,43 +47,34 @@ public class BookController {
             @RequestParam(defaultValue = "1") Integer page,
             @RequestParam(required = false) Integer size) {
 
-        List<Book> bookList = bookGetAllAdminUseCase.execute(page, size);
+        List<Book> bookList = bookGetAllAdminUseCase.execute(page - 1, size);
         List<BookCollection> bookCollectionList = BookMapper.INSTANCE.toBookCollectionList(bookList);
-        Integer total = bookCountUseCase.execute();
+        Integer total = bookCountAdminUseCase.execute();
         Paginator<BookCollection> paginator = new Paginator<>(bookCollectionList, total, page, size, URL + ENDPOINT);
 
         return ResponseEntity.ok(paginator);
     }
 
     @GetMapping("/{isbn}")
-    public ResponseEntity<Book> findByIsbn(@PathVariable String isbn) {
-        try {
-            Book book = bookFindByIsbnAdminUseCase.execute(isbn);
-            return ResponseEntity.ok(book);
+    public ResponseEntity<BookDetail> findByIsbn(@PathVariable String isbn) {
+        Book book = bookFindByIsbnAdminUseCase.execute(isbn);
+        BookDetail bookDetail = BookMapper.INSTANCE.toBookDetail(book);
 
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
+        return ResponseEntity.ok(bookDetail);
     }
 
-    @PostMapping("")
-    public ResponseEntity<Long> insert(@RequestBody Book book) {
-        try {
-            Long bookId = bookInsertAdminUseCase.execute(book);
-            return ResponseEntity.ok(bookId);
-
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    @PostMapping()
+    public ResponseEntity<Long> create(@RequestBody Book book) {
+        return new ResponseEntity<>(bookCreateAdminUseCase.execute(book), HttpStatus.CREATED);
     }
 
-    @PostMapping("/{id}/authors")
-    public ResponseEntity<Void> insertAuthors(@PathVariable Integer id, @RequestBody List<Author> authors) {
-        try {
-            // bookService.addAuthor(book, author);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    @PutMapping()
+    public ResponseEntity<Long> update(@RequestBody Book book) {
+        return ResponseEntity.ok(bookUpdateAdminUseCase.execute(book));
+    }
+
+    @DeleteMapping("/{isbn}")
+    public ResponseEntity<Void> delete(@PathVariable String isbn) {
+        return ResponseEntity.ok().build();
     }
 }

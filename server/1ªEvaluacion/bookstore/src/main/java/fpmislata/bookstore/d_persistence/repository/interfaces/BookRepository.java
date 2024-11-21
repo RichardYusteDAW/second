@@ -7,13 +7,11 @@ import fpmislata.bookstore.c_domain._2service.model.Book;
 
 public interface BookRepository {
 
-    List<Book> getAll(int page, int size);
-
-    Integer count();
+    List<Book> getAll(Integer page, Integer size);
 
     Optional<Book> findByIsbn(String isbn);
 
-    Optional<Book> findById(Long id);
-
     Optional<Long> save(Book book);
+
+    Integer count();
 }

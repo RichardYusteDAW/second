@@ -20,38 +20,37 @@ public class BookRepositoryImpl implements BookRepository {
     private final BookDao bookDao;
 
     @Override
-    public List<Book> getAll(int page, int size) {
+    public List<Book> getAll(Integer page, Integer size) {
         return bookDao.getAll(page, size);
-    }
-
-    @Override
-    public Integer count() {
-        return bookDao.count();
     }
 
     @Override
     public Optional<Book> findByIsbn(String isbn) {
 
         Optional<Book> optionalBook = bookDao.findByIsbn(isbn);
-        if (!optionalBook.isPresent())
+        if (optionalBook.isEmpty()) {
             return Optional.empty();
+        }
 
         // Set authors
         Book book = optionalBook.get();
-        List<Author> authors = authorDao.findAllByBookId(book.getId());
-        book.setAuthors(authors);
+        List<Author> authorList = authorDao.findAllByBookId(book.getId());
+        book.setAuthors(authorList);
 
         return Optional.of(book);
     }
 
     @Override
-    public Optional<Book> findById(Long id) {
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
-    }
-
-    @Override
     public Optional<Long> save(Book book) {
+        List<Author> authorList = book.getAuthors();
+        authorList.forEach(author -> {
+            authorDao.save(author);
+        });
         return bookDao.save(book);
     }
 
+    @Override
+    public Integer count() {
+        return bookDao.count();
+    }
 }

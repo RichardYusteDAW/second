@@ -29,7 +29,6 @@ public class BookRowMapper implements RowMapper<Book> {
         book.setCover(rs.getString("cover"));
 
         try {
-            //Color.blue(String.valueOf(rs.findColumn("name")));
             Long publisherId = rs.getLong("publisher_id");
             String publisherName = rs.getString("name");
             String publisherSlug = rs.getString("slug");

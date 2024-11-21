@@ -8,11 +8,10 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class BookCountAdminCaseImplml implements BookCountAdminUseCase {
+public class BookCountAdminUseCaseImpl implements BookCountAdminUseCase {
 
     private final BookService bookService;
 
-    @Override
     public Integer execute() {
         return bookService.count();
     }
