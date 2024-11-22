@@ -1,0 +1,27 @@
+@each $utility, $maps in $utilities {
+
+    @if $utility !="$keys" {
+
+        $property: map-get($maps, "property");
+        $class: map-get($maps, "class");
+        $values: map-get($maps, "values");
+
+        @if type-of($values)=='map' {
+            @each $key, $value in $values {
+                .#{$class}#{$key} {
+                    #{$property}: #{$value};
+                }
+            }
+        }
+
+        @else {
+            $keys: map-get($utilities, "$keys");
+
+            @for $i from 1 through length($values) {
+                .#{$class}#{nth($keys, $i)} {
+                    #{$property}: #{$i};
+                }
+            }
+        }
+    }
+}
