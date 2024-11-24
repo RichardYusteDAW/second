@@ -53,4 +53,9 @@ public class BookRepositoryImpl implements BookRepository {
     public Integer count() {
         return bookDao.count();
     }
+
+    @Override
+    public void delete(Long id) {
+        bookDao.delete(id);
+    }
 }

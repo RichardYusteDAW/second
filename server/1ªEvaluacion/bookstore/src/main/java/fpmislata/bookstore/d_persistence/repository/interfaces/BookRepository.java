@@ -13,5 +13,7 @@ public interface BookRepository {
 
     Optional<Long> save(Book book);
 
+    void delete(Long id);
+
     Integer count();
 }

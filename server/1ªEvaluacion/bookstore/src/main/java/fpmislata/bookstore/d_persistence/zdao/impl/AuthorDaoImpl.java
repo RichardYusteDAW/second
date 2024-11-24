@@ -4,14 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 
+import fpmislata.bookstore.a_common.annotation.Dao;
 import fpmislata.bookstore.c_domain._2service.model.Author;
 import fpmislata.bookstore.d_persistence.repository.impl.mapper.AuthorRowmapper;
 import fpmislata.bookstore.d_persistence.zdao.interfaces.AuthorDao;
 import lombok.RequiredArgsConstructor;
 
-@Component
+@Dao
 @RequiredArgsConstructor
 public class AuthorDaoImpl implements AuthorDao {
 

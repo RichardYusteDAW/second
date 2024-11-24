@@ -7,14 +7,14 @@ import java.util.Optional;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.stereotype.Component;
 
+import fpmislata.bookstore.a_common.annotation.Dao;
 import fpmislata.bookstore.c_domain._2service.model.Book;
 import fpmislata.bookstore.d_persistence.repository.impl.mapper.BookRowMapper;
 import fpmislata.bookstore.d_persistence.zdao.interfaces.BookDao;
 import lombok.RequiredArgsConstructor;
 
-@Component
+@Dao
 @RequiredArgsConstructor
 public class BookDaoImpl implements BookDao {
 
@@ -47,7 +47,8 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public void delete(Long id) {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        String sql = "DELETE FROM books WHERE id = ?";
+        jdbcTemplate.update(sql, id);
     }
 
     @Override

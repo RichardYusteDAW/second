@@ -15,5 +15,7 @@ public interface BookService {
 
         Optional<Long> update(Book book);
 
+        void delete(Long id);
+
         Integer count();
 }
