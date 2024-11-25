@@ -1,18 +1,16 @@
 {
-  "name": "node",
+  "name": "deployment",
   "version": "1.0.0",
+  "description": "testing deployment",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": ".\\scripts\\build.sh",
-    "deploy": ".\\scripts\\deploy.sh && .\\scripts\\deploy.sh"
+    "deploy": ".\\scripts\\build.sh && .\\scripts\\deploy.sh"
   },
   "author": "Richard Yuste",
   "license": "ISC",
-  "description": "Testing node",
   "dependencies": {
-    "express": "^4.21.1",
-    "node": "file:",
-    "typescript": "^5.6.3"
+    "deployment": "file:"
   }
 }

@@ -1,0 +1,7 @@
+@use "../01_utilities/scss-variables" as *;
+
+@each $name, $value in $border-radius {
+    .g--border-radius-#{$name} {
+        border-radius: var(--border-radius-#{$name})
+    }
+}
