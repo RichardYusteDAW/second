@@ -1,12 +1,13 @@
-@each $utility, $maps in $utilities {
+@each $utility-key, $utility-value in $utilities {
 
-    @if $utility !="$keys" {
+    @if $utility-key !="$keys" {
 
-        $property: map-get($maps, "property");
-        $class: map-get($maps, "class");
-        $values: map-get($maps, "values");
+        $property: map-get($utility-value, "property");
+        $use-keys: map-get($utility-value, "use-keys");
+        $class: map-get($utility-value, "class");
+        $values: map-get($utility-value, "values");
 
-        @if type-of($values)=='map' {
+        @if $use-keys ==1 {
             @each $key, $value in $values {
                 .#{$class}#{$key} {
                     #{$property}: #{$value};
@@ -14,12 +15,22 @@
             }
         }
 
-        @else {
+        @else if $use-keys ==0 {
             $keys: map-get($utilities, "$keys");
 
             @for $i from 1 through length($values) {
                 .#{$class}#{nth($keys, $i)} {
-                    #{$property}: #{$i};
+                    #{$property}: #{nth($values, $i)};
+                }
+            }
+        }
+
+        @else {
+            $max: map-get($utility-value, "max");
+
+            @for $i from 1 through $max {
+                .#{$class}#{$i} {
+                    #{$property}: #{sqrt($i)}px;
                 }
             }
         }

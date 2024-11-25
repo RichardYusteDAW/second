@@ -1,0 +1,14 @@
+.c-button {
+    --c-button-background-color-green: green;
+    --c-button-background-color-red: red;
+    --c-button-border: none;
+    --c-button-color: white;
+
+    background-color: var(--c-button-background-color-green);
+    border: var(--c-button-border);
+    color: var(--c-button-color);
+
+    &--danger {
+        background-color: var(--c-button-background-color-red);
+    }
+}

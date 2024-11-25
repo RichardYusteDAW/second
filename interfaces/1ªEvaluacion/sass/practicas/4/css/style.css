@@ -39,35 +39,115 @@
 }
 
 .g--font-size-xxxs {
-  font-size: 1;
+  font-size: 6px;
 }
 
 .g--font-size-xxs {
-  font-size: 2;
+  font-size: 7px;
 }
 
 .g--font-size-xs {
-  font-size: 3;
+  font-size: 10px;
 }
 
 .g--font-size-s {
-  font-size: 4;
+  font-size: 12px;
 }
 
 .g--font-size-m {
-  font-size: 5;
+  font-size: 14px;
 }
 
 .g--font-size-l {
-  font-size: 6;
+  font-size: 16px;
 }
 
 .g--font-size-xl {
-  font-size: 7;
+  font-size: 18px;
 }
 
 .g--font-size-xxl {
-  font-size: 8;
+  font-size: 20px;
+}
+
+.g--height-1 {
+  height: 1px;
+}
+
+.g--height-2 {
+  height: 4px;
+}
+
+.g--height-3 {
+  height: 9px;
+}
+
+.g--height-4 {
+  height: 16px;
+}
+
+.g--height-5 {
+  height: 25px;
+}
+
+.g--height-6 {
+  height: 36px;
+}
+
+.g--height-7 {
+  height: 49px;
+}
+
+.g--height-8 {
+  height: 64px;
+}
+
+.g--height-9 {
+  height: 81px;
+}
+
+.g--height-10 {
+  height: 100px;
+}
+
+.g--height-11 {
+  height: 121px;
+}
+
+.g--height-12 {
+  height: 144px;
+}
+
+.g--height-13 {
+  height: 169px;
+}
+
+.g--height-14 {
+  height: 196px;
+}
+
+.g--height-15 {
+  height: 225px;
+}
+
+.g--height-16 {
+  height: 256px;
+}
+
+.g--height-17 {
+  height: 289px;
+}
+
+.g--height-18 {
+  height: 324px;
+}
+
+.g--height-19 {
+  height: 361px;
+}
+
+.g--height-20 {
+  height: 400px;
 }
 
 /*# sourceMappingURL=style.css.map */

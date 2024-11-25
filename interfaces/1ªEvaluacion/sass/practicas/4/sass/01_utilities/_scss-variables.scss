@@ -1,5 +1,6 @@
 $utilities: (
     "padding": (property: padding,
+        use-keys:1,
         class: g--padding-,
         values: (1: 1px,
             2: 5px,
@@ -7,6 +8,7 @@ $utilities: (
             4: 20px,
             5: 40px)),
     "width":(property: width,
+        use-keys:1,
         class: g--width-,
         values: (1: 10px,
             2: 20px,
@@ -14,16 +16,12 @@ $utilities: (
             4: 40px,
             5: 70px)),
     "font-size":(property: font-size,
+        use-keys:0,
         class: g--font-size-,
         values: (6px, 7px, 10px, 12px, 14px, 16px, 18px, 20px)),
-    "$keys": ("xxxs",
-        "xxs",
-        "xs",
-        "s",
-        "m",
-        "l",
-        "xl",
-        "xxl",
-        "xxxl"
-    )
+    "height":(property: height,
+        use-keys:2,
+        class: g--height-,
+        max: 20),
+    "$keys": ("xxxs", "xxs", "xs", "s", "m", "l", "xl", "xxl", "xxxl")
 );
