@@ -2,22 +2,26 @@
 @use "sass:list";
 @use "sass:map";
 
-$tonalidades: map.get($set-colores, "nombre-colores");
+$nombre-colores: map.get($set-colores, "nombre-colores");
 $colores: map.get($set-colores, "colores");
 
-@each $color, $codigos in $colores {
-    @for $i from 1 through list.length($codigos) {
-        $code: list.nth($codigos, $i);
-        $tonalidad: list.nth($tonalidades, $i);
 
-        $separador: "-";
 
-        @if($tonalidad =="") {
-            $separador: "";
+@each $colores-key, $colores-value in $colores {
+    @for $i from 1 through list.length($colores-value) {
+        $nombre-color: list.nth($nombre-colores, $i);
+        $codigo-color: list.nth($colores-value, $i);
+
+        @if ($nombre-color =="") {
+            .g--color-#{$colores-key} {
+                color:var(--color-#{$colores-key});
+            }
         }
 
-        .g--color-#{$color}#{$separador}#{$tonalidad} {
-            color: var(--color-#{$color}#{$separador}#{$tonalidad});
+        @else {
+            .g--color-#{$colores-key}-#{$nombre-color} {
+                color:var(--color-#{$colores-key}-#{$nombre-color});
+            }
         }
     }
 }

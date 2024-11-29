@@ -1,3 +1,5 @@
+@use "../01_utilities/mixins" as *;
+
 .c-switch {
     --c-switch-color-strong: var(--color-green-30);
     --c-switch-color-weak: var(--color-blue-90);
@@ -13,37 +15,37 @@
     --c-switch-border-radius-xl: var(--border-radius-5);
 
 
-    display: flex;
-    width: fit-content;
-    padding: var(--c-switch-padding-s);
-    border-radius: var(--c-switch-border-radius-l);
+    --c-switch-border-radius: 8px;
+    --c-switch-width: 100px;
+    --c-switch-padding-5: 5px;
+    --c-switch-padding-8: 8px;
+    --c-switch-color-grey: rgb(229, 229, 229);
+    --c-switch-color-green: rgb(9, 66, 9);
 
-    &--weak {
-        background-color: var(--c-switch-color-weak);
-    }
+    display: flex;
+    width: var(--c-switch-width);
+    padding: var(--c-switch-padding-5);
+    color: var(--c-switch-color-grey);
+    background-color: var(--c-switch-color-grey);
+    border-radius: var(--c-switch-border-radius);
 
     &--dark {
-        background-color: var(--c-switch-color-strong);
+        background-color: var(--c-switch-color-green);
     }
 
     &__item {
-        width: 25px;
-        padding: var(--c-switch-padding-s);
-        background-color: transparent;
-        color: var(--c-switch-color-weak);
-
-        &--selected-right {
-            border-bottom-right-radius: var(--c-switch-border-radius-m);
-            border-top-right-radius: var(--c-switch-border-radius-m);
-            background-color: var(--c-switch-color-weak);
-            color: var(--c-switch-color-strong);
-        }
+        text-align: center;
+        width: 50%;
+        padding: var(--c-switch-padding-8);
 
         &--selected-left {
-            border-bottom-left-radius: var(--c-switch-border-radius-m);
-            border-top-left-radius: var(--c-switch-border-radius-m);
-            background-color: var(--c-switch-color-weak);
-            color: var(--c-switch-color-strong);
+            @include selected();
+            @include border-radius(left);
+        }
+
+        &--selected-right {
+            @include selected();
+            @include border-radius(right);
         }
     }
 }

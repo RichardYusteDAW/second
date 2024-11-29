@@ -2,10 +2,15 @@
 @use "sass:list";
 
 :root {
-    @each $componente, $propiedades in $colores-componentes {
-        @each $propiedad, $valores in $propiedades {
-            $indice: if($modo_oscuro, 1, 2);
-            --color-#{$componente}-#{$propiedad}: list.nth($valores, $indice);
+    @each $colores-componentes-key, $colores-componentes-value in $colores-componentes {
+        @each $property, $color-codes in $colores-componentes-value {
+            $index: 1;
+
+            @if ($modo_oscuro ==true) {
+                $index: 2;
+            }
+
+            --color-#{$colores-componentes-key}-#{$property}: #{list.nth($color-codes,$index)};
         }
     }
 }

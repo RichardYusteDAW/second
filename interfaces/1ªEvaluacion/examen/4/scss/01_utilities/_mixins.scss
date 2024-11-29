@@ -1,0 +1,16 @@
+@mixin border-radius($side) {
+    @if $side ==left {
+        border-top-left-radius: var(--c-switch-border-radius);
+        border-bottom-left-radius: var(--c-switch-border-radius);
+    }
+
+    @else if $side ==right {
+        border-top-right-radius: var(--c-switch-border-radius);
+        border-bottom-right-radius: var(--c-switch-border-radius);
+    }
+}
+
+@mixin selected {
+    color: var(--c-switch-color-green);
+    background-color: var(--c-switch-color-grey);
+}

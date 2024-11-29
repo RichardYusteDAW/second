@@ -1,8 +1,0 @@
-@use "../01_utilities/scss-variables" as *;
-@use "sass:list";
-
-@for $i from 1 through list.length($spacing) {
-    .g--padding-#{$i} {
-        padding: var(--padding-#{$i});
-    }
-}
