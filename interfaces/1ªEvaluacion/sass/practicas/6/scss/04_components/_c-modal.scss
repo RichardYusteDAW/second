@@ -1,0 +1,52 @@
+.c-modal {
+
+    width: auto;
+    margin: 0 auto;
+    background-color: rgb(207, 203, 203);
+    color: black;
+    border: 2px solid blue;
+    border-radius: 5px;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 10px;
+        background-color: blue;
+        color: white;
+    }
+
+    &__close-button {
+        padding: 3px;
+        width: auto;
+        background-color: red;
+        border: 1px solid white;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    &__content {
+        padding: 10px;
+        text-align: justify;
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 10px;
+        color: blue;
+    }
+
+    &__button {
+        padding: 5px;
+        width: fit-content;
+        background-color: white;
+        border: 1px solid blue;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
