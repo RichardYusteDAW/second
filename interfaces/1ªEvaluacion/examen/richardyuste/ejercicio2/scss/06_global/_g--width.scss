@@ -1,0 +1,40 @@
+$propiedades: map-get($utilities, "propiedades");
+$keys: map-get($utilities, "keys");
+$keys-a: map-get($keys, "a");
+$keys-b: map-get($keys, "b");
+$values: map-get($utilities, "values");
+$values-a: map-get($values, "a");
+$values-b: map-get($values, "b");
+
+
+@each $props in $propiedades {
+
+    $prop: nth($props, 1);
+
+    @for $i from 1 through length($values-a) {
+        $key: $keys-a;
+        $value: $values-a;
+
+        @if(nth($props, 2)==b) {
+            $key: $keys-b;
+        }
+
+        @if(nth($props, 3)==b) {
+            $value: $values-b;
+        }
+
+        @if($i==3) {
+            @if(nth($props, 4)==0) {
+                .g--#{$prop} {
+                    #{$prop}: #{nth($value,$i)};
+                }
+            }
+        }
+
+        @else {
+            .g--#{$prop}-#{nth($key,$i)} {
+                #{$prop}: #{nth($value,$i)};
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+.c-medidor {
+    --c-medidor-padding-vertical-primary: var(--padding-s);
+    --c-medidor-padding-horizontal-primary: var(--padding-xl);
+    --c-medidor-padding-vertical-secondary: var(--padding-m);
+    --c-medidor-padding-horizontal-secondary: var(--padding-3xl);
+
+    --c-medidor-width: var(--width-3xl);
+    --c-medidor-width-50: var(--width-50);
+
+    --c-medidor-border-radius: var(--border-radius-m);
+
+    --c-medidor-color-neutral: var(--color-neutral-500);
+    --c-medidor-color-red: var(--color-red-500);
+    --c-medidor-color-yellow: var(--color-yellow-500);
+    --c-medidor-color-lime: var(--color-lime-500);
+    --c-medidor-color-text: var(--color-neutral-50);
+
+    --c-medidor-color-font-size-primary: var(--font-size-s);
+    --c-medidor-color-font-size-secondary: var(--font-size-l);
+
+
+    //padding: var(--c-medidor-padding-horizontal-primary) var(--c-medidor-padding-vertical-primary);
+    display: inline;
+    width: var(--c-medidor-width);
+    font-size: var(--c-medidor-color-font-size-primary);
+    color: var(--c-medidor-color-text);
+
+    &__item {
+        padding: var(--c-medidor-padding-vertical-primary) var(--c-medidor-padding-horizontal-primary);
+        width: var(--c-medidor-width-50);
+        text-align: center;
+        background-color: var(--c-medidor-color-neutral);
+
+        &--roudered-left {
+            border-top-left-radius: var(--c-medidor-border-radius);
+            border-bottom-left-radius: var(--c-medidor-border-radius);
+        }
+
+        &--roudered-right {
+            border-top-right-radius: var(--c-medidor-border-radius);
+            border-bottom-right-radius: var(--c-medidor-border-radius);
+        }
+
+        &--color-red {
+            background-color: var(--c-medidor-color-red);
+        }
+
+        &--color-yellow {
+            background-color: var(--c-medidor-color-yellow);
+        }
+
+        &--color-lime {
+            background-color: var(--c-medidor-color-lime);
+        }
+
+        &--big {
+            padding: var(--c-medidor-padding-vertical-secondary) var(--c-medidor-padding-horizontal-secondary);
+            font-size: var(--c-medidor-color-font-size-secondary);
+        }
+    }
+}

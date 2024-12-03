@@ -1,0 +1,33 @@
+:root {
+    $keys: map-get($map-colors, keys);
+    $colors: map-get($map-colors, colors);
+
+    @each $name, $values in $colors {
+        $cont: 10;
+
+        @for $i from 1 through length($values) {
+            --color-#{$name}-#{nth($keys,$i)}: #{nth($values,$i)};
+        }
+    }
+
+
+    @each $name, $value in $paddings {
+        --padding-#{$name}: #{$value}px;
+    }
+
+    @each $name, $value in $widths {
+        --width-#{$name}: #{$value}px;
+    }
+
+    @for $i from 1 through 10 {
+        --width-#{$i*10}: #{$i * 10%};
+    }
+
+    @each $name, $value in $border-radius {
+        --border-radius-#{$name}: #{$value}px;
+    }
+
+    @each $name, $value in $font-size {
+        --font-size-#{$name}: #{$value}px;
+    }
+}

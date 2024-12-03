@@ -1,0 +1,16 @@
+.c-menu {
+    display: flex;
+    width: 100%;
+
+    &__item {
+        text-align: center;
+
+        &--position-left {
+            margin-right: auto;
+        }
+
+        &--position-right {
+            margin-left: auto;
+        }
+    }
+}
