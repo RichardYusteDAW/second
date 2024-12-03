@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import fpmislata.bookstore.c_domain._2service.model.Author;
 
-public class AuthorRowmapper implements RowMapper<Author> {
+public class AuthorRowMapper implements RowMapper<Author> {
 
     @Override
     @SuppressWarnings("null")
