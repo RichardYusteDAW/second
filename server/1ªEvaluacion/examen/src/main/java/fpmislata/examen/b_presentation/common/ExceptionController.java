@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import fpmislata.examen.a_common.exception.ResourceAlreadyExistsException;
 import fpmislata.examen.a_common.exception.ResourceNotFoundException;
 import lombok.Getter;
 
@@ -16,6 +17,13 @@ public class ExceptionController {
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseBody
     public ErrorMessage notFoundRequest(Exception e) {
+        return new ErrorMessage(e);
+    }
+
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ExceptionHandler(ResourceAlreadyExistsException.class)
+    @ResponseBody
+    public ErrorMessage conflict(Exception e) {
         return new ErrorMessage(e);
     }
 
