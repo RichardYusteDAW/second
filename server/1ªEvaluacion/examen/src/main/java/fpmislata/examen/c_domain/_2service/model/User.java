@@ -8,12 +8,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    Integer id;
-    String username;
-    String password;
-    String email;
-    String first_name;
-    String surname;
-    String address;
-    Boolean isAdmin;
+    private Integer id;
+    private String username;
+    private String password;
+    private String email;
+    private String first_name;
+    private String surname;
+    private String address;
+    private Boolean isAdmin;
+
+    public String getName() {
+        return this.first_name + " " + this.surname;
+    }
 }

@@ -11,13 +11,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
-    Integer id;
-    Date order_date;
-    Date delivery_date;
-    String status;
-    Float total;
-    User user;
-    List<OrderDetail> orderDetails;
+    private Integer id;
+    private Date order_date;
+    private Date delivery_date;
+    private String status;
+    private Float total;
+    private User user;
+    private List<OrderDetail> orderDetails;
 
     // // Calcula el total de la orden
     // public Float getTotal() {

@@ -8,20 +8,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Book {
-    Integer id;
-    String isbn;
-    String title_es;
-    String title_en;
-    String synopsis_es;
-    String synopsis_en;
-    Float price;
-    String cover;
+    private Integer id;
+    private String isbn;
+    private String title_es;
+    private String title_en;
+    private String synopsis_es;
+    private String synopsis_en;
+    private Float price;
+    private String cover;
 
     public String getTitle() {
         return title_es;
-    }
-
-    public String getSynopsis() {
-        return synopsis_es;
     }
 }

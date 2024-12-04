@@ -1,7 +1,7 @@
 package fpmislata.examen.b_presentation.admin.model;
 
 public record UserCollection(
-        String username,
+        String name,
         String address,
-        String email) {
+        Boolean admin) {
 }
