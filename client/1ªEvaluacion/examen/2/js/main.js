@@ -10,10 +10,11 @@ const verTotales = () => {
     let contenido = "";
 
     modulos.forEach(mod => {
-        if (!totales[mod.profesor]) {
-            totales[mod.profesor] = 0;
+        if (!profesores[mod.profesor]) {
+            profesores[mod.profesor] = mod.creditos;
+        } else {
+            profesores[mod.profesor] += mod.creditos;
         }
-        totales[mod.profesor] += mod.creditos;
     });
 
 

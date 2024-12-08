@@ -1,0 +1,54 @@
+{
+  "articulos": [
+    {
+      "id": "p1",
+      "nombre": "HP Pavillion",
+      "descripcion": "SSD Windows 11",
+      "precio": 750,
+      "vendedores": [
+        {
+          "idVendedor": 1,
+          "precio": 600
+        },
+        {
+          "idVendedor": 2,
+          "precio": 900
+        },
+        {
+          "idVendedor": 3,
+          "precio": 700
+        }
+      ]
+    },
+    {
+      "id": "t1",
+      "nombre": "Xiaomi P1E",
+      "descripcion": "Android 9 HDR10",
+      "precio": 300,
+      "vendedores": [
+        {
+          "idVendedor": 1,
+          "precio": 500
+        },
+        {
+          "idVendedor": 4,
+          "precio": 900
+        },
+        {
+          "idVendedor": 3,
+          "precio": 200
+        }
+      ]
+    }
+  ],
+  "vendedores": [
+    {
+      "id": 1,
+      "nombre": "Pepe"
+    },
+    {
+      "id": 2,
+      "nombre": "Juan"
+    }
+  ]
+}
