@@ -14,7 +14,6 @@ const btnCierraDatosPersonales = document.getElementById("btnCierraDatosPersonal
 
 
 /********** METHODS **********/
-
 // SELECT
 const createProfesorList = () => {
     let profesorList = new Set();
@@ -25,9 +24,13 @@ const createProfesorList = () => {
     profesorList.forEach(prof => {
         content += `<option value="${prof}">${prof}</option>`
     })
-    listaProfes.innerHTML = content;
+
+    return content;
 }
 
+const paintProfesorList = () => {
+    listaProfes.innerHTML = createProfesorList();
+}
 
 // MODULOS
 const crearModulo = (m) => {
@@ -57,54 +60,79 @@ const paintModules = (profesor) => {
     const buttons = document.querySelectorAll(".matricular");
     buttons.forEach(btn => {
         btn.addEventListener("click", (event) => {
-            matricula.addModule(event.target.id)
-            paintModulesSelected();
+            matricula.addModule(event.target.id);
+            paintMatricula();
         })
     })
 }
 
-const paintModulesSelected = () => {
-    let content = "";
+// MATRICULA
+const createMatricula = () => {
+    let content = "<table class='table table-bordered table-striped'>";
     matricula.modules.forEach(mod => {
-        content += crearModulo(mod);
+        content += `<tr>
+                        <td>${mod.nombre}</td>
+                        <td>${mod.creditos}</td>
+                        <td><button id=${mod.codigo} class='btn btn-danger removeMatricula'>Borrar</button></td>
+                    </tr>`
     })
-    capamatricula.innerHTML = content;
-
-    const buttons = document.querySelectorAll("#capamatricula .matricular")
-    buttons.forEach(btn => {
-        btn.textContent = "Eliminar"
-        btn.addEventListener("click", (event) => {
-            matricula.deleteModule(event.target.id)
-            paintModulesSelected();
-        })
-    });
+    return content;
 }
 
+const paintMatricula = () => {
+    capamatricula.innerHTML = createMatricula();
+
+    const buttons = document.querySelectorAll(".removeMatricula");
+    buttons.forEach(btn => {
+        btn.addEventListener("click", (event) => {
+            matricula.removeModule(event.target.id);
+            paintMatricula();
+        })
+    })
+}
+
+const finishMatricula = () => {
+    if (matricula.dni == null) {
+        console.log("No puedes matricularte sin dni");
+        return;
+    }
+    if (matricula.name == null) {
+        console.log("No puedes matricularte sin nombre");
+        return;
+    }
+
+    if (matricula.modules.length == 0) {
+        console.log("No puedes matricularte sin módulos");
+        return;
+    }
+
+    console.log(matricula);
+
+    // Reset
+    matricula.dni = null;
+    matricula.name = null;
+    matricula.modules = [];
+    capamatricula.innerHTML = "";
+}
 
 
 /********** LSITENERS **********/
-createProfesorList();
+paintProfesorList();
 paintModules("Todos");
-
-listaProfes.addEventListener("change", (event) => {
-    paintModules(event.target.value)
-})
 
 btnAbreDatosPersonales.addEventListener("click", () => {
     formDatos.showModal();
 })
 
 btnCierraDatosPersonales.addEventListener("click", () => {
-    matricula.dni = dni.value;
-    matricula.nombre = nombre.value;
+    matricula.updatePersonalData(dni.value, nombre.value);
     formDatos.close();
 })
 
-btnEfectuarMatricula.addEventListener("click", () => {
-    console.log(JSON.stringify(matricula));
+listaProfes.addEventListener("change", (event) => {
+    paintModules(event.target.value)
+})
 
-    matricula.dni = "";
-    matricula.nombre = "";
-    matricula.modules = [];
-    capamatricula.innerHTML = "";
+btnEfectuarMatricula.addEventListener("click", () => {
+    finishMatricula();
 })
