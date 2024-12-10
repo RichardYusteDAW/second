@@ -40,24 +40,28 @@ const vendedoresFindAllByName = (nombre) => {
             const vendedoresFiltrados = data.find(vendedor => vendedor.nombre == nombre)
             if (!vendedoresFiltrados) {
                 console.log("No hay ningún vendedor con ese nombre");
-            } else {
-
-                // buscarArticuloVendedor(vendedoresFiltrados.id)
-                fetch(urlArticulos)
-                    .then(res => {
-                        if (!res.ok) {
-                            throw new Error(`${res.status}: ${res.statusText}`)
-                        }
-                        return res.json();
-                    })
-                    .then(data => {
-                        const articulosFiltrados = data.filter(art =>
-                            art.vendedores.some(vendedor => vendedor.idVendedor == vendedoresFiltrados.id)
-                        );
-                        console.log(articulosFiltrados);
-                    })
-                    .catch(e => console.log(e))
+                return;
             }
+
+            // buscarArticuloVendedor(vendedoresFiltrados.id)
+            fetch(urlArticulos)
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error(`${res.status}: ${res.statusText}`)
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    const articulosFiltrados = data.filter(art =>
+                        art.vendedores.some(vendedor => vendedor.idVendedor == vendedoresFiltrados.id)
+                    );
+                    if (articulosFiltrados.length === 0) {
+                        console.log("No hay ningún artículo de ese vendedor");
+                        return;
+                    }
+                    console.log(articulosFiltrados);
+                })
+                .catch(e => console.log(e))
         })
 }
 

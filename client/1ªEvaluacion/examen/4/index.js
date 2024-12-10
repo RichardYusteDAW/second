@@ -100,6 +100,23 @@ const modByTeacher = () => {
 }
 console.log(modByTeacher());
 
+// Contar créditos por profesor: Crea una función que cuente cuántos créditos imparte cada profesor.
+const creditosByProfesor = () => {
+
+    const profesores = {};
+
+    modulos.forEach(mod => {
+        if (profesores.hasOwnProperty(mod.profesor)) {
+            profesores[mod.profesor] = mod.creditos;
+        } else {
+            profesores[mod.profesor] += mod.creditos;
+        }
+    });
+
+    console.log(profesores);
+}
+creditosByProfesor();
+
 
 // Agregar un Nuevo Campo a Cada Módulo: Añade un campo nuevo, como departamento, a cada objeto del array modulos.
 const addField = (field) => {
