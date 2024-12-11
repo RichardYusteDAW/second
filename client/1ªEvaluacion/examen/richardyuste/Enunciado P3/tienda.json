@@ -1,0 +1,54 @@
+{
+  "proveedores": [
+    {
+      "id": "1",
+      "nombre": "Juan Pérez",
+      "articulos": [
+        {
+          "idArticulo": 1,
+          "precio": 500
+        },
+        {
+          "idArticulo": 2,
+          "precio": 700
+        },
+        {
+          "idArticulo": 3,
+          "precio": 400
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "nombre": "Ana García",
+      "articulos": [
+        {
+          "idArticulo": 1,
+          "precio": 500
+        },
+        {
+          "idArticulo": 9,
+          "precio": 100
+        },
+        {
+          "idArticulo": 3,
+          "precio": 400
+        }
+      ]
+    }
+  ],
+  "articulos": [
+    {
+      "id": 1,
+      "nombre": "Articulo 1"
+    },
+    {
+      "id": 2,
+      "nombre": "Articulo 2"
+    },
+    {
+      "id": 3,
+      "nombre": "Articulo 3"
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>DAW</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./css/bootstrap.min.css" />
+</head>
+
+<body>
+  <!-- Navbar BootStrap -->
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <h2 class="text-danger">Buscador de Articulos y Vendedores</h2>
+    </a>
+  </nav>
+
+  <br />
+  <!-- No deberia estar el onclick en la etiqueta button, pero es para ahorrar tiempo y complicaciones -->
+
+  <button class="btn btn-primary" onclick="provArtMinP()">Articulo mas barato (Promesas)</button>
+  <button class="btn btn-success" onclick="provArtMinA()">Articulo mas barato (Async-Await)</button>
+</body>
+
+<script>
+  let urlProv = "http://localhost:3000/proveedores";
+  let urlArt = "http://localhost:3000/articulos";
+
+  function provArtMinP() {
+    console.log("Usando promesas...")
+    let id = prompt("Dime el id del Proveedor:")
+
+    fetch(urlProv + "/" + id)
+      .then(res => {
+        if (!res.ok)
+          throw new Error("Ese proveedor no existe")
+
+        return res.json();
+      })
+      .then(proveedor => {
+        // Buscar el articulo más barato
+        let min = Number.MAX_VALUE;
+        let idArt;
+        proveedor.articulos.forEach(art => {
+          if (art.precio < min) {
+            min = art.precio;
+            idArt = art.idArticulo;
+          }
+        });
+
+        // Buscar el nombre del articulo
+        fetch(urlArt + "/" + idArt)
+          .then(res => {
+            if (!res.ok)
+              throw new Error("Ese articulo no existe")
+
+            return res.json();
+          })
+          .then(articulo => {
+            console.log("El proveedor " + proveedor.nombre + " tiene el articulo " + articulo.nombre + " como el articulo más barato")
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+  }
+
+  async function provArtMinA() {
+    console.log("Usando async-await...")
+    let id = prompt("Dime el id del Proveedor:")
+
+    try {
+      let res = await fetch(urlProv + "/" + id);
+      if (!res.ok)
+        throw new Error("Ese proveedor no existe")
+
+      let proveedor = await res.json();
+
+      // Buscar el articulo más barato
+      let min = Number.MAX_VALUE;
+      let idArt;
+      proveedor.articulos.forEach(art => {
+        if (art.precio < min) {
+          min = art.precio;
+          idArt = art.idArticulo;
+        }
+      });
+
+      // Buscar el nombre del articulo
+      res = await fetch(urlArt + "/" + idArt);
+      if (!res.ok)
+        throw new Error("Ese articulo no existe")
+
+      let articulo = await res.json();
+      console.log("El proveedor " + proveedor.nombre + " tiene el articulo " + articulo.nombre + " como el articulo más barato")
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+</script>
+
+</html>
