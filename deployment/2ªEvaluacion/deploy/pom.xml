@@ -115,6 +115,8 @@
 
 	<build>
 		<plugins>
+
+			<!-- This plugin is used to package the application as a JAR file -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -127,6 +129,8 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<!-- This plugin is used to compile the application -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -154,6 +158,32 @@
 						<arg>-Amapstruct.verbose=true</arg>
 					</compilerArgs>
 				</configuration>
+			</plugin>
+
+			<!-- This plugin is used to run the npm build command -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>build-cliente</id>
+						<!-- <phase>process-resources</phase> -->
+						<phase>compile</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>npm</executable>
+							<!-- Comando npm -->
+							<workingDirectory>${project.basedir}</workingDirectory>
+							<arguments>
+								<argument>run</argument>
+								<argument>build</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
