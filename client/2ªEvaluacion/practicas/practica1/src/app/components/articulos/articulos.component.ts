@@ -1,0 +1,37 @@
+import { Component } from '@angular/core';
+import { ARTICULOS } from '../../../../public/data/data';
+import { Articulo } from '../../models/Articulo';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-articulos',
+  imports: [FormsModule],
+  templateUrl: './articulos.component.html',
+  styleUrl: './articulos.component.css'
+})
+
+export class ArticulosComponent {
+  id: string = "";
+  articulos: Array<Articulo> = ARTICULOS;
+  articulo: Articulo = this.articulos[3];
+
+  comprar(articulo: Articulo) {
+    console.log('Comprando:', articulo);
+  }
+
+  ver() {
+    const art = this.articulos.find(art => art.id === this.id);
+    if (art) {
+      this.articulo = art;
+    } else {
+      alert('No existe el articulo');
+    }
+  }
+
+  modificarUnidades(articulo: Articulo, unidades: number) {
+    articulo.unidades += unidades;
+    if (articulo.unidades < 0) {
+      articulo.unidades = 0;
+    }
+  }
+}
