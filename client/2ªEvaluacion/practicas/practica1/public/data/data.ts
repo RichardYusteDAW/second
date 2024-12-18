@@ -1,4 +1,4 @@
-import { Articulo } from "../../src/app/models/Articulo"
+import { Articulo } from "../../src/app/models/Articulo";
 
 export const ARTICULOS: Array<Articulo> = [
     {

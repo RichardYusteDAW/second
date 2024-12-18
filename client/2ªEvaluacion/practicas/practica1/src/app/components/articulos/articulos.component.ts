@@ -11,9 +11,9 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class ArticulosComponent {
-  id: string = "";
   articulos: Array<Articulo> = ARTICULOS;
-  articulo: Articulo = this.articulos[3];
+  articulo: Articulo = this.articulos[0];
+  id: string = this.articulo.id;
 
   comprar(articulo: Articulo) {
     console.log('Comprando:', articulo);
