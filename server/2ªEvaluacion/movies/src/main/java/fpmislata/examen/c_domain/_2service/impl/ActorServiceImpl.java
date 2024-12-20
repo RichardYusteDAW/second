@@ -2,14 +2,15 @@ package fpmislata.examen.c_domain._2service.impl;
 
 import java.util.List;
 
-import fpmislata.examen.a_common.annotation.DomainService;
+import org.springframework.stereotype.Service;
+
 import fpmislata.examen.a_common.exception.ResourceNotFoundException;
 import fpmislata.examen.c_domain._2service.interfaces.ActorService;
 import fpmislata.examen.c_domain._2service.model.Actor;
 import fpmislata.examen.c_domain._3repository.ActorRepository;
 import lombok.RequiredArgsConstructor;
 
-@DomainService
+@Service
 @RequiredArgsConstructor
 public class ActorServiceImpl implements ActorService {
 

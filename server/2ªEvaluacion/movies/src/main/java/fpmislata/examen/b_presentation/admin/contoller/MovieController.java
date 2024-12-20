@@ -15,18 +15,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import fpmislata.examen.b_presentation.admin.mapper.DirectorMapper;
 import fpmislata.examen.b_presentation.admin.mapper.MovieMapper;
-import fpmislata.examen.b_presentation.admin.model.MovieCollection;
-import fpmislata.examen.b_presentation.admin.model.MovieDetail;
+import fpmislata.examen.b_presentation.admin.model.DirectorSimple;
+import fpmislata.examen.b_presentation.admin.model.MovieComplete;
+import fpmislata.examen.b_presentation.admin.model.MovieSimple;
 import fpmislata.examen.b_presentation.common.Paginator;
 import fpmislata.examen.c_domain._1usecase.admin.movie.interfaces.MovieAddActorsUseCase;
 import fpmislata.examen.c_domain._1usecase.admin.movie.interfaces.MovieCreateUseCase;
 import fpmislata.examen.c_domain._1usecase.admin.movie.interfaces.MovieDeleteUseCase;
 import fpmislata.examen.c_domain._1usecase.admin.movie.interfaces.MovieUpdateUseCase;
-import fpmislata.examen.c_domain._1usecase.common.movie.interfaces.MovieCountUseCase;
+import fpmislata.examen.c_domain._1usecase.common.director.interfaces.DirectorFindByMovieIdUseCase;
+import fpmislata.examen.c_domain._1usecase.common.movie.interfaces.MovieFindAllUseCase;
 import fpmislata.examen.c_domain._1usecase.common.movie.interfaces.MovieFindByIdUseCase;
-import fpmislata.examen.c_domain._1usecase.common.movie.interfaces.MovieGetAllUseCase;
 import fpmislata.examen.c_domain._2service.model.Actor;
+import fpmislata.examen.c_domain._2service.model.Director;
+import fpmislata.examen.c_domain._2service.model.ListWithCount;
 import fpmislata.examen.c_domain._2service.model.Movie;
 import lombok.RequiredArgsConstructor;
 
@@ -35,45 +39,56 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping(MovieController.ENDPOINT)
 public class MovieController {
 
-    private final MovieGetAllUseCase movieGetAllUseCase;
-    private final MovieCountUseCase movieCountUseCase;
+    private final MovieFindAllUseCase movieFindAllUseCase;
     private final MovieFindByIdUseCase movieFindByIdUseCase;
     private final MovieCreateUseCase movieCreateUseCase;
     private final MovieUpdateUseCase movieUpdateUseCase;
     private final MovieDeleteUseCase movieDeleteUseCase;
     private final MovieAddActorsUseCase movieAddActorsUseCase;
 
+    private final DirectorFindByMovieIdUseCase directorFindAllByMovieIdUseCase;
+
     @Value("${url}")
     private String URL;
     public static final String ENDPOINT = "/api/admin/movies";
 
     @GetMapping()
-    public ResponseEntity<Paginator<MovieCollection>> getAll(
+    public ResponseEntity<Paginator<MovieSimple>> findAll(
             @RequestParam(defaultValue = "1") Integer page,
             @RequestParam(required = false, defaultValue = "10") Integer size) {
 
-        Integer total = movieCountUseCase.execute();
-        List<Movie> movies = movieGetAllUseCase.execute(page - 1, size);
-        List<MovieCollection> movieCollectionList = MovieMapper.INSTANCE.toMovieCollectionList(movies);
-        Paginator<MovieCollection> paginator = new Paginator<>(movieCollectionList, total, page, size,
+        ListWithCount<Movie> movieListWithCount = movieFindAllUseCase.execute(page - 1, size);
+        List<MovieSimple> movieSimpleList = MovieMapper.INSTANCE.toMovieSimpleList(movieListWithCount.list());
+        Paginator<MovieSimple> paginator = new Paginator<>(movieSimpleList, movieListWithCount.count(), page, size,
                 URL + ENDPOINT);
 
         return ResponseEntity.ok(paginator);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<MovieDetail> findById(@PathVariable Integer id) {
-        Movie movie = movieFindByIdUseCase.execute(id);
-        MovieDetail MovieDetail = MovieMapper.INSTANCE.toMovieDetail(movie);
+    @GetMapping("/{id}/directors")
+    public ResponseEntity<DirectorSimple> findAllByDirectorId(
+            @PathVariable Integer id,
+            @RequestParam(defaultValue = "1") Integer page,
+            @RequestParam(required = false, defaultValue = "10") Integer size) {
+        Director director = directorFindAllByMovieIdUseCase.execute(id);
+        DirectorSimple directorSimple = DirectorMapper.INSTANCE.toDirectorSimple(director);
 
-        return ResponseEntity.ok(MovieDetail);
+        return ResponseEntity.ok(directorSimple);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<MovieComplete> findById(@PathVariable Integer id) {
+        Movie movie = movieFindByIdUseCase.execute(id);
+        MovieComplete MovieComplete = MovieMapper.INSTANCE.toMovieComplete(movie);
+
+        return ResponseEntity.ok(MovieComplete);
     }
 
     @PostMapping()
-    public ResponseEntity<Integer> create(@RequestBody Movie movie) {
-        Integer movieId = movieCreateUseCase.execute(movie);
+    public ResponseEntity<Movie> create(@RequestBody Movie m) {
+        Movie movie = movieCreateUseCase.execute(m);
 
-        return new ResponseEntity<>(movieId, HttpStatus.CREATED);
+        return new ResponseEntity<>(movie, HttpStatus.CREATED);
     }
 
     @PostMapping("/{id}/actors")
@@ -83,10 +98,10 @@ public class MovieController {
     }
 
     @PutMapping()
-    public ResponseEntity<Integer> update(@RequestBody Movie movie) {
-        Integer movieId = movieUpdateUseCase.execute(movie);
+    public ResponseEntity<Movie> update(@RequestBody Movie m) {
+        Movie movie = movieUpdateUseCase.execute(m);
 
-        return ResponseEntity.ok(movieId);
+        return ResponseEntity.ok(movie);
     }
 
     @DeleteMapping("/{id}")

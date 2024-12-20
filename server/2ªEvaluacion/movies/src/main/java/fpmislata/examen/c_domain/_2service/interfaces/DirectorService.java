@@ -1,19 +1,21 @@
 package fpmislata.examen.c_domain._2service.interfaces;
 
-import java.util.List;
 import java.util.Optional;
 
 import fpmislata.examen.c_domain._2service.model.Director;
+import fpmislata.examen.c_domain._2service.model.ListWithCount;
 
 public interface DirectorService {
 
-    List<Director> getAll(Integer page, Integer size);
+    ListWithCount<Director> findAll(Integer page, Integer size);
+
+    Optional<Director> findByMovieId(Integer movieId);
 
     Optional<Director> findById(Integer id);
 
+    Director create(Director director);
+
+    Director update(Director director);
+
     void delete(Integer id);
-
-    Optional<Integer> create(Director director);
-
-    Optional<Integer> update(Director director);
 }

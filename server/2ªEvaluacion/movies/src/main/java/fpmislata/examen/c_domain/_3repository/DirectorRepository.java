@@ -1,17 +1,19 @@
 package fpmislata.examen.c_domain._3repository;
 
-import java.util.List;
 import java.util.Optional;
 
 import fpmislata.examen.c_domain._2service.model.Director;
+import fpmislata.examen.c_domain._2service.model.ListWithCount;
 
 public interface DirectorRepository {
 
-    List<Director> getAll(Integer page, Integer size);
+    ListWithCount<Director> findAll(Integer page, Integer size);
+
+    Optional<Director> findByMovieId(Integer movieId);
 
     Optional<Director> findById(Integer id);
 
-    void delete(Integer id);
+    Director save(Director director);
 
-    Optional<Integer> save(Director director);
+    void delete(Integer id);
 }

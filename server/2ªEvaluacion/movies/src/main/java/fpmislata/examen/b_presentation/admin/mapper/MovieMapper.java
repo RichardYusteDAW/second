@@ -5,17 +5,17 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import fpmislata.examen.b_presentation.admin.model.MovieCollection;
-import fpmislata.examen.b_presentation.admin.model.MovieDetail;
+import fpmislata.examen.b_presentation.admin.model.MovieComplete;
+import fpmislata.examen.b_presentation.admin.model.MovieSimple;
 import fpmislata.examen.c_domain._2service.model.Movie;
 
 @Mapper(uses = { DirectorMapper.class, ActorMapper.class })
 public interface MovieMapper {
     MovieMapper INSTANCE = Mappers.getMapper(MovieMapper.class);
 
-    List<MovieCollection> toMovieCollectionList(List<Movie> movies);
+    List<MovieSimple> toMovieSimpleList(List<Movie> movies);
 
-    MovieCollection toMovieCollection(Movie movie);
+    MovieSimple toMovieSimple(Movie movie);
 
-    MovieDetail toMovieDetail(Movie movie);
+    MovieComplete toMovieComplete(Movie movie);
 }
