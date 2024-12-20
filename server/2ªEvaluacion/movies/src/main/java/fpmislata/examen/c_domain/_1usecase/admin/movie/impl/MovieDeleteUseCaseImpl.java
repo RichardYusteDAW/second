@@ -1,12 +1,12 @@
 package fpmislata.examen.c_domain._1usecase.admin.movie.impl;
 
-import fpmislata.examen.a_common.annotation.DomainService;
+import fpmislata.examen.a_common.annotation.UseCase;
 import fpmislata.examen.a_common.exception.ResourceNotFoundException;
 import fpmislata.examen.c_domain._1usecase.admin.movie.interfaces.MovieDeleteUseCase;
 import fpmislata.examen.c_domain._2service.interfaces.MovieService;
 import lombok.RequiredArgsConstructor;
 
-@DomainService
+@UseCase
 @RequiredArgsConstructor
 public class MovieDeleteUseCaseImpl implements MovieDeleteUseCase {
 

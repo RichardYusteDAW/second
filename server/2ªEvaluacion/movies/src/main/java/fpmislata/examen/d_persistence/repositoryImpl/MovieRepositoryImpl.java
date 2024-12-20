@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 import fpmislata.examen.c_domain._2service.model.Actor;
+import fpmislata.examen.c_domain._2service.model.ListWithCount;
 import fpmislata.examen.c_domain._2service.model.Movie;
 import fpmislata.examen.c_domain._3repository.MovieRepository;
 import fpmislata.examen.d_persistence.zdao.interfaces.ActorDao;
@@ -20,8 +21,8 @@ public class MovieRepositoryImpl implements MovieRepository {
     private final ActorDao actorDao;
 
     @Override
-    public List<Movie> getAll(Integer page, Integer size) {
-        return movieDao.getAll(page, size);
+    public ListWithCount<Movie> findAll(Integer page, Integer size) {
+        return movieDao.findAll(page, size);
     }
 
     @Override
@@ -46,12 +47,7 @@ public class MovieRepositoryImpl implements MovieRepository {
     }
 
     @Override
-    public Optional<Integer> save(Movie movie) {
+    public Movie save(Movie movie) {
         return movieDao.save(movie);
-    }
-
-    @Override
-    public Integer count() {
-        return movieDao.count();
     }
 }

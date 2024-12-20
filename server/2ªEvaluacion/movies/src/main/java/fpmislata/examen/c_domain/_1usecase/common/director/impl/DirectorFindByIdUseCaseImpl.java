@@ -1,13 +1,13 @@
 package fpmislata.examen.c_domain._1usecase.common.director.impl;
 
-import fpmislata.examen.a_common.annotation.DomainService;
+import fpmislata.examen.a_common.annotation.UseCase;
 import fpmislata.examen.a_common.exception.ResourceNotFoundException;
 import fpmislata.examen.c_domain._1usecase.common.director.interfaces.DirectorFindByIdUseCase;
 import fpmislata.examen.c_domain._2service.interfaces.DirectorService;
 import fpmislata.examen.c_domain._2service.model.Director;
 import lombok.RequiredArgsConstructor;
 
-@DomainService
+@UseCase
 @RequiredArgsConstructor
 public class DirectorFindByIdUseCaseImpl implements DirectorFindByIdUseCase {
 
@@ -19,5 +19,4 @@ public class DirectorFindByIdUseCaseImpl implements DirectorFindByIdUseCase {
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Director not found"));
     }
-
 }

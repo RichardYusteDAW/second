@@ -4,35 +4,35 @@ USE `movies`;
 
 -- Tables
 CREATE TABLE `Director` (
-    `Id` INT PRIMARY KEY AUTO_INCREMENT,
-    `Name` VARCHAR(100) NOT NULL
+    `id` INT PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(100) NOT NULL
 );
 CREATE TABLE `Actor` (
-    `Id` INT PRIMARY KEY AUTO_INCREMENT,
-    `Name` VARCHAR(100) NOT NULL
+    `id` INT PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(100) NOT NULL
 );
 CREATE TABLE `Movie` (
-    `Id` INT PRIMARY KEY AUTO_INCREMENT,
-    `TitleEn` VARCHAR(100) NOT NULL,
-    `TitleEs` VARCHAR(100) NOT NULL,
-    `DescriptionEn` TEXT NOT NULL,
-    `DescriptionEs` TEXT NOT NULL,
-    `Director_Id` INT NOT NULL,
-    FOREIGN KEY (`Director_Id`) REFERENCES `Director`(`Id`)
+    `id` INT PRIMARY KEY AUTO_INCREMENT,
+    `title_en` VARCHAR(100) NOT NULL,
+    `title_es` VARCHAR(100) NOT NULL,
+    `description_en` TEXT NOT NULL,
+    `description_es` TEXT NOT NULL,
+    `director_id` INT NOT NULL,
+    FOREIGN KEY (`director_id`) REFERENCES `Director`(`id`)
 );
 
 -- Many-to-many relationship between Movie and Actor
 CREATE TABLE `Movie_Actor` (
-    `Movie_Id` INT,
-    `Actor_Id` INT,
-    PRIMARY KEY (`Movie_Id`, `Actor_Id`),
-    FOREIGN KEY (`Movie_Id`) REFERENCES `Movie`(`Id`) ON DELETE CASCADE,
-    FOREIGN KEY (`Actor_Id`) REFERENCES `Actor`(`Id`) 
+    `movie_id` INT,
+    `actor_id` INT,
+    PRIMARY KEY (`movie_id`, `Actor_Id`),
+    FOREIGN KEY (`movie_id`) REFERENCES `Movie`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`actor_id`) REFERENCES `Actor`(`id`) 
 );
 
 
 -- Insertions
-INSERT INTO Director (Id, Name) VALUES 
+INSERT INTO Director (id, name) VALUES 
 (1, 'Frank Darabont'), 
 (2, 'Francis Ford Coppola'),
 (3, 'Christopher Nolan'),
@@ -53,7 +53,7 @@ INSERT INTO Director (Id, Name) VALUES
 (18, 'Kátia Lund'),
 (19, 'Jonathan Demme');
 
-INSERT INTO Actor (Id, Name) VALUES 
+INSERT INTO Actor (id, name) VALUES 
 (1, 'Tim Robbins'),
 (2, 'Morgan Freeman'),
 (3, 'William Sadler'),
@@ -133,7 +133,7 @@ INSERT INTO Actor (Id, Name) VALUES
 (77, 'Luigi Pistilli'),
 (78, 'Frank Capra');
 
-INSERT INTO `Movie` (`Id`, `TitleEn`, `TitleEs`, `DescriptionEn`, `DescriptionEs`, `Director_Id`) VALUES
+INSERT INTO `Movie` (`id`, `title_en`, `title_es`, `description_en`, `description_es`, `director_id`) VALUES
 (1, 'The Shawshank Redemption', 'Cadena perpetua', 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', 'Dos hombres encarcelados fortalecen una amistad a lo largo de los años, encontrando consuelo y eventualmente la redención a través de actos de decencia común.', 1),
 (2, 'The Godfather', 'El Padrino', 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.', 'El patriarca envejecido de una dinastía de crimen organizado transfiere el control de su imperio clandestino a su reticente hijo.', 2),
 (3, 'The Dark Knight', 'El Caballero Oscuro', 'When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.', 'Cuando la amenaza conocida como el Joker emerge de su misterioso pasado, él causa estragos y caos en la gente de Gotham.', 3),
@@ -155,7 +155,7 @@ INSERT INTO `Movie` (`Id`, `TitleEn`, `TitleEs`, `DescriptionEn`, `DescriptionEs
 (19, 'The Godfather: Part II', 'El Padrino: Parte II', 'The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.', 'Se retrata la vida temprana y carrera de Vito Corleone en la ciudad de Nueva York de los años 20, mientras su hijo, Michael, expande y aprieta su control sobre el sindicato del crimen familiar.', 2);
 
 
-INSERT INTO Movie_Actor (Movie_Id, Actor_Id) VALUES 
+INSERT INTO Movie_Actor (movie_id, actor_id) VALUES 
 (1, 1),
 (1, 2),
 (1, 3),

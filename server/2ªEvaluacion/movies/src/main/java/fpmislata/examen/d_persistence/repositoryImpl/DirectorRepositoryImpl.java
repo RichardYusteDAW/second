@@ -1,11 +1,11 @@
 package fpmislata.examen.d_persistence.repositoryImpl;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
 import fpmislata.examen.c_domain._2service.model.Director;
+import fpmislata.examen.c_domain._2service.model.ListWithCount;
 import fpmislata.examen.c_domain._3repository.DirectorRepository;
 import fpmislata.examen.d_persistence.zdao.interfaces.DirectorDao;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +17,13 @@ public class DirectorRepositoryImpl implements DirectorRepository {
     private final DirectorDao directorDao;
 
     @Override
-    public List<Director> getAll(Integer page, Integer size) {
-        return directorDao.getAll(page, size);
+    public ListWithCount<Director> findAll(Integer page, Integer size) {
+        return directorDao.findAll(page, size);
+    }
+
+    @Override
+    public Optional<Director> findByMovieId(Integer movieId) {
+        return directorDao.findByMovieId(movieId);
     }
 
     @Override
@@ -27,13 +32,12 @@ public class DirectorRepositoryImpl implements DirectorRepository {
     }
 
     @Override
-    public void delete(Integer id) {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    public Director save(Director director) {
+        return directorDao.save(director);
     }
 
     @Override
-    public Optional<Integer> save(Director t) {
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    public void delete(Integer id) {
+        directorDao.delete(id);
     }
-
 }

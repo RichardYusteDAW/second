@@ -1,13 +1,13 @@
 package fpmislata.examen.c_domain._1usecase.common.movie.impl;
 
-import fpmislata.examen.a_common.annotation.DomainService;
+import fpmislata.examen.a_common.annotation.UseCase;
 import fpmislata.examen.a_common.exception.ResourceNotFoundException;
 import fpmislata.examen.c_domain._1usecase.common.movie.interfaces.MovieFindByIdUseCase;
 import fpmislata.examen.c_domain._2service.interfaces.MovieService;
 import fpmislata.examen.c_domain._2service.model.Movie;
 import lombok.RequiredArgsConstructor;
 
-@DomainService
+@UseCase
 @RequiredArgsConstructor
 public class MovieFindByIdUseCaseImpl implements MovieFindByIdUseCase {
 

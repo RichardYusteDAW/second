@@ -1,22 +1,20 @@
 package fpmislata.examen.c_domain._1usecase.common.director.impl;
 
-import java.util.List;
-
-import fpmislata.examen.a_common.annotation.DomainService;
-import fpmislata.examen.c_domain._1usecase.common.director.interfaces.DirectorGetAllUseCase;
+import fpmislata.examen.a_common.annotation.UseCase;
+import fpmislata.examen.c_domain._1usecase.common.director.interfaces.DirectorFindAllUseCase;
 import fpmislata.examen.c_domain._2service.interfaces.DirectorService;
 import fpmislata.examen.c_domain._2service.model.Director;
+import fpmislata.examen.c_domain._2service.model.ListWithCount;
 import lombok.RequiredArgsConstructor;
 
-@DomainService
+@UseCase
 @RequiredArgsConstructor
-public class DirectorFindAllUseCaseImpl implements DirectorGetAllUseCase {
+public class DirectorFindAllUseCaseImpl implements DirectorFindAllUseCase {
 
     private final DirectorService directorService;
 
     @Override
-    public List<Director> execute(Integer page, Integer size) {
-        return directorService.getAll(page, size);
+    public ListWithCount<Director> execute(Integer page, Integer size) {
+        return directorService.findAll(page, size);
     }
-
 }
