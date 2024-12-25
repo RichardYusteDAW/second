@@ -1,0 +1,45 @@
+<select name="categories" id="categories" (change)="showArticles($event)">
+    <option value="0">Todas</option>
+    @for(cat of categorias; track cat){
+    <option value="{{cat}}">{{cat}}</option>
+    }
+</select>
+
+<table class="table table-striped text-center">
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Unidades</th>
+        <th>Precio</th>
+        <th></th>
+    </tr>
+    @for(art of articulos; track art.id){
+    <tr>
+        <td>{{art.id}}</td>
+        <td>{{art.nombre}}</td>
+        <td>{{art.descripcion}}</td>
+        <td>{{art.unidades}}</td>
+        <td>{{art.precio}}</td>
+        <td>
+            <button class="btn {{ art.unidades == 0 ? 'btn-danger' : 'btn-primary' }}" (click)="verDetalles(art)">Ver
+                detalles
+            </button>
+        </td>
+    </tr>
+    }
+</table>
+
+@if(articulo != null){
+<div class="card" style="width: 18rem;">
+    <img src="img/{{articulo.id}}.jpg" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title">{{articulo.nombre}} ({{articulo.unidades}})</h5>
+        <p class="card-text">{{articulo.descripcion}}</p>
+        <b>
+            <p class="card-text text-center">{{articulo.precio}}</p>
+        </b>
+    </div>
+    <button class="btn btn-primary" (click)="comprar(articulo)" [disabled]="articulo.unidades == 0">Comprar</button>
+</div>
+}
