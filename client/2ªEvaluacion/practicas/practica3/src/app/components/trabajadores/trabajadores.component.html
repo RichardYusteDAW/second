@@ -1,0 +1,9 @@
+<!-- interpolar la variable titulo en el h3 -->
+<h3 align="center">{{title}}</h3><br>
+<div class="row row-cols-1 row-cols-md-6">
+    <!-- Definir @for, paso de datos a card-trabajador y recepción de eventos del hijo -->
+    @for(t of trabajadores; track t.id){
+    <app-trabajador [trabajador]="t" (sumaVoto)="likeTrabajador($event)" (restaVoto)="unlikeTrabajador($event)"
+        (borrar)="borrarTrabajador($event)"></app-trabajador>
+    }
+</div>
