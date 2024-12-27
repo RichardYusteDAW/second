@@ -1,0 +1,56 @@
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Precio</th>
+        <th>Unidades</th>
+        <th>
+            <button class="btn btn-primary" (click)="mostarFormulario()">Nuevo cliente</button>
+        </th>
+    </tr>
+    @for(a of articles; track a.id){
+    <tr>
+        <td>{{a.id}}</td>
+        <td>{{a.nombre}}</td>
+        <td>{{a.descripcion}}</td>
+        <td>{{a.precio}}</td>
+        <td>{{a.unidades}}</td>
+        <td>
+            <button class="btn btn-success" (click)="mostarFormulario(a)">Ver</button>
+            <button class="btn btn-danger" (click)="borrarArticulo(a.id)">Borrar</button>
+    </tr>
+    }
+</table>
+
+@if(isVisible){
+<h1>{{title}}</h1>
+<form>
+    <div class="form-group">
+        <label for="id">Id</label>
+        <input type="text" class="form-control" name="id" placeholder="Enter id" [(ngModel)]="newArticle.id">
+    </div>
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" name="nombre" placeholder="Enter nombre"
+            [(ngModel)]="newArticle.nombre">
+    </div>
+    <div class="form-group">
+        <label for="descripcion">Descripcion</label>
+        <input type="text" class="form-control" name="descripcion" placeholder="Enter descripcion"
+            [(ngModel)]="newArticle.descripcion">
+    </div>
+    <div class="form-group">
+        <label for="unidades">Unidades</label>
+        <input type="text" class="form-control" name="unidades" placeholder="Enter unidades"
+            [(ngModel)]="newArticle.unidades">
+    </div>
+    <div class="form-group">
+        <label for="precio">Precio</label>
+        <input type="text" class="form-control" name="precio" placeholder="Enter precio"
+            [(ngModel)]="newArticle.precio">
+    </div>
+    <button class="btn btn-primary" (click)="crearArticulo(newArticle)">Guardar</button>
+    <button class="btn btn-danger" (click)="ocultarFormulario()">Cancelar</button>
+</form>
+}
