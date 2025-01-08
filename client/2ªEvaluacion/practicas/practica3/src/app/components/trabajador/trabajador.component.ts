@@ -8,7 +8,7 @@ import { Trabajador } from '../../models/trabajador';
   styleUrl: './trabajador.component.css'
 })
 export class TrabajadorComponent {
-  @Input() trabajador: Trabajador | undefined;
+  @Input() trabajador!: Trabajador;
 
   // like() {
   //   this.trabajador!.votos++;
@@ -29,6 +29,7 @@ export class TrabajadorComponent {
   @Output() restaVoto = new EventEmitter<number>();
   unlikeTrabajador(id: number) {
     this.restaVoto.emit(id);
+
   }
 
   @Output() borrar = new EventEmitter<number>();
