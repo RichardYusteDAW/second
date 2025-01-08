@@ -9,15 +9,21 @@ import { Articulo } from '../../models/Articulo';
   styleUrl: './articulos.component.css'
 })
 export class ArticulosComponent {
-  categorias = new Set<string>(ARTICULOS.map(art => art.categoria));
+  categorias = new Set<string>();
   articulos: Array<Articulo> = ARTICULOS;
-  articulo: Articulo | null = null;
+  articulo!: Articulo;
+
+  ngOnInit() {
+    this.categorias.add('Todas');
+    ARTICULOS.forEach(a => this.categorias.add(a.categoria));
+  }
 
   showArticles(event: Event) {
-    this.articulo = null;
 
     const target = event.target as HTMLButtonElement;
-    if (target.value != 'Todas') {
+    if (target.value == 'Todas') {
+      this.articulos = ARTICULOS;
+    } else {
       this.articulos = ARTICULOS.filter(art => art.categoria === target.value);
     }
   }

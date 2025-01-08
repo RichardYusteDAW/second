@@ -1,5 +1,4 @@
 <select name="categories" id="categories" (change)="showArticles($event)">
-    <option value="0">Todas</option>
     @for(cat of categorias; track cat){
     <option value="{{cat}}">{{cat}}</option>
     }
@@ -30,7 +29,7 @@
     }
 </table>
 
-@if(articulo != null){
+@if(articulo){
 <div class="card" style="width: 18rem;">
     <img src="img/{{articulo.id}}.jpg" class="card-img-top">
     <div class="card-body">
