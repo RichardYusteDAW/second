@@ -121,3 +121,16 @@ $gaps: (
     "4xl": 46,
     "5xl": 60
 );
+
+$breakpoints: (
+    "tablet": 576,
+    "desktop": 768,
+    "fulldesktop": 992
+);
+
+$separator: (
+    "@",
+    ":"
+);
+
+$position: "behin";
