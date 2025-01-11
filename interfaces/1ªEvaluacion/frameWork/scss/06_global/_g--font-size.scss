@@ -1,3 +1,7 @@
+$breakpoints: map-get($responsive, "breakpoints");
+$separator: map-get($responsive, "separator");
+$position: map-get($responsive, "position");
+
 @each $name, $value in $font-size {
     .g--font-size-#{$name} {
         font-size: var(--font-size-#{$name})
@@ -8,13 +12,13 @@
     @media (min-width: #{$value-breakpoint}px) {
         @each $name, $value in $font-size {
             @if $position =="behind" {
-                .g--font-size-#{$name}#{nth($separator,0)}#{$name-breakpoint} {
+                .g--font-size-#{$name}#{nth($separator, 1)}#{$name-breakpoint} {
                     font-size: var(--font-size-#{$name}--md)
                 }
             }
 
             @else {
-                .#{$name-breakpoint}#{nth($separator,1)}g--font-size-#{$name} {
+                .#{$name-breakpoint}#{nth($separator, 2)}g--font-size-#{$name} {
                     font-size: var(--font-size-#{$name})
                 }
             }

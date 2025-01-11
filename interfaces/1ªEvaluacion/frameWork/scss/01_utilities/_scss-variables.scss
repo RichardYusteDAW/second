@@ -122,15 +122,8 @@ $gaps: (
     "5xl": 60
 );
 
-$breakpoints: (
-    "tablet": 576,
-    "desktop": 768,
-    "fulldesktop": 992
+$responsive: (
+    breakpoints: ("tablet": 576, "desktop": 768, "fulldesktop": 992),
+    separator: (\@, ":"),
+    position: "behind"
 );
-
-$separator: (
-    "@",
-    ":"
-);
-
-$position: "behin";
