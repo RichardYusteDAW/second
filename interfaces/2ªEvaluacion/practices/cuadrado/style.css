@@ -1,0 +1,6 @@
+.cuadrado {
+    border: 1px solid rgb(5, 120, 81);
+    background-color: aquamarine;
+    width: clamp(100px, calc(80vw - 140px), 500px);
+    height: clamp(100px, calc(80vw - 140px), 500px);
+}
