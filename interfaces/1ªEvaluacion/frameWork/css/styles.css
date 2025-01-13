@@ -929,6 +929,120 @@ table {
 .l-grid--cols-12 {
   grid-template-columns: repeat(12, 1fr);
 }
+@media (min-width: 576px) {
+  .l-grid--cols-1\@tablet {
+    grid-template-columns: repeat(1, auto);
+  }
+  .l-grid--cols-2\@tablet {
+    grid-template-columns: repeat(2, auto);
+  }
+  .l-grid--cols-3\@tablet {
+    grid-template-columns: repeat(3, auto);
+  }
+  .l-grid--cols-4\@tablet {
+    grid-template-columns: repeat(4, auto);
+  }
+  .l-grid--cols-5\@tablet {
+    grid-template-columns: repeat(5, auto);
+  }
+  .l-grid--cols-6\@tablet {
+    grid-template-columns: repeat(6, auto);
+  }
+  .l-grid--cols-7\@tablet {
+    grid-template-columns: repeat(7, auto);
+  }
+  .l-grid--cols-8\@tablet {
+    grid-template-columns: repeat(8, auto);
+  }
+  .l-grid--cols-9\@tablet {
+    grid-template-columns: repeat(9, auto);
+  }
+  .l-grid--cols-10\@tablet {
+    grid-template-columns: repeat(10, auto);
+  }
+  .l-grid--cols-11\@tablet {
+    grid-template-columns: repeat(11, auto);
+  }
+  .l-grid--cols-12\@tablet {
+    grid-template-columns: repeat(12, auto);
+  }
+}
+@media (min-width: 768px) {
+  .l-grid--cols-1\@desktop {
+    grid-template-columns: repeat(1, auto);
+  }
+  .l-grid--cols-2\@desktop {
+    grid-template-columns: repeat(2, auto);
+  }
+  .l-grid--cols-3\@desktop {
+    grid-template-columns: repeat(3, auto);
+  }
+  .l-grid--cols-4\@desktop {
+    grid-template-columns: repeat(4, auto);
+  }
+  .l-grid--cols-5\@desktop {
+    grid-template-columns: repeat(5, auto);
+  }
+  .l-grid--cols-6\@desktop {
+    grid-template-columns: repeat(6, auto);
+  }
+  .l-grid--cols-7\@desktop {
+    grid-template-columns: repeat(7, auto);
+  }
+  .l-grid--cols-8\@desktop {
+    grid-template-columns: repeat(8, auto);
+  }
+  .l-grid--cols-9\@desktop {
+    grid-template-columns: repeat(9, auto);
+  }
+  .l-grid--cols-10\@desktop {
+    grid-template-columns: repeat(10, auto);
+  }
+  .l-grid--cols-11\@desktop {
+    grid-template-columns: repeat(11, auto);
+  }
+  .l-grid--cols-12\@desktop {
+    grid-template-columns: repeat(12, auto);
+  }
+}
+@media (min-width: 992px) {
+  .l-grid--cols-1\@fulldesktop {
+    grid-template-columns: repeat(1, auto);
+  }
+  .l-grid--cols-2\@fulldesktop {
+    grid-template-columns: repeat(2, auto);
+  }
+  .l-grid--cols-3\@fulldesktop {
+    grid-template-columns: repeat(3, auto);
+  }
+  .l-grid--cols-4\@fulldesktop {
+    grid-template-columns: repeat(4, auto);
+  }
+  .l-grid--cols-5\@fulldesktop {
+    grid-template-columns: repeat(5, auto);
+  }
+  .l-grid--cols-6\@fulldesktop {
+    grid-template-columns: repeat(6, auto);
+  }
+  .l-grid--cols-7\@fulldesktop {
+    grid-template-columns: repeat(7, auto);
+  }
+  .l-grid--cols-8\@fulldesktop {
+    grid-template-columns: repeat(8, auto);
+  }
+  .l-grid--cols-9\@fulldesktop {
+    grid-template-columns: repeat(9, auto);
+  }
+  .l-grid--cols-10\@fulldesktop {
+    grid-template-columns: repeat(10, auto);
+  }
+  .l-grid--cols-11\@fulldesktop {
+    grid-template-columns: repeat(11, auto);
+  }
+  .l-grid--cols-12\@fulldesktop {
+    grid-template-columns: repeat(12, auto);
+  }
+}
 .l-grid--cols-auto {
   grid-template-columns: auto;
 }

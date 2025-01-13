@@ -1,3 +1,7 @@
+$breakpoints: map-get($responsive, "breakpoints");
+$separator: map-get($responsive, "separator");
+$position: map-get($responsive, "position");
+
 .l-grid {
     display: grid;
 
@@ -5,6 +9,16 @@
     @for $i from 1 through 12 {
         &--cols-#{ $i } {
             grid-template-columns: repeat($i, 1fr)
+        }
+    }
+
+    @each $name-breakpoint, $value-breakpoint in $breakpoints {
+        @media (min-width: #{$value-breakpoint}px) {
+            @for $i from 1 through 12 {
+                &--cols-#{ $i }#{nth($separator, 1)}#{$name-breakpoint} {
+                    grid-template-columns: repeat($i, auto);
+                }
+            }
         }
     }
 
