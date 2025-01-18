@@ -1,0 +1,74 @@
+.g--size {
+    width: 200px;
+    height: 200px;
+}
+
+.g--bg-color-red {
+    background-color: red;
+}
+
+.g--bg-color-green {
+    background-color: green;
+}
+
+.g--bg-color-blue {
+    background-color: blue;
+}
+
+.g--bg-color-orange {
+    background-color: orange;
+}
+
+@media (min-width: 576px) {
+    .g--bg-color-red\@tabled {
+        background-color: red;
+    }
+
+    .g--bg-color-green\@tabled {
+        background-color: green;
+    }
+
+    .g--bg-color-blue\@tabled {
+        background-color: blue;
+    }
+
+    .g--bg-color-orange\@tabled {
+        background-color: orange;
+    }
+}
+
+@media (min-width: 768px) {
+    .g--bg-color-red\@desktop {
+        background-color: red;
+    }
+
+    .g--bg-color-green\@desktop {
+        background-color: green;
+    }
+
+    .g--bg-color-blue\@desktop {
+        background-color: blue;
+    }
+
+    .g--bg-color-orange\@desktop {
+        background-color: orange;
+    }
+}
+
+@media (min-width: 992px) {
+    .g--bg-color-red\@fulldesktop {
+        background-color: red;
+    }
+
+    .g--bg-color-green\@fulldesktop {
+        background-color: green;
+    }
+
+    .g--bg-color-blue\@fulldesktop {
+        background-color: blue;
+    }
+
+    .g--bg-color-orange\@fulldesktop {
+        background-color: orange;
+    }
+}

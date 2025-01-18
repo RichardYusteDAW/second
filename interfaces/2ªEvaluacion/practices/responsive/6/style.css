@@ -1,0 +1,24 @@
+.g--color-fondo-responsivo {
+    width: 200px;
+    height: 200px;
+
+    background-color: red;
+}
+
+@media (min-width: 576px) {
+    .g--color-fondo-responsivo {
+        background-color: green;
+    }
+}
+
+@media (min-width: 768px) {
+    .g--color-fondo-responsivo {
+        background-color: blue;
+    }
+}
+
+@media (min-width: 992px) {
+    .g--color-fondo-responsivo {
+        background-color: orange;
+    }
+}

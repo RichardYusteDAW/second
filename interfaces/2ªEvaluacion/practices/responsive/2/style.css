@@ -1,0 +1,22 @@
+#red {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+#green {
+    width: 5rem;
+    height: 5rem;
+    background-color: green;
+}
+
+#blue {
+    width: 5em;
+    height: 5em;
+    background-color: blue;
+    font-size: 20px;
+}
+
+html {
+    font-size: 24px;
+}

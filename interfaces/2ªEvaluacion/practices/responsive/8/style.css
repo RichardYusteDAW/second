@@ -1,0 +1,180 @@
+.g--width-100 {
+    width: 100px
+}
+
+.g--width-150 {
+    width: 150px
+}
+
+.g--width-200 {
+    width: 200px
+}
+
+.g--width-250 {
+    width: 250px
+}
+
+.g--width-300 {
+    width: 300px
+}
+
+.g--width-350 {
+    width: 350px
+}
+
+.g--width-400 {
+    width: 400px;
+}
+
+.g--width-450 {
+    width: 450px;
+}
+
+.g--width-500 {
+    width: 500px;
+}
+
+.g--width-550 {
+    width: 550px;
+}
+
+.g--width-600 {
+    width: 600px;
+}
+
+.g--min-width-100 {
+    min-width: 100px
+}
+
+.g--min-width-150 {
+    min-width: 150px
+}
+
+.g--min-width-200 {
+    min-width: 200px
+}
+
+.g--min-width-250 {
+    min-width: 250px
+}
+
+.g--min-width-300 {
+    min-width: 300px
+}
+
+.g--min-width-350 {
+    min-width: 350px
+}
+
+.g--min-width-400 {
+    min-width: 400px;
+}
+
+.g--min-width-450 {
+    min-width: 450px;
+}
+
+.g--min-width-500 {
+    min-width: 500px;
+}
+
+.g--min-width-550 {
+    min-width: 550px;
+}
+
+.g--min-width-600 {
+    min-width: 600px;
+}
+
+.g--max-width-100 {
+    max-width: 100px
+}
+
+.g--max-width-150 {
+    max-width: 150px
+}
+
+.g--max-width-200 {
+    max-width: 200px
+}
+
+.g--max-width-250 {
+    max-width: 250px
+}
+
+.g--max-width-300 {
+    max-width: 300px
+}
+
+.g--max-width-350 {
+    max-width: 350px
+}
+
+.g--max-width-400 {
+    max-width: 400px;
+}
+
+.g--max-width-450 {
+    max-width: 450px;
+}
+
+.g--max-width-500 {
+    max-width: 500px;
+}
+
+.g--max-width-550 {
+    max-width: 550px;
+}
+
+.g--max-width-600 {
+    max-width: 600px;
+}
+
+.g--overflow-auto {
+    overflow: auto
+}
+
+.c-table {
+    border: 1px solid #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.c-table__head {
+    color: blue
+}
+
+.c-table__head--width-1 {
+    width: 100px;
+}
+
+.c-table__head--width-2 {
+    width: 200px;
+}
+
+.c-table__head--width-3 {
+    width: 300px;
+}
+
+.c-table__head--min-width-1 {
+    min-width: 100px;
+}
+
+.c-table__head--min-width-2 {
+    min-width: 200px;
+}
+
+.c-table__head--min-width-3 {
+    min-width: 300px;
+}
+
+.c-table__head--max-width-1 {
+    max-width: 100px;
+}
+
+.c-table__head--max-width-2 {
+    max-width: 200px;
+}
+
+.c-table__head--max-width-3 {
+    max-width: 300px;
+}

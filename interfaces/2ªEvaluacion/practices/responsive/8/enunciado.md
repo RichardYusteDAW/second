@@ -1,0 +1,15 @@
+## Tablas
+- Crea modificadores globales para las siguientes propiedades CSS:
+  - width
+  - min-width
+  - max-width
+- Los posibles valores de cada uno de ellos serán: 100px, 150px , 200px, 250px, 300px, 350px, 400px, 450px, 500px, 550px, 600px
+- Crea también otro modificador global para overflow: auto;
+- Crea una clase BEM para tablas HTML de forma que:
+  - La tabla tendrá alrededor un borde y un sombreado.
+  - Las cabeceras de la tabla serán de otro color.
+- Con todo los anterior, haz una página HTML con una tabla en la que:
+  - Haya columnas que tengan un ancho mínimo y otro máximo.
+  - Haya columnas que tengan un ancho fijo.
+  - Haya una columna que tengan un ancho mínimo.
+  - Que si la tabla no cabe, aparezcan las barras de scroll.

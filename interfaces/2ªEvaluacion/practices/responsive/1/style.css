@@ -1,0 +1,35 @@
+.g--background-color-blue {
+    background-color: blue;
+}
+
+.g--background-color-green {
+    background-color: green;
+}
+
+.g--background-color-red {
+    background-color: red;
+}
+
+.g--background-color-orange {
+    background-color: orange;
+}
+
+.g--size-200 {
+    width: 200px;
+    height: 200px;
+}
+
+.g--size-400 {
+    width: 400px;
+    height: 400px;
+}
+
+.g--size-20-perc {
+    width: 20%;
+    height: 20%;
+}
+
+.g--size-20-vp {
+    width: 20vw;
+    height: 20vh;
+}

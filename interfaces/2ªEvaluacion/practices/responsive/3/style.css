@@ -1,0 +1,29 @@
+.red {
+    width: max(100px, 20vw);
+    height: max(100px, 20vh);
+    background-color: red;
+}
+
+.green {
+    width: min(800px, 40vw);
+    height: min(800px, 40vh);
+    background-color: green;
+}
+
+.blue {
+    width: clamp(100px, 50vw, 800px);
+    height: clamp(100px, 50vh, 800px);
+    background-color: blue;
+}
+
+.pink {
+    width: calc(50vw + 20px);
+    height: calc(50vh + 20px);
+    background-color: pink;
+}
+
+.yellow {
+    width: clamp(100px, 50vw + 20px, 800px);
+    height: clamp(100px, 50vh + 20px, 800px);
+    background-color: yellow;
+}
