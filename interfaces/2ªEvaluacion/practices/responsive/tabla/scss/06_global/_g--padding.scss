@@ -1,0 +1,5 @@
+@each $name, $value in $paddings {
+    .g--padding-#{$name} {
+        padding: var(--padding-#{$name})
+    }
+}

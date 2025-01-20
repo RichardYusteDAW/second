@@ -1,0 +1,7 @@
+@each $name, $code in $colors {
+    @for $i from 1 through length($code) {
+        .g--color-#{$name}-#{$i*10} {
+            color: var(--color-#{$name}-#{$i*10})
+        }
+    }
+}

@@ -1,0 +1,38 @@
+@use "sass:math";
+
+$min: 50;
+$max: 1300;
+$increment: 50;
+$i: 1;
+
+.c-table {
+    overflow: auto;
+    text-align: center;
+
+    @while $min <=$max {
+        &__head--width-#{$i} {
+            width: #{$min}px;
+        }
+
+        $i: $i + 1;
+        $min: $min + $increment;
+    }
+
+    @while $min <=$max {
+        &__head--min-width-#{$i} {
+            min-width: #{$min}px;
+        }
+
+        $i: $i + 1;
+        $min: $min + $increment;
+    }
+
+    @while $min <=$max {
+        &__head--max-width-#{$i} {
+            max-width: #{$min}px;
+        }
+
+        $i: $i + 1;
+        $min: $min + $increment;
+    }
+}

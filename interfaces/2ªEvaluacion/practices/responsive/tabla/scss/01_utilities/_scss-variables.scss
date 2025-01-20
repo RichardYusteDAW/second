@@ -1,0 +1,129 @@
+$borders: (
+    "none": 0,
+    "3xs": 1,
+    "2xs": 2,
+    "xs": 3,
+    "s": 4,
+    "m": 5,
+    "l": 6,
+    "xl": 8,
+    "2xl": 10,
+    "3xl": 12
+);
+
+$border-radius: (
+    "none": 0,
+    "3xs": 2,
+    "2xs": 4,
+    "xs": 6,
+    "s": 8,
+    "m": 12,
+    "l": 16,
+    "xl": 24,
+    "2xl": 30,
+    "3xl": 36,
+    "full": 9999
+);
+
+$colors: (
+    "blue": ("#010519", "#010A50", "#010C8E", "#0007C7", "#0000FF", "#4238FF", "#8176FE", "#B9AFFE", "#EAE6FE"),
+    "orange": ("#190C01", "#502B01", "#8E5101", "#C77B00", "#FFA600", "#FFC338", "#FEDA76", "#FEEDAF", "#FEFAE6"),
+    "yellow": ("#191501", "#504701", "#8E8201", "#C7C000", "#FFFF00", "#F5FF38", "#F3FE76", "#F3FEAF", "#FAFEE6"),
+    "red":("#190501", "#500A01", "#8E0C01", "#C70700", "#FF0000", "#FF4238", "#FE8176", "#FEB9AF", "#FEEAE6"),
+    "purple":("#150119", "#2C0132", "#46004C", "#630066", "#80007F", "#990091", "#B201A3", "#C903AF", "#E006BB"),
+    "green":("#051901", "#073201", "#074C00", "#036600", "#008000", "#009908", "#01B210", "#03C91D", "#06E02A"),
+    "grey":("#0D0D0D", "#292929", "#474747", "#636363", "#808080", "#9C9C9C", "#BABABA", "#D6D6D6", "#F2F2F2"),
+    "brown":("#190501", "#400E07", "#631913", "#832320", "#A62B2B", "#CD3A32", "#DE5B4F", "#EE7E6D", "#FC9F8D"),
+    "pink":("#FC88AE", "#FD96B3", "#FFA4BA", "#FFB3C2", "#FFC2CC", "#FFD1D6", "#FFE1E3", "#FFF0F0", "#FFFFFF")
+);
+
+$fonts: (
+    "body": "Arial, sans-serif",
+    "heading": "Georgia, serif",
+    "monospace": "'Courier New', monospace",
+    "secondary": "'Helvetica Neue', sans-serif",
+    "display": "'Impact', sans-serif",
+    "cursive": "'Comic Sans MS', cursive"
+);
+
+$font-size: (
+    "5xs": 6,
+    "4xs": 8,
+    "3xs": 10,
+    "2xs": 12,
+    "xs": 14,
+    "s": 16,
+    "m": 18,
+    "l": 20,
+    "xl": 24,
+    "2xl": 36,
+    "3xl": 38,
+    "4xl": 48,
+    "5xl": 60
+);
+
+$margins: (
+    "none": 0,
+    "3xs": 2,
+    "2xs": 4,
+    "xs": 6,
+    "s": 8,
+    "m": 10,
+    "l": 12,
+    "xl": 16,
+    "2xl": 24,
+    "3xl": 36,
+    "4xl": 46,
+    "5xl": 60
+);
+
+$paddings: (
+    "none": 0,
+    "3xs": 2,
+    "2xs": 4,
+    "xs": 6,
+    "s": 8,
+    "m": 10,
+    "l": 12,
+    "xl": 16,
+    "2xl": 24,
+    "3xl": 36,
+    "4xl": 46,
+    "5xl": 60
+);
+
+$widths: (
+    "none": 0,
+    "3xs": 2,
+    "2xs": 4,
+    "xs": 6,
+    "s": 8,
+    "m": 10,
+    "l": 12,
+    "xl": 16,
+    "2xl": 24,
+    "3xl": 36,
+    "4xl": 46,
+    "5xl": 60
+);
+
+$gaps: (
+    "none": 0,
+    "3xs": 2,
+    "2xs": 4,
+    "xs": 6,
+    "s": 8,
+    "m": 10,
+    "l": 12,
+    "xl": 16,
+    "2xl": 24,
+    "3xl": 36,
+    "4xl": 46,
+    "5xl": 60
+);
+
+$responsive: (
+    breakpoints: ("tablet": 576, "desktop": 768, "fulldesktop": 992),
+    separator: (\@, ":"),
+    position: "behind"
+);
