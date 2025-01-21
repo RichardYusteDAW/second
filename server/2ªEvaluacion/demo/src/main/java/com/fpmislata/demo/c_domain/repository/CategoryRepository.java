@@ -1,4 +1,4 @@
-package com.fpmislata.demo.c_domain.repository.interfaces;
+package com.fpmislata.demo.c_domain.repository;
 
 import java.util.List;
 import java.util.Optional;

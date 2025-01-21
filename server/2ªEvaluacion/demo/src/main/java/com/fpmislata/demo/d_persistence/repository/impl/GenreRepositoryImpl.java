@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 import com.fpmislata.demo.c_domain.model.Genre;
-import com.fpmislata.demo.c_domain.repository.interfaces.GenreRepository;
+import com.fpmislata.demo.c_domain.repository.GenreRepository;
 import com.fpmislata.demo.d_persistence.zdao.interfaces.GenreDao;
 
 import lombok.RequiredArgsConstructor;

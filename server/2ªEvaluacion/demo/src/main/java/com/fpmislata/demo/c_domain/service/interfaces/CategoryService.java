@@ -1,11 +1,11 @@
-package com.fpmislata.demo.c_domain.repository.interfaces;
+package com.fpmislata.demo.c_domain.service.interfaces;
 
 import java.util.List;
 import java.util.Optional;
 
 import com.fpmislata.demo.c_domain.model.Genre;
 
-public interface GenreRepository {
+public interface CategoryService {
 
     List<Genre> findAll();
 

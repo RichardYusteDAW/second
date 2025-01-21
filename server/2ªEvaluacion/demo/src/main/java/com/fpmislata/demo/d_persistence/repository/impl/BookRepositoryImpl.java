@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.fpmislata.demo.c_domain.model.Author;
 import com.fpmislata.demo.c_domain.model.Book;
 import com.fpmislata.demo.c_domain.model.Genre;
-import com.fpmislata.demo.c_domain.repository.interfaces.BookRepository;
+import com.fpmislata.demo.c_domain.repository.BookRepository;
 import com.fpmislata.demo.d_persistence.zdao.interfaces.BookDao;
 
 import lombok.RequiredArgsConstructor;

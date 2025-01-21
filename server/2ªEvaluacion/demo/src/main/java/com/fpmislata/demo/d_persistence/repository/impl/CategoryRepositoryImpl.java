@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 import com.fpmislata.demo.c_domain.model.Category;
-import com.fpmislata.demo.c_domain.repository.interfaces.CategoryRepository;
+import com.fpmislata.demo.c_domain.repository.CategoryRepository;
 import com.fpmislata.demo.d_persistence.zdao.interfaces.CategoryDao;
 
 import lombok.RequiredArgsConstructor;

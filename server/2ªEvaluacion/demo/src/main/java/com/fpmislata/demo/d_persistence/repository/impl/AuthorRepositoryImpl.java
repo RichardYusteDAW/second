@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 import com.fpmislata.demo.c_domain.model.Author;
-import com.fpmislata.demo.c_domain.repository.interfaces.AuthorRepository;
+import com.fpmislata.demo.c_domain.repository.AuthorRepository;
 import com.fpmislata.demo.d_persistence.zdao.interfaces.AuthorDao;
 
 import lombok.RequiredArgsConstructor;
