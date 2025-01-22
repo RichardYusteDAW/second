@@ -1,0 +1,24 @@
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Precio</th>
+        <th>Unidades</th>
+        <th>
+            <button class="btn btn-primary">Nuevo cliente</button>
+        </th>
+    </tr>
+    @for(a of articulos; track a.id){
+    <tr>
+        <td>{{a.id}}</td>
+        <td>{{a.nombre}}</td>
+        <td>{{a.descripcion}}</td>
+        <td>{{a.precio}}</td>
+        <td>{{a.unidades}}</td>
+        <td>
+            <button class="btn btn-success" (click)="verDetalles(a.id)">Ver</button>
+            <button class="btn btn-danger ms-2">Borrar</button>
+    </tr>
+    }
+</table>
