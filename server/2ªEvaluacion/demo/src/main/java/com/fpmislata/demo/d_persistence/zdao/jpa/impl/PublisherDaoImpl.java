@@ -1,14 +1,14 @@
-package com.fpmislata.demo.d_persistence.zdao.impl;
+package com.fpmislata.demo.d_persistence.zdao.jpa.impl;
 
 import java.util.List;
 import java.util.Optional;
 
 import com.fpmislata.demo.a_common.annotation.Dao;
 import com.fpmislata.demo.c_domain.model.Publisher;
-import com.fpmislata.demo.d_persistence.zdao.impl.jpa.PublisherJpa;
-import com.fpmislata.demo.d_persistence.zdao.impl.mapper.PublisherMapper;
-import com.fpmislata.demo.d_persistence.zdao.impl.model.PublisherEntity;
 import com.fpmislata.demo.d_persistence.zdao.interfaces.PublisherDao;
+import com.fpmislata.demo.d_persistence.zdao.jpa.interfaces.PublisherJpa;
+import com.fpmislata.demo.d_persistence.zdao.jpa.mapper.PublisherMapper;
+import com.fpmislata.demo.d_persistence.zdao.jpa.model.PublisherEntity;
 
 import lombok.RequiredArgsConstructor;
 
@@ -26,13 +26,9 @@ public class PublisherDaoImpl implements PublisherDao {
 
     @Override
     public Optional<Publisher> findById(Integer id) {
-        return publisherJpa.findById(id).map(p -> PublisherMapper.INSTANCE.toPublisher(p));
-        // Optional<PublisherEntity> publisherEntity = publisherJpa.findById(id);
-        // if (publisherEntity.isPresent()) {
-        //     return Optional.of(PublisherMapper.INSTANCE.toPublisher(publisherEntity.get()));
-        // } else {
-        //     return Optional.empty();
-        // }
+        return publisherJpa
+                .findById(id)
+                .map(p -> PublisherMapper.INSTANCE.toPublisher(p));
     }
 
     @Override

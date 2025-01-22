@@ -1,14 +1,15 @@
-package com.fpmislata.demo.d_persistence.zdao.impl.model;
+package com.fpmislata.demo.d_persistence.zdao.jpa.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "genres")
+@Table(name = "categories")
 @Data
 @NoArgsConstructor
-public class GenreEntity {
+public class CategoryEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

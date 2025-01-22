@@ -1,4 +1,4 @@
-package com.fpmislata.demo.d_persistence.zdao.impl.mapper;
+package com.fpmislata.demo.d_persistence.zdao.jpa.mapper;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import com.fpmislata.demo.c_domain.model.Publisher;
-import com.fpmislata.demo.d_persistence.zdao.impl.model.PublisherEntity;
+import com.fpmislata.demo.d_persistence.zdao.jpa.model.PublisherEntity;
 
 @Mapper
 public interface PublisherMapper {

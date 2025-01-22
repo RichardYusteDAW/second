@@ -1,4 +1,4 @@
-package com.fpmislata.demo.d_persistence.zdao.impl.model;
+package com.fpmislata.demo.d_persistence.zdao.jpa.model;
 
 import java.math.BigDecimal;
 import java.util.List;
