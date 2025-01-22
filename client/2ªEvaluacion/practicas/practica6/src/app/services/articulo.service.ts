@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Articulo } from '../models/articulo';
+import { BehaviorSubject } from 'rxjs';
 import { ARTICULOS } from '../../../public/data/data';
+import { Articulo } from '../models/articulo';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,11 @@ import { ARTICULOS } from '../../../public/data/data';
 export class ArticuloService {
 
   articulos: Array<Articulo> = ARTICULOS;
+  contador = new BehaviorSubject<number>(this.articulos.length);
+  contador$ = this.contador.asObservable();
 
   getAll() {
+    this.contador.next(this.contador.value);
     return this.articulos;
   }
 
@@ -31,6 +35,7 @@ export class ArticuloService {
       return;
     }
     this.articulos.push(articulo);
+    this.contador.next(this.contador.value + 1);
   }
 
   update(articulo: Articulo) {
@@ -53,5 +58,6 @@ export class ArticuloService {
     }
     // Delete article
     this.articulos = this.articulos.filter(art => art.id !== id);
+    this.contador.next(this.contador.value - 1);
   }
 }

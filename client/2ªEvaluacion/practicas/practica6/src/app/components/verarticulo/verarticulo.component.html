@@ -21,6 +21,6 @@
         <label for="precio">Precio</label>
         <input type="text" class="form-control" name="precio" placeholder="Enter precio" [(ngModel)]="articulo.precio">
     </div>
-    <button class="btn btn-primary mt-2">Guardar</button>
+    <button class="btn btn-primary mt-2" (click)="update()">Guardar</button>
     <button class="btn btn-danger mt-2 ms-2" routerLink="/articulos">Cancelar</button>
 </form>

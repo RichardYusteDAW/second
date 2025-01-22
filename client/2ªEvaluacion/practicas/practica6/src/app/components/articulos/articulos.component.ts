@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { ArticuloService } from '../../services/articulo.service';
 import { Articulo } from '../../models/articulo';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-articulos',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './articulos.component.html',
   styleUrl: './articulos.component.css'
 })

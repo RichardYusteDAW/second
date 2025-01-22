@@ -25,4 +25,9 @@ export class VerarticuloComponent {
         }
       });
   }
+
+  update() {
+    this.articuloService.update(this.articulo);
+    this.router.navigate(['/articulos']);
+  }
 }
