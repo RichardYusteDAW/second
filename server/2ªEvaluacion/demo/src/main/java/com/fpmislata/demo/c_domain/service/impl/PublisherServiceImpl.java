@@ -32,16 +32,12 @@ public class PublisherServiceImpl implements PublisherService {
     }
 
     @Override
-    public void checkIfPublisherAlreadyExists(Integer id) {
-        Optional<Publisher> publisherOptional = publisherRepository.findById(id);
+    public void create(Publisher publisher) {
+        Optional<Publisher> publisherOptional = publisherRepository.findById(publisher.getId());
         if (publisherOptional.isPresent()) {
             throw new ResourceAlreadyExistsException("Publisher already exists");
         }
-    }
 
-    @Override
-    public void create(Publisher publisher) {
-        checkIfPublisherAlreadyExists(publisher.getId());
         publisherRepository.save(publisher);
     }
 

@@ -1,7 +1,6 @@
 package com.fpmislata.demo.c_domain.service.interfaces;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.fpmislata.demo.c_domain.model.Genre;
 
@@ -15,7 +14,7 @@ public interface GenreService {
 
     List<Genre> findAllByIsbn(String isbn);
 
-    Optional<Genre> findById(Integer id);
+    Genre findById(Integer id);
 
     void save(Genre genre);
 

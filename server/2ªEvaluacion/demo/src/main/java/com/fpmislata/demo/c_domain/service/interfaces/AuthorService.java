@@ -1,7 +1,6 @@
 package com.fpmislata.demo.c_domain.service.interfaces;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.fpmislata.demo.c_domain.model.Author;
 
@@ -15,7 +14,7 @@ public interface AuthorService {
 
     List<Author> findAllByIds(List<Integer> ids);
 
-    Optional<Author> findById(Integer id);
+    Author findById(Integer id);
 
     void save(Author author);
 

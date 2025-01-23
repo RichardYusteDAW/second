@@ -1,4 +1,4 @@
-package com.fpmislata.demo.d_persistence.repository.impl;
+package com.fpmislata.demo.d_persistence.repository;
 
 import java.util.List;
 import java.util.Optional;

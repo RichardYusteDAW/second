@@ -1,23 +1,16 @@
 package com.fpmislata.demo.c_domain.service.interfaces;
 
 import java.util.List;
-import java.util.Optional;
 
-import com.fpmislata.demo.c_domain.model.Genre;
+import com.fpmislata.demo.c_domain.model.Category;
 
 public interface CategoryService {
 
-    List<Genre> findAll();
+    List<Category> findAll();
 
-    List<Genre> findAllByBookId(Integer bookId);
+    Category findById(Integer id);
 
-    List<Genre> findAllByIds(List<Integer> ids);
-
-    List<Genre> findAllByIsbn(String isbn);
-
-    Optional<Genre> findById(Integer id);
-
-    void save(Genre genre);
+    void save(Category Category);
 
     void delete(Integer id);
 }

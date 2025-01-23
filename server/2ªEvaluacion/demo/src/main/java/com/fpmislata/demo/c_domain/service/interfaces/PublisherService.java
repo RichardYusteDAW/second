@@ -10,8 +10,6 @@ public interface PublisherService {
 
     Publisher findById(Integer id);
 
-    public void checkIfPublisherAlreadyExists(Integer id);
-
     void create(Publisher publisher);
 
     void update(Publisher publisher);
