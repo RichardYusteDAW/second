@@ -1,6 +1,7 @@
 package com.fpmislata.demo.c_domain.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -43,7 +44,16 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
-    public void save(Genre genre) {
+    public void create(Genre genre) {
+        Optional<Genre> genreOptional = genreRepository.findById(genre.getId());
+        if (genreOptional.isPresent()) {
+            throw new ResourceNotFoundException("Genre already exists");
+        }
+        genreRepository.save(genre);
+    }
+
+    @Override
+    public void update(Genre genre) {
         findById(genre.getId());
         genreRepository.save(genre);
     }

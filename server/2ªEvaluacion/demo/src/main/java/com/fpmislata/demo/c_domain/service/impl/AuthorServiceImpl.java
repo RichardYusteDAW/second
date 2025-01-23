@@ -1,6 +1,7 @@
 package com.fpmislata.demo.c_domain.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -43,7 +44,16 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public void save(Author author) {
+    public void create(Author author) {
+        Optional<Author> authorOptional = authorRepository.findById(author.getId());
+        if (authorOptional.isPresent()) {
+            throw new ResourceNotFoundException("Author already exists");
+        }
+        authorRepository.save(author);
+    }
+
+    @Override
+    public void update(Author author) {
         findById(author.getId());
         authorRepository.save(author);
     }

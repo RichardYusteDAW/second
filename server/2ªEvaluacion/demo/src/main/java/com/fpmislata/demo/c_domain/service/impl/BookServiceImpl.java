@@ -1,6 +1,7 @@
 package com.fpmislata.demo.c_domain.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,16 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void save(Book book) {
+    public void create(Book book) {
+        Optional<Book> bookOptional = bookRepository.findByIsbn(book.getIsbn());
+        if (bookOptional.isPresent()) {
+            throw new ResourceNotFoundException("Book already exists");
+        }
+        bookRepository.save(book);
+    }
+
+    @Override
+    public void update(Book book) {
         findById(book.getId());
         bookRepository.save(book);
     }

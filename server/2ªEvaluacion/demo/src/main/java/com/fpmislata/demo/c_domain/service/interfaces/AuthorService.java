@@ -16,7 +16,9 @@ public interface AuthorService {
 
     Author findById(Integer id);
 
-    void save(Author author);
+    void create(Author author);
+
+    void update(Author author);
 
     void delete(Integer id);
 }

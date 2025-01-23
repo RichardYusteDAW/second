@@ -16,7 +16,9 @@ public interface GenreService {
 
     Genre findById(Integer id);
 
-    void save(Genre genre);
+    void create(Genre genre);
+
+    void update(Genre genre);
 
     void delete(Integer id);
 }

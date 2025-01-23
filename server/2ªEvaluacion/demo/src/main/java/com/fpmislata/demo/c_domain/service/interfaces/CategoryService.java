@@ -10,7 +10,9 @@ public interface CategoryService {
 
     Category findById(Integer id);
 
-    void save(Category Category);
+    void create(Category Category);
+
+    void update(Category Category);
 
     void delete(Integer id);
 }

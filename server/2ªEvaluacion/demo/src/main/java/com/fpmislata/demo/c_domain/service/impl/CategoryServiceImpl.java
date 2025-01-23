@@ -1,6 +1,7 @@
 package com.fpmislata.demo.c_domain.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,16 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void save(Category category) {
+    public void create(Category category) {
+        Optional<Category> categoryOptional = categoryRepository.findById(category.getId());
+        if (categoryOptional.isPresent()) {
+            throw new ResourceNotFoundException("Category already exists");
+        }
+        categoryRepository.save(category);
+    }
+
+    @Override
+    public void update(Category category) {
         findById(category.getId());
         categoryRepository.save(category);
     }

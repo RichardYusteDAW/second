@@ -12,7 +12,9 @@ public interface BookService {
 
     Book findByIsbn(String isbn);
 
-    void save(Book book);
+    void create(Book book);
+
+    void update(Book book);
 
     void delete(Integer id);
 }
