@@ -1,0 +1,101 @@
+.transform {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+
+    transform: translate(50px, 100px);
+    transform: rotate(20deg);
+    transform: scale(2, 3);
+    transform: scale(0.5, 0.5);
+    transform: skew(20deg, 10deg);
+    transform: translate(50px, 100px) rotate(20deg);
+}
+
+.transition {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: background-color 1s, box-shadow 1s;
+}
+
+.transition:hover {
+    background-color: blue;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+button {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    transition: background-color 1s linear 0.3s;
+}
+
+.c-button-1:hover {
+    background-color: blue;
+}
+
+.c-button-2:hover {
+    background-color: green;
+}
+
+.c-button-3:hover {
+    background-color: red;
+}
+
+.c-button-4:hover {
+    background-color: yellow;
+}
+
+.bola {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    border-radius: 50%;
+    transition: transform 2s ease-in-out;
+}
+
+.bola:hover {
+    transform: translateX(300px);
+}
+
+.rotate {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+
+    transition: transform 5s linear;
+}
+
+.rotate:hover {
+    transform: rotate(-360deg);
+}
+
+.girar {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+
+}
+
+.girar_animacion {
+    animation: animacion-girar 2s linear infinite;
+}
+
+@keyframes animacion-girar {
+    0% {
+        transform: rotate(0deg);
+        background-color: #bbd4f7;
+    }
+
+    50% {
+        transform: rotate(360deg);
+        background-color: #1C4673;
+    }
+
+    100% {
+        transform: rotate(0deg);
+        background-color: #bbd4f7;
+    }
+
+}
