@@ -43,6 +43,11 @@ public class GenreRepositoryImpl implements GenreRepository {
     }
 
     @Override
+    public Optional<Genre> findByName(String name) {
+        return genreDao.findByName(name);
+    }
+
+    @Override
     public void save(Genre genre) {
         genreDao.save(genre);
     }

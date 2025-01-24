@@ -10,6 +10,7 @@ import com.fpmislata.demo.d_persistence.zdao.jpa.model.GenreEntity;
 
 @Mapper
 public interface GenreMapper {
+
     GenreMapper INSTANCE = Mappers.getMapper(GenreMapper.class);
 
     Genre toGenre(GenreEntity genreEntity);

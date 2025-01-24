@@ -25,24 +25,6 @@ public class GenreDaoImpl implements GenreDao {
     }
 
     @Override
-    public Optional<Genre> findById(Integer id) {
-        return genreJpa
-                .findById(id)
-                .map(g -> GenreMapper.INSTANCE.toGenre(g));
-    }
-
-    @Override
-    public void save(Genre genre) {
-        GenreEntity genreEntity = GenreMapper.INSTANCE.toGenreEntity(genre);
-        genreJpa.save(genreEntity);
-    }
-
-    @Override
-    public void delete(Integer id) {
-        genreJpa.deleteById(id);
-    }
-
-    @Override
     public List<Genre> findAllByBookId(Integer bookId) {
         List<GenreEntity> genreEntityList = genreJpa.findAllByBookId(bookId);
         return GenreMapper.INSTANCE.toGenreList(genreEntityList);
@@ -60,4 +42,28 @@ public class GenreDaoImpl implements GenreDao {
         return GenreMapper.INSTANCE.toGenreList(genreEntityList);
     }
 
+    @Override
+    public Optional<Genre> findById(Integer id) {
+        return genreJpa
+                .findById(id)
+                .map(g -> GenreMapper.INSTANCE.toGenre(g));
+    }
+
+    @Override
+    public Optional<Genre> findByName(String name) {
+        return genreJpa
+                .findByName(name)
+                .map(g -> GenreMapper.INSTANCE.toGenre(g));
+    }
+
+    @Override
+    public void save(Genre genre) {
+        GenreEntity genreEntity = GenreMapper.INSTANCE.toGenreEntity(genre);
+        genreJpa.save(genreEntity);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        genreJpa.deleteById(id);
+    }
 }

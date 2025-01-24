@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.fpmislata.demo.a_common.exception.ResourceNotFoundException;
 import com.fpmislata.demo.c_domain.model.Genre;
 import com.fpmislata.demo.c_domain.repository.GenreRepository;
 import com.fpmislata.demo.c_domain.service.interfaces.GenreService;
@@ -39,29 +38,27 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
-    public Genre findById(Integer id) {
-        return genreRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Genre not found"));
+    public Optional<Genre> findById(Integer id) {
+        return genreRepository.findById(id);
+    }
+
+    @Override
+    public Optional<Genre> findByName(String name) {
+        return genreRepository.findByName(name);
     }
 
     @Override
     public void create(Genre genre) {
-        Optional<Genre> genreOptional = genreRepository.findById(genre.getId());
-        if (genreOptional.isPresent()) {
-            throw new ResourceNotFoundException("Genre already exists");
-        }
         genreRepository.save(genre);
     }
 
     @Override
     public void update(Genre genre) {
-        findById(genre.getId());
         genreRepository.save(genre);
     }
 
     @Override
     public void delete(Integer id) {
-        findById(id);
         genreRepository.delete(id);
     }
-
 }

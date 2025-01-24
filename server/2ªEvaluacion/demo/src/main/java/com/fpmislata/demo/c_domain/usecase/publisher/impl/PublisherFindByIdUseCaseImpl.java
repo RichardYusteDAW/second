@@ -1,6 +1,7 @@
 package com.fpmislata.demo.c_domain.usecase.publisher.impl;
 
 import com.fpmislata.demo.a_common.annotation.UseCase;
+import com.fpmislata.demo.a_common.exception.ResourceNotFoundException;
 import com.fpmislata.demo.c_domain.model.Publisher;
 import com.fpmislata.demo.c_domain.service.interfaces.PublisherService;
 import com.fpmislata.demo.c_domain.usecase.publisher.interfaces.PublisherFindByIdUseCase;
@@ -17,6 +18,6 @@ public class PublisherFindByIdUseCaseImpl implements PublisherFindByIdUseCase {
     public Publisher execute(Integer id) {
         return publisherService
                 .findById(id)
-                .orElseThrow(() -> new RuntimeException("Publisher not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Publisher not found"));
     }
 }

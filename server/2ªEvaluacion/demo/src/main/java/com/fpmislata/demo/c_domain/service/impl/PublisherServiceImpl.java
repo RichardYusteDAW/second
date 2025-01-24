@@ -39,13 +39,11 @@ public class PublisherServiceImpl implements PublisherService {
 
     @Override
     public void update(Publisher publisher) {
-        findById(publisher.getId());
         publisherRepository.save(publisher);
     }
 
     @Override
     public void delete(Integer id) {
-        findById(id);
         publisherRepository.delete(id);
     }
 }
