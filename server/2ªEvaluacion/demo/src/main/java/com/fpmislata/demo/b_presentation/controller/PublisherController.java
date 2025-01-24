@@ -22,6 +22,7 @@ import com.fpmislata.demo.c_domain.usecase.publisher.interfaces.PublisherFindAll
 import com.fpmislata.demo.c_domain.usecase.publisher.interfaces.PublisherFindByIdUseCase;
 import com.fpmislata.demo.c_domain.usecase.publisher.interfaces.PublisherUpdateUseCase;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -52,12 +53,13 @@ public class PublisherController {
     }
 
     @PostMapping()
-    public void create(@RequestBody PublisherComplete publisherComplete) {
+    public void create(@Valid @RequestBody PublisherComplete publisherComplete) {
         publisherCreateUseCase.execute(PublisherMapper.INSTANCE.toPublisher(publisherComplete));
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable String id, @RequestBody Publisher publisher) {
+    public void update(@PathVariable String id, @Valid @RequestBody PublisherComplete publisherComplete) {
+        Publisher publisher = PublisherMapper.INSTANCE.toPublisher(publisherComplete);
         publisher.setId(Integer.parseInt(id));
         publisherUpdateUseCase.execute(publisher);
     }

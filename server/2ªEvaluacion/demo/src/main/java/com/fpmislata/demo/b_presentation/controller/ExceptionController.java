@@ -1,6 +1,11 @@
 package com.fpmislata.demo.b_presentation.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,35 +21,34 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseBody
-    public ErrorMessage notFoundRequest(Exception e) {
-        return new ErrorMessage(e);
+    public ErrorMessage notFoundRequest(Exception exception) {
+        return new ErrorMessage(exception);
     }
 
     @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(ResourceAlreadyExistsException.class)
     @ResponseBody
-    public ErrorMessage conflict(Exception e) {
-        return new ErrorMessage(e);
+    public ErrorMessage conflict(Exception exception) {
+        return new ErrorMessage(exception);
     }
 
-    // @ResponseStatus(HttpStatus.BAD_REQUEST)
-    // @ExceptionHandler(MethodArgumentNotValidException.class)
-    // @ResponseBody
-    // public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException e) {
-    //     Map<String, String> errors = new HashMap<>();
-    //     e.getBindingResult().getAllErrors().forEach((error) -> {
-    //         String fieldName = ((FieldError) error).getField();
-    //         String errorMessage = error.getDefaultMessage();
-    //         errors.put(fieldName, errorMessage);
-    //     });
-    //     return errors;
-    // }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseBody
+    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException exception) {
+        Map<String, String> errors = new HashMap<>();
+        errors.put("error", exception.getClass().getSimpleName());
+        exception.getBindingResult().getAllErrors().forEach((error) -> {
+            errors.put(((FieldError) error).getField(), error.getDefaultMessage());
+        });
+        return errors;
+    }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public ErrorMessage internalServerError(Exception e) {
-        return new ErrorMessage(e);
+    public ErrorMessage internalServerError(Exception exception) {
+        return new ErrorMessage(exception);
     }
 }
 
