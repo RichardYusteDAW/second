@@ -28,6 +28,11 @@ public class PublisherRepositoryImpl implements PublisherRepository {
     }
 
     @Override
+    public Optional<Publisher> findByName(String name) {
+        return publisherDao.findByName(name);
+    }
+
+    @Override
     public void save(Publisher publisher) {
         publisherDao.save(publisher);
     }

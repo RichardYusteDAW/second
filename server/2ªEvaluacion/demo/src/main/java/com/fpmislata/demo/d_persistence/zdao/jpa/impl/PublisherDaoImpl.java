@@ -32,6 +32,13 @@ public class PublisherDaoImpl implements PublisherDao {
     }
 
     @Override
+    public Optional<Publisher> findByName(String name) {
+        return publisherJpa
+                .findByName(name)
+                .map(p -> PublisherMapper.INSTANCE.toPublisher(p));
+    }
+
+    @Override
     public void save(Publisher publisher) {
         PublisherEntity publisherEntity = PublisherMapper.INSTANCE.toPublisherEntity(publisher);
         publisherJpa.save(publisherEntity);

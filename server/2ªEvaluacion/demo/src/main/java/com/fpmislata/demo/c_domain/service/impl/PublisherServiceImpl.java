@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.fpmislata.demo.a_common.exception.ResourceAlreadyExistsException;
-import com.fpmislata.demo.a_common.exception.ResourceNotFoundException;
 import com.fpmislata.demo.c_domain.model.Publisher;
 import com.fpmislata.demo.c_domain.repository.PublisherRepository;
 import com.fpmislata.demo.c_domain.service.interfaces.PublisherService;
@@ -25,19 +23,17 @@ public class PublisherServiceImpl implements PublisherService {
     }
 
     @Override
-    public Publisher findById(Integer id) {
-        return publisherRepository
-                .findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Publisher not found"));
+    public Optional<Publisher> findById(Integer id) {
+        return publisherRepository.findById(id);
+    }
+
+    @Override
+    public Optional<Publisher> findByName(String name) {
+        return publisherRepository.findByName(name);
     }
 
     @Override
     public void create(Publisher publisher) {
-        Optional<Publisher> publisherOptional = publisherRepository.findById(publisher.getId());
-        if (publisherOptional.isPresent()) {
-            throw new ResourceAlreadyExistsException("Publisher already exists");
-        }
-
         publisherRepository.save(publisher);
     }
 
