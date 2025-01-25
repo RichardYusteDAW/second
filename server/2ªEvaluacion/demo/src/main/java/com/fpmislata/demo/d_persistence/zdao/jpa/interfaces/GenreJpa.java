@@ -10,7 +10,7 @@ import com.fpmislata.demo.d_persistence.zdao.jpa.model.GenreEntity;
 
 public interface GenreJpa extends JpaRepository<GenreEntity, Integer> {
 
-        @Query(value = "SELECT * FROM genres g WHERE name_es = :name OR name_en = :name", nativeQuery = true)
+        @Query(value = "SELECT * FROM genres WHERE name_es = :name OR name_en = :name", nativeQuery = true)
         Optional<GenreEntity> findByName(String name);
 
         @Query(value = "SELECT g.* FROM genres g" +

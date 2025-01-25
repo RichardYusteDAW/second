@@ -32,6 +32,13 @@ public class CategoryDaoImpl implements CategoryDao {
     }
 
     @Override
+    public Optional<Category> findByName(String name) {
+        return categoryJpa
+                .findByName(name)
+                .map(c -> CategoryMapper.INSTANCE.toCategory(c));
+    }
+
+    @Override
     public void save(Category category) {
         CategoryEntity categoryEntity = CategoryMapper.INSTANCE.toCategoryEntity(category);
         categoryJpa.save(categoryEntity);

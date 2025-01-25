@@ -28,6 +28,11 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     }
 
     @Override
+    public Optional<Category> findByName(String name) {
+        return categoryDao.findByName(name);
+    }
+
+    @Override
     public void save(Category category) {
         categoryDao.save(category);
     }

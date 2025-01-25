@@ -11,6 +11,8 @@ public interface CategoryRepository {
 
     Optional<Category> findById(Integer id);
 
+    Optional<Category> findByName(String name);
+
     void save(Category category);
 
     void delete(Integer id);

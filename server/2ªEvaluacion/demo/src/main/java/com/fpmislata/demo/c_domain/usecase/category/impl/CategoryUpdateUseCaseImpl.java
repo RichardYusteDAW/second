@@ -1,6 +1,7 @@
 package com.fpmislata.demo.c_domain.usecase.category.impl;
 
 import com.fpmislata.demo.a_common.annotation.UseCase;
+import com.fpmislata.demo.a_common.exception.ResourceNotFoundException;
 import com.fpmislata.demo.c_domain.model.Category;
 import com.fpmislata.demo.c_domain.service.interfaces.CategoryService;
 import com.fpmislata.demo.c_domain.usecase.category.interfaces.CategoryUpdateUseCase;
@@ -15,6 +16,10 @@ public class CategoryUpdateUseCaseImpl implements CategoryUpdateUseCase {
 
     @Override
     public void execute(Category category) {
+        categoryService
+                .findById(category.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
+
         categoryService.update(category);
     }
 }
