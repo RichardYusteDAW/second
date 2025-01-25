@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.fpmislata.demo.a_common.exception.ResourceNotFoundException;
 import com.fpmislata.demo.c_domain.model.Author;
 import com.fpmislata.demo.c_domain.repository.AuthorRepository;
 import com.fpmislata.demo.c_domain.service.interfaces.AuthorService;
@@ -39,28 +38,27 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author findById(Integer id) {
-        return authorRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Author not found"));
+    public Optional<Author> findById(Integer id) {
+        return authorRepository.findById(id);
+    }
+
+    @Override
+    public Optional<Author> findByName(String name) {
+        return authorRepository.findByName(name);
     }
 
     @Override
     public void create(Author author) {
-        Optional<Author> authorOptional = authorRepository.findById(author.getId());
-        if (authorOptional.isPresent()) {
-            throw new ResourceNotFoundException("Author already exists");
-        }
         authorRepository.save(author);
     }
 
     @Override
     public void update(Author author) {
-        findById(author.getId());
         authorRepository.save(author);
     }
 
     @Override
     public void delete(Integer id) {
-        findById(id);
         authorRepository.delete(id);
     }
 }

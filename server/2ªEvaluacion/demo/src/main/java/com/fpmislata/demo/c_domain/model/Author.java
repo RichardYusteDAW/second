@@ -16,8 +16,8 @@ public class Author {
     private String nationality;
     private String biographyEs;
     private String biographyEn;
-    private int birthYear;
-    private int deathYear;
+    private Integer birthYear;
+    private Integer deathYear;
 
     public String getBiography() {
         String language = LanguageUtils.getCurrentLanguage();

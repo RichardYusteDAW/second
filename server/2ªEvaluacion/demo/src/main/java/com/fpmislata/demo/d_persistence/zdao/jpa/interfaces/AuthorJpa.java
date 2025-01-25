@@ -1,6 +1,7 @@
 package com.fpmislata.demo.d_persistence.zdao.jpa.interfaces;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -8,6 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import com.fpmislata.demo.d_persistence.zdao.jpa.model.AuthorEntity;
 
 public interface AuthorJpa extends JpaRepository<AuthorEntity, Integer> {
+
+        Optional<AuthorEntity> findByName(String name);
 
         @Query(value = "SELECT a.* FROM authors a" +
                         "JOIN books_authors ON authors.id = author_id " +

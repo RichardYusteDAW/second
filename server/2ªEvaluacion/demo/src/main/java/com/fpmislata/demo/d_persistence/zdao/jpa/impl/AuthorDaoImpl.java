@@ -32,6 +32,13 @@ public class AuthorDaoImpl implements AuthorDao {
     }
 
     @Override
+    public Optional<Author> findByName(String name) {
+        return authorJpa
+                .findByName(name)
+                .map(a -> AuthorMapper.INSTANCE.toAuthor(a));
+    }
+
+    @Override
     public void save(Author author) {
         authorJpa.save(AuthorMapper.INSTANCE.toAuthorEntity(author));
     }

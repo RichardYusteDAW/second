@@ -23,6 +23,11 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     }
 
     @Override
+    public Optional<Author> findByName(String name) {
+        return authorDao.findByName(name);
+    }
+
+    @Override
     public List<Author> findAllByIsbn(String isbn) {
         return authorDao.findAllByIsbn(isbn);
     }
