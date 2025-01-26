@@ -47,8 +47,8 @@ public class GenreController {
     }
 
     @GetMapping("/{id}")
-    public GenreComplete findById(@PathVariable String id) {
-        Genre genre = genreFindByIdUseCase.execute(Integer.parseInt(id));
+    public GenreComplete findById(@PathVariable Integer id) {
+        Genre genre = genreFindByIdUseCase.execute(id);
         return GenreMapper.INSTANCE.toGenreComplete(genre);
     }
 
@@ -58,14 +58,14 @@ public class GenreController {
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable String id, @Valid @RequestBody GenreComplete genreComplete) {
+    public void update(@PathVariable Integer id, @Valid @RequestBody GenreComplete genreComplete) {
         Genre genre = GenreMapper.INSTANCE.toGenre(genreComplete);
-        genre.setId(Integer.parseInt(id));
+        genre.setId(id);
         genreUpdateUseCase.execute(genre);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable String id) {
-        genreDeleteUseCase.execute(Integer.parseInt(id));
+    public void delete(@PathVariable Integer id) {
+        genreDeleteUseCase.execute(id);
     }
 }

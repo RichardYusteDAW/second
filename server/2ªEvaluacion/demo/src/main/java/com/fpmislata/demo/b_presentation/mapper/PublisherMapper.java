@@ -14,7 +14,7 @@ public interface PublisherMapper {
 
     PublisherMapper INSTANCE = Mappers.getMapper(PublisherMapper.class);
 
-    Publisher toPublisher(PublisherComplete publisher);
+    Publisher toPublisher(PublisherComplete publisherComplete);
 
     PublisherSimple toPublisherSimple(Publisher publisher);
 

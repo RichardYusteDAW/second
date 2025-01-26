@@ -25,7 +25,7 @@ public class BookEntity {
     @Column(name = "synopsis_en")
     private String synopsisEn;
     private BigDecimal price;
-    private float discount;
+    private Float discount;
     private String cover;
 
     @ManyToOne(fetch = FetchType.LAZY)

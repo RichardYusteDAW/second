@@ -47,8 +47,8 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public CategoryComplete findById(@PathVariable String id) {
-        Category category = categoryFindByIdUseCase.execute(Integer.parseInt(id));
+    public CategoryComplete findById(@PathVariable Integer id) {
+        Category category = categoryFindByIdUseCase.execute(id);
         return CategoryMapper.INSTANCE.toCategoryComplete(category);
     }
 
@@ -58,14 +58,14 @@ public class CategoryController {
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable String id, @Valid @RequestBody CategoryComplete categoryComplete) {
+    public void update(@PathVariable Integer id, @Valid @RequestBody CategoryComplete categoryComplete) {
         Category category = CategoryMapper.INSTANCE.toCategory(categoryComplete);
-        category.setId(Integer.parseInt(id));
+        category.setId(id);
         categoryUpdateUseCase.execute(category);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable String id) {
-        categoryDeleteUseCase.execute(Integer.parseInt(id));
+    public void delete(@PathVariable Integer id) {
+        categoryDeleteUseCase.execute(id);
     }
 }

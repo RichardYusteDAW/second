@@ -47,8 +47,8 @@ public class PublisherController {
     }
 
     @GetMapping("/{id}")
-    public PublisherComplete findById(@PathVariable String id) {
-        Publisher publisher = publisherFindByIdUseCase.execute(Integer.parseInt(id));
+    public PublisherComplete findById(@PathVariable Integer id) {
+        Publisher publisher = publisherFindByIdUseCase.execute(id);
         return PublisherMapper.INSTANCE.toPublisherComplete(publisher);
     }
 
@@ -58,14 +58,14 @@ public class PublisherController {
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable String id, @Valid @RequestBody PublisherComplete publisherComplete) {
+    public void update(@PathVariable Integer id, @Valid @RequestBody PublisherComplete publisherComplete) {
         Publisher publisher = PublisherMapper.INSTANCE.toPublisher(publisherComplete);
-        publisher.setId(Integer.parseInt(id));
+        publisher.setId(id);
         publisherUpdateUseCase.execute(publisher);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable String id) {
-        publisherDeleteUseCase.execute(Integer.parseInt(id));
+    public void delete(@PathVariable Integer id) {
+        publisherDeleteUseCase.execute(id);
     }
 }

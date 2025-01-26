@@ -21,7 +21,7 @@ public class Book {
     private String synopsisEs;
     private String synopsisEn;
     private BigDecimal price;
-    private float discount;
+    private Float discount;
     private String cover;
     private Publisher publisher;
     private Category category;

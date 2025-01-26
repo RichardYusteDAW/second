@@ -47,8 +47,8 @@ public class AuthorController {
     }
 
     @GetMapping("/{id}")
-    public AuthorComplete findById(@PathVariable String id) {
-        Author author = authorFindByIdUseCase.execute(Integer.parseInt(id));
+    public AuthorComplete findById(@PathVariable Integer id) {
+        Author author = authorFindByIdUseCase.execute(id);
         return AuthorMapper.INSTANCE.toAuthorComplete(author);
     }
 
@@ -58,14 +58,14 @@ public class AuthorController {
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable String id, @Valid @RequestBody AuthorComplete authorComplete) {
+    public void update(@PathVariable Integer id, @Valid @RequestBody AuthorComplete authorComplete) {
         Author author = AuthorMapper.INSTANCE.toAuthor(authorComplete);
-        author.setId(Integer.parseInt(id));
+        author.setId(id);
         authorUpdateUseCase.execute(author);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable String id) {
-        authorDeleteUseCase.execute(Integer.parseInt(id));
+    public void delete(@PathVariable Integer id) {
+        authorDeleteUseCase.execute(id);
     }
 }
