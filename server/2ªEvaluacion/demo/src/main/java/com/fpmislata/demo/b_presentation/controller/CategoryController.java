@@ -3,6 +3,8 @@ package com.fpmislata.demo.b_presentation.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,31 +43,42 @@ public class CategoryController {
     public static final String ENDPOINT = "/categories";
 
     @GetMapping()
-    public List<CategorySimple> findAll() {
+    public ResponseEntity<List<CategorySimple>> findAll() {
         List<Category> categoryList = categoryFindAllUseCase.execute();
-        return CategoryMapper.INSTANCE.toCategorySimpleList(categoryList);
+        List<CategorySimple> categorySimpleList = CategoryMapper.INSTANCE.toCategorySimpleList(categoryList);
+
+        return ResponseEntity.ok(categorySimpleList);
     }
 
     @GetMapping("/{id}")
-    public CategoryComplete findById(@PathVariable Integer id) {
+    public ResponseEntity<CategoryComplete> findById(@PathVariable Integer id) {
         Category category = categoryFindByIdUseCase.execute(id);
-        return CategoryMapper.INSTANCE.toCategoryComplete(category);
+        CategoryComplete categoryComplete = CategoryMapper.INSTANCE.toCategoryComplete(category);
+
+        return ResponseEntity.ok(categoryComplete);
     }
 
     @PostMapping()
-    public void create(@Valid @RequestBody CategoryComplete categoryComplete) {
+    public ResponseEntity<Void> create(@Valid @RequestBody CategoryComplete categoryComplete) {
         categoryCreateUseCase.execute(CategoryMapper.INSTANCE.toCategory(categoryComplete));
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable Integer id, @Valid @RequestBody CategoryComplete categoryComplete) {
+    public ResponseEntity<Void> update(@PathVariable Integer id,
+            @Valid @RequestBody CategoryComplete categoryComplete) {
         Category category = CategoryMapper.INSTANCE.toCategory(categoryComplete);
         category.setId(id);
         categoryUpdateUseCase.execute(category);
+
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
         categoryDeleteUseCase.execute(id);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

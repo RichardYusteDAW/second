@@ -3,6 +3,8 @@ package com.fpmislata.demo.b_presentation.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +23,7 @@ import com.fpmislata.demo.c_domain.usecase.book.interfaces.BookFindAllUseCase;
 import com.fpmislata.demo.c_domain.usecase.book.interfaces.BookFindByIdUseCase;
 import com.fpmislata.demo.c_domain.usecase.book.interfaces.BookUpdateUseCase;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -40,32 +43,42 @@ public class BookController {
     public static final String ENDPOINT = "/books";
 
     @GetMapping()
-    public List<BookSimple> findAll() {
+    public ResponseEntity<List<BookSimple>> findAll() {
         List<Book> bookList = bookFindAllUseCase.execute();
-        return BookMapper.INSTANCE.toBookSimpleList(bookList);
+        List<BookSimple> bookSimpleList = BookMapper.INSTANCE.toBookSimpleList(bookList);
+
+        return ResponseEntity.ok(bookSimpleList);
     }
 
     @GetMapping("/{id}")
-    public BookComplete findById(@PathVariable Integer id) {
+    public ResponseEntity<BookComplete> findById(@PathVariable Integer id) {
         Book book = bookFindByIdUseCase.execute(id);
-        return BookMapper.INSTANCE.toBookComplete(book);
+        BookComplete bookComplete = BookMapper.INSTANCE.toBookComplete(book);
+
+        return ResponseEntity.ok(bookComplete);
     }
 
     @PostMapping()
-    public void create(@RequestBody BookComplete bookComplete) {
+    public ResponseEntity<Void> create(@Valid @RequestBody BookComplete bookComplete) {
         Book book = BookMapper.INSTANCE.toBook(bookComplete);
         bookCreateUseCase.execute(book);
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable Integer id, @RequestBody BookComplete bookComplete) {
+    public ResponseEntity<Void> update(@PathVariable Integer id, @Valid @RequestBody BookComplete bookComplete) {
         Book book = BookMapper.INSTANCE.toBook(bookComplete);
         book.setId(id);
         bookUpdateUseCase.execute(book);
+
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
         bookDeleteUseCase.execute(id);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

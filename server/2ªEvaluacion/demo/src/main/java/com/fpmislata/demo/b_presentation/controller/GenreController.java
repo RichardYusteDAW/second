@@ -3,6 +3,8 @@ package com.fpmislata.demo.b_presentation.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,31 +43,41 @@ public class GenreController {
     public static final String ENDPOINT = "/genres";
 
     @GetMapping()
-    public List<GenreSimple> findAll() {
+    public ResponseEntity<List<GenreSimple>> findAll() {
         List<Genre> genreList = genreFindAllUseCase.execute();
-        return GenreMapper.INSTANCE.toGenreSimpleList(genreList);
+        List<GenreSimple> genreSimpleList = GenreMapper.INSTANCE.toGenreSimpleList(genreList);
+
+        return ResponseEntity.ok(genreSimpleList);
     }
 
     @GetMapping("/{id}")
-    public GenreComplete findById(@PathVariable Integer id) {
+    public ResponseEntity<GenreComplete> findById(@PathVariable Integer id) {
         Genre genre = genreFindByIdUseCase.execute(id);
-        return GenreMapper.INSTANCE.toGenreComplete(genre);
+        GenreComplete genreComplete = GenreMapper.INSTANCE.toGenreComplete(genre);
+
+        return ResponseEntity.ok(genreComplete);
     }
 
     @PostMapping()
-    public void create(@Valid @RequestBody GenreComplete genreComplete) {
+    public ResponseEntity<Void> create(@Valid @RequestBody GenreComplete genreComplete) {
         genreCreateUseCase.execute(GenreMapper.INSTANCE.toGenre(genreComplete));
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable Integer id, @Valid @RequestBody GenreComplete genreComplete) {
+    public ResponseEntity<Void> update(@PathVariable Integer id, @Valid @RequestBody GenreComplete genreComplete) {
         Genre genre = GenreMapper.INSTANCE.toGenre(genreComplete);
         genre.setId(id);
         genreUpdateUseCase.execute(genre);
+
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
         genreDeleteUseCase.execute(id);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

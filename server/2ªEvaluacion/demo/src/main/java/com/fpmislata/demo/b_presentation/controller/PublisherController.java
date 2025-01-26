@@ -3,6 +3,8 @@ package com.fpmislata.demo.b_presentation.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,31 +43,42 @@ public class PublisherController {
     public static final String ENDPOINT = "/publishers";
 
     @GetMapping()
-    public List<PublisherSimple> findAll() {
+    public ResponseEntity<List<PublisherSimple>> findAll() {
         List<Publisher> publisherList = publisherFindAllUseCase.execute();
-        return PublisherMapper.INSTANCE.toPublisherSimpleList(publisherList);
+        List<PublisherSimple> publisherSimpleList = PublisherMapper.INSTANCE.toPublisherSimpleList(publisherList);
+
+        return ResponseEntity.ok(publisherSimpleList);
     }
 
     @GetMapping("/{id}")
-    public PublisherComplete findById(@PathVariable Integer id) {
+    public ResponseEntity<PublisherComplete> findById(@PathVariable Integer id) {
         Publisher publisher = publisherFindByIdUseCase.execute(id);
-        return PublisherMapper.INSTANCE.toPublisherComplete(publisher);
+        PublisherComplete publisherComplete = PublisherMapper.INSTANCE.toPublisherComplete(publisher);
+
+        return ResponseEntity.ok(publisherComplete);
     }
 
     @PostMapping()
-    public void create(@Valid @RequestBody PublisherComplete publisherComplete) {
+    public ResponseEntity<Void> create(@Valid @RequestBody PublisherComplete publisherComplete) {
         publisherCreateUseCase.execute(PublisherMapper.INSTANCE.toPublisher(publisherComplete));
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable Integer id, @Valid @RequestBody PublisherComplete publisherComplete) {
+    public ResponseEntity<Void> update(@PathVariable Integer id,
+            @Valid @RequestBody PublisherComplete publisherComplete) {
         Publisher publisher = PublisherMapper.INSTANCE.toPublisher(publisherComplete);
         publisher.setId(id);
         publisherUpdateUseCase.execute(publisher);
+
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
         publisherDeleteUseCase.execute(id);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
