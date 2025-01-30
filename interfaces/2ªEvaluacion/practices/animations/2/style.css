@@ -1,0 +1,12 @@
+.c-cuadrado {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    font-size: 12px;
+
+    transition: width 3s, font-size 3s;
+}
+
+.c-cuadrado:hover {
+    width: 600px;
+}

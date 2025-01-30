@@ -1,0 +1,19 @@
+body {
+    background-color: lightgrey;
+}
+
+input {
+    width: 400px;
+    height: 50px;
+    background-color: white;
+    border: 2px solid transparent;
+
+    transition: background-color 1s, border-color 1s, border-radius 1s, box-shadow 1s;
+}
+
+input:focus {
+    background-color: rgb(123, 171, 235);
+    border-color: rgb(123, 171, 235);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(123, 171, 235);
+}
