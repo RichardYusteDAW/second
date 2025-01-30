@@ -4,7 +4,7 @@
     background-color: red;
     font-size: 12px;
 
-    transition: width 3s, font-size 3s;
+    transition: width 3s;
 }
 
 .c-cuadrado:hover {

@@ -1,0 +1,30 @@
+button {
+    background-color: #226d93;
+    color: white;
+    padding: 10px;
+    border: 2px solid white;
+    cursor: pointer;
+    width: 200px;
+    height: 70px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+@keyframes colorin {
+    0% {
+        color: white;
+    }
+
+    100% {
+        color: red;
+    }
+}
+
+.rojo {
+    animation: colorin 2s ease-in-out 3s infinite;
+}

@@ -1,0 +1,17 @@
+body {
+    background-image: url(./img/carretera.jpeg);
+}
+
+.coche {
+    width: 15px;
+    height: 35px;
+    position: absolute;
+    top: 580px;
+    left: 320px;
+
+    transition: top 2s ease-in-out;
+}
+
+.coche:hover {
+    top: 430px;
+}

@@ -1,0 +1,85 @@
+body {
+    background-color: white;
+    background-image: url(./img/estacion-espacial.jpg);
+    background-size: cover;
+}
+
+.astronauta {
+    width: 200px;
+    height: 200px;
+
+    position: absolute;
+    top: 50%;
+    left: 10%;
+}
+
+button {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+@keyframes mover {
+
+    0%,
+    100% {
+        top: 50%;
+        left: 10%;
+    }
+
+    10% {
+        top: 35%;
+        left: 20%;
+    }
+
+    20% {
+        top: 20%;
+        left: 30%;
+    }
+
+    30% {
+        top: 5%;
+        left: 40%;
+    }
+
+    40% {
+        top: 25%;
+        left: 50%;
+    }
+
+    50% {
+        top: 45%;
+        left: 40%;
+    }
+
+    60% {
+        top: 60%;
+        left: 30%;
+    }
+
+    70% {
+        top: 70%;
+        left: 20%;
+    }
+
+    80% {
+        top: 55%;
+        left: 30%;
+    }
+
+    90% {
+        top: 30%;
+        left: 20%;
+    }
+}
+
+.movimiento {
+    animation: mover 20s linear infinite;
+}

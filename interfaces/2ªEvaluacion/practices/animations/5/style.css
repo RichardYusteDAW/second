@@ -1,0 +1,93 @@
+.canasta {
+    width: 500px;
+    height: 600px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.bola {
+    background-color: red;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 30px;
+    right: 500px;
+    z-index: 2;
+}
+
+button {
+    padding: 10px;
+    background-color: rgb(93, 0, 255);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+@keyframes mover {
+    0% {
+        bottom: 90px;
+        right: 490px;
+    }
+
+    10% {
+        bottom: 120px;
+        right: 475px;
+    }
+
+    20% {
+        bottom: 170px;
+        right: 460px;
+    }
+
+    30% {
+        bottom: 220px;
+        right: 440px;
+    }
+
+    40% {
+        bottom: 270px;
+        right: 420px;
+    }
+
+    50% {
+        bottom: 320px;
+        right: 400px;
+    }
+
+    60% {
+        bottom: 360px;
+        right: 380px;
+    }
+
+    70% {
+        bottom: 390px;
+        right: 360px;
+    }
+
+    80% {
+        bottom: 410px;
+        right: 340px;
+    }
+
+    90% {
+        bottom: 430px;
+        right: 320px;
+    }
+
+    100% {
+        bottom: 410px;
+        right: 300px;
+    }
+}
+
+.movimiento {
+    animation: mover 2s linear alternate infinite;
+}
