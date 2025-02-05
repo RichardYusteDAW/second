@@ -1,0 +1,11 @@
+<div class="card" style="width: 18rem;">
+    <img src="img/{{article.id}}.jpg" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title">{{article.name}} ({{article.units}})</h5>
+        <p class="card-text">{{article.description}}</p>
+        <b>
+            <p class="card-text text-center">{{article.price}}</p>
+        </b>
+    </div>
+    <button class="btn btn-primary" [disabled]="article.units == 0">Comprar</button>
+</div>

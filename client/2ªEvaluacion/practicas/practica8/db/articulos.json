@@ -1,95 +1,95 @@
 {
-    "articles": [
-        {
-            "id": "m1",
-            "name": "Galaxy A32",
-            "description": "4GB + 128GB libre",
-            "units": 10,
-            "price": 229
-        },
-        {
-            "id": "m2",
-            "name": "Oppo A94",
-            "description": "8GB + 128GB libre",
-            "units": 10,
-            "price": 269
-        },
-        {
-            "id": "m3",
-            "name": "Galaxy S22",
-            "description": "5G Amoled libre",
-            "units": 10,
-            "price": 859
-        },
-        {
-            "id": "m4",
-            "name": "Apple iPhone",
-            "description": "14 Pro móvil libre",
-            "units": 0,
-            "price": 339
-        },
-        {
-            "id": "m5",
-            "name": "Galaxy Z Flip4",
-            "description": "5G móvil libre",
-            "units": 10,
-            "price": 1990
-        },
-        {
-            "id": "m6",
-            "name": "Note 11",
-            "description": "6GB + 128GB",
-            "units": 10,
-            "price": 300
-        },
-        {
-            "id": "m7",
-            "name": "Realme 9",
-            "description": "8GB + 128GB",
-            "units": 10,
-            "price": 300
-        },
-        {
-            "id": "p1",
-            "name": "Asus Zen",
-            "description": "i5 16Gb SSD",
-            "units": 10,
-            "price": 900
-        },
-        {
-            "id": "p2",
-            "name": "HP Pavillion",
-            "description": "SSD Windows 11",
-            "units": 10,
-            "price": 750
-        },
-        {
-            "id": "p3",
-            "name": "MacBook",
-            "description": "MacOs 13,3",
-            "units": 10,
-            "price": 1115
-        },
-        {
-            "id": "t1",
-            "name": "Xiaomi P1E",
-            "description": "Android 9 HDR10",
-            "units": 10,
-            "price": 300
-        },
-        {
-            "id": "t2",
-            "name": "Toshiba 55UAG",
-            "description": "Android UHD 4K",
-            "units": 10,
-            "price": 450
-        },
-        {
-            "id": "t3",
-            "name": "Samsung UE305",
-            "description": "Full HD, HDR",
-            "units": 10,
-            "price": 35
-        }
-    ]
+  "articles": [
+    {
+      "id": "m1",
+      "name": "Galaxy A32",
+      "description": "4GB + 128GB libre",
+      "units": 10,
+      "price": 229
+    },
+    {
+      "id": "m2",
+      "name": "Oppo A94",
+      "description": "8GB + 128GB libre",
+      "units": 10,
+      "price": 269
+    },
+    {
+      "id": "m3",
+      "name": "Galaxy S22",
+      "description": "5G Amoled libre",
+      "units": 10,
+      "price": 859
+    },
+    {
+      "id": "m4",
+      "name": "Apple iPhone",
+      "description": "14 Pro móvil libre",
+      "units": 0,
+      "price": 339
+    },
+    {
+      "id": "m5",
+      "name": "Galaxy Z Flip4",
+      "description": "5G móvil libre",
+      "units": 10,
+      "price": 1990
+    },
+    {
+      "id": "m6",
+      "name": "Note 11",
+      "description": "6GB + 128GB",
+      "units": 10,
+      "price": 300
+    },
+    {
+      "id": "m7",
+      "name": "Realme 9",
+      "description": "8GB + 128GB",
+      "units": 10,
+      "price": 300
+    },
+    {
+      "id": "p1",
+      "name": "Asus Zen",
+      "description": "i5 16Gb SSD",
+      "units": 10,
+      "price": 900
+    },
+    {
+      "id": "p2",
+      "name": "HP Pavillion",
+      "description": "SSD Windows 11",
+      "units": 10,
+      "price": 750
+    },
+    {
+      "id": "p3",
+      "name": "MacBook",
+      "description": "MacOs 13,3",
+      "units": 10,
+      "price": 1115
+    },
+    {
+      "id": "t1",
+      "name": "Xiaomi P1E",
+      "description": "Android 9 HDR10",
+      "units": 10,
+      "price": 300
+    },
+    {
+      "id": "t2",
+      "name": "Toshiba 55UAG",
+      "description": "Android UHD 4K",
+      "units": 10,
+      "price": 450
+    },
+    {
+      "id": "t3",
+      "name": "Samsung UE305",
+      "description": "Full HD, HDR",
+      "units": 10,
+      "price": 35
+    }
+  ]
 }

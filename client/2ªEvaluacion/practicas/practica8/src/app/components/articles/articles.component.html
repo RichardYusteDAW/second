@@ -5,7 +5,9 @@
         <th>Description</th>
         <th>Units</th>
         <th>Price</th>
-        <th></th>
+        <th>
+            <button class="btn btn-success px-4" (click)="newArticle()">NEW</button>
+        </th>
     </tr>
     @for(art of articles; track art.id){
     <tr>
@@ -15,8 +17,8 @@
         <td>{{art.units}}</td>
         <td>{{art.price}}</td>
         <td>
-            <button class="btn btn-primary">Show</button>
-            <button class="btn btn-danger ms-2">Delete</button>
+            <button class="btn btn-primary" (click)="showArticle(art.id)">Show</button>
+            <button class="btn btn-danger ms-2" (click)="deleteArticle(art.id)">Delete</button>
         </td>
     </tr>
     }
