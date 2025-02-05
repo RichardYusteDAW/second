@@ -1,0 +1,23 @@
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Units</th>
+        <th>Price</th>
+        <th></th>
+    </tr>
+    @for(art of articles; track art.id){
+    <tr>
+        <td>{{art.id}}</td>
+        <td>{{art.name}}</td>
+        <td>{{art.description}}</td>
+        <td>{{art.units}}</td>
+        <td>{{art.price}}</td>
+        <td>
+            <button class="btn btn-primary">Show</button>
+            <button class="btn btn-danger ms-2">Delete</button>
+        </td>
+    </tr>
+    }
+</table>
