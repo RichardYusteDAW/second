@@ -18,6 +18,7 @@
         <td>{{art.price}}</td>
         <td>
             <button class="btn btn-primary" (click)="showArticle(art.id)">Show</button>
+            <button class="btn btn-info ms-2" (click)="updateArticle(art.id)">Update</button>
             <button class="btn btn-danger ms-2" (click)="deleteArticle(art.id)">Delete</button>
         </td>
     </tr>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Article } from '../../models/article';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ArticleService } from '../../service/article.service';
 
 @Component({
   selector: 'app-articles',
@@ -11,33 +11,37 @@ import { Router } from '@angular/router';
 })
 export class ArticlesComponent {
 
-  articles!: Array<Article>;
+  articles!: Article[];
   url: string = 'http://localhost:3000/articles';
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private articleService: ArticleService, private router: Router) { }
 
   ngOnInit() {
     this.loadArticles();
   }
 
-  loadArticles() {
-    this.http.get(this.url).subscribe({
-      next: (data: any) => this.articles = data,
+  loadArticles(): void {
+    this.articleService.findAll().subscribe({
+      next: data => this.articles = data,
       error: error => console.log(error)
     });
   }
 
-  newArticle() {
+  newArticle(): void {
     this.router.navigate(['/articles/new']);
   }
 
-  showArticle(id: string) {
-    this.router.navigate(['/article', id]);
+  showArticle(id: string): void {
+    this.router.navigate(['/articles', id]);
   }
 
-  deleteArticle(id: string) {
-    this.http.delete(`${this.url}/${id}`).subscribe({
-      next: () => console.log('Article deleted'),
+  updateArticle(id: string): void {
+    this.router.navigate(['/articles/update', id]);
+  }
+
+  deleteArticle(id: string): void {
+    this.articleService.delete(id).subscribe({
+      next: () => this.loadArticles(),
       error: error => console.log(error)
     });
     this.loadArticles();
