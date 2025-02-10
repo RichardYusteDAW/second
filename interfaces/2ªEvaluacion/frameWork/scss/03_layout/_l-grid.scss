@@ -1,0 +1,163 @@
+/* =========== GRID =========== */
+.l-grid {
+    display: grid;
+
+    // Configuración básica de columnas
+    @for $i from 1 through 12 {
+        &--cols-#{ $i } {
+            grid-template-columns: repeat($i, 1fr)
+        }
+    }
+
+    &--cols-auto {
+        grid-template-columns: auto;
+    }
+
+    // Configuración básica de columnas responsivo
+    @each $name, $value in $breakpoints {
+        @media (min-width: #{$value}px) {
+            @for $i from 1 through 12 {
+                &--cols-#{ $i }\@#{$name} {
+                    grid-template-columns: repeat($i, auto);
+                }
+            }
+        }
+    }
+
+    // Span de columnas
+    @for $i from 1 through 12 {
+        &--cols-span-#{ $i } {
+            grid-column: span $i;
+        }
+    }
+
+    // Span de columnas responsivo
+    @each $name, $value in $breakpoints {
+        @media (min-width: #{$value}px) {
+            @for $i from 1 through 12 {
+                &--cols-span-#{ $i }\@#{$name} {
+                    grid-column: span $i;
+                }
+            }
+        }
+    }
+
+
+
+    // Configuración básica de filas
+    @for $i from 1 through 12 {
+        &--rows-#{ $i } {
+            grid-template-rows: repeat($i, 1fr);
+        }
+    }
+
+    &--rows-auto {
+        grid-template-rows: auto;
+    }
+
+    // Span de filas
+    @for $i from 1 through 12 {
+        &--rows-span-#{ $i } {
+            grid-row: span $i;
+        }
+    }
+
+    // Espaciado entre filas y columnas (gap)
+    @each $key, $value in $gaps {
+        &--gap-#{ $key } {
+            grid-gap: $value;
+        }
+    }
+
+    // Justificación de contenido en el eje principal (horizontal)
+    &--justify-start {
+        justify-items: start;
+    }
+
+    &--justify-center {
+        justify-items: center;
+    }
+
+    &--justify-end {
+        justify-items: end;
+    }
+
+    &--justify-stretch {
+        justify-items: stretch;
+    }
+
+    &--justify-between {
+        justify-items: space-between;
+    }
+
+    &--justify-around {
+        justify-items: space-around;
+    }
+
+    &--justify-evenly {
+        justify-items: space-evenly;
+    }
+
+    // Alineación de contenido en el eje transversal (vertical)
+    &--align-start {
+        align-items: start;
+    }
+
+    &--align-center {
+        align-items: center;
+    }
+
+    &--align-end {
+        align-items: end;
+    }
+
+    &--align-stretch {
+        align-items: stretch;
+    }
+
+    &--align-between {
+        align-items: space-between;
+    }
+
+    &--align-around {
+        align-items: space-around;
+    }
+
+    &--align-evenly {
+        align-items: space-evenly;
+    }
+
+    // Posicionamiento de elementos individuales dentro del grid
+    &--align-items-start {
+        align-items: start;
+    }
+
+    &--align-items-center {
+        align-items: center;
+    }
+
+    &--align-items-end {
+        align-items: end;
+    }
+
+    &--align-items-stretch {
+        align-items: stretch; // default
+    }
+
+    // Distribución de elementos individuales en el eje horizontal
+    &--justify-items-start {
+        justify-items: start;
+    }
+
+    &--justify-items-center {
+        justify-items: center;
+    }
+
+    &--justify-items-end {
+        justify-items: end;
+    }
+
+    &--justify-items-stretch {
+        justify-items: stretch; // default
+    }
+}

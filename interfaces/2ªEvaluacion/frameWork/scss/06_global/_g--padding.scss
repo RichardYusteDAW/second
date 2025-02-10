@@ -1,0 +1,47 @@
+@each $name, $value in $paddings {
+    .g--padding-#{$name} {
+        padding: var(--padding-#{$name})
+    }
+
+    .g--padding-top-#{$name} {
+        padding-top: var(--padding-#{$name})
+    }
+
+    .g--padding-bottom-#{$name} {
+        padding-bottom: var(--padding-#{$name})
+    }
+
+    .g--padding-right-#{$name} {
+        padding-right: var(--padding-#{$name})
+    }
+
+    .g--padding-left-#{$name} {
+        padding-left: var(--padding-#{$name})
+    }
+}
+
+@each $name-breakpoint, $value-breakpoint in $breakpoints {
+    @media (min-width: #{$value-breakpoint}px) {
+        @each $name, $value in $paddings {
+            .g--padding-#{$name}\@#{$name-breakpoint} {
+                padding: var(--padding-#{$name})
+            }
+
+            .g--padding-top-#{$name}\@#{$name-breakpoint} {
+                padding-top: var(--padding-#{$name})
+            }
+
+            .g--padding-bottom-#{$name}\@#{$name-breakpoint} {
+                padding-bottom: var(--padding-#{$name})
+            }
+
+            .g--padding-right-#{$name}\@#{$name-breakpoint} {
+                padding-right: var(--padding-#{$name})
+            }
+
+            .g--padding-left-#{$name}\@#{$name-breakpoint} {
+                padding-left: var(--padding-#{$name})
+            }
+        }
+    }
+}

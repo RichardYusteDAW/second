@@ -1,0 +1,7 @@
+@each $name, $codes in $colors {
+    @for $i from 1 through length($codes) {
+        .g--border-color-#{$name}-#{$i*10} {
+            border-color: var(--color-#{$name}-#{$i*10})
+        }
+    }
+}
