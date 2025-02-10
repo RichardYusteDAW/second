@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        th {
+            text-align: center;
+        }
+
+        .c-title {
+            display: none;
+        }
+
+        @media (min-width: 499px) {
+            .c-title {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h3
+        class="c-title g--margin-5 g--margin-10@tablet g--margin-15@desktop g--margin-20@fulldesktop g--font-size-15 g--font-size-20@tablet g--font-size-25@desktop g--font-size-30@fulldesktop">
+        Menu</h3>
+    <div class="c-menu g--margin-5 g--margin-10@tablet g--margin-15@desktop g--margin-20@fulldesktop">
+        <ul class="c-menu__items c-menu__items--movil-hide">
+            <li class="c-menu__item g--padding-15@tablet g--padding-20@desktop"><a href="#home">Home</a></li>
+            <li class="c-menu__item g--padding-15@tablet g--padding-20@desktop"><a href="#news">News</a></li>
+            <li class="c-menu__item g--padding-15@tablet g--padding-20@desktop"><a href="#contact">Contact</a></li>
+            <li class="c-menu__item g--padding-15@tablet g--padding-20@desktop"><a href="#about">About</a></li>
+        </ul>
+    </div>
+
+    <div class="c-menu__hamburger">☰</div>
+
+    <img class="g--img-display-hidden g--img-display-visible@desktop c-menu g--margin-5 g--margin-10@tablet g--margin-15@desktop g--margin-20@fulldesktop"
+        src="./img/cr7.jpg">
+</body>
+
+</html>

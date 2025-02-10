@@ -1,0 +1,19 @@
+.g--img-display-hidden {
+    display: none;
+}
+
+.g--img-display-visible {
+    display: block;
+}
+
+@each $name, $value in $breakpoints {
+    @media(min-width: $value) {
+        .g--img-display-hidden#{$name} {
+            display: none;
+        }
+
+        .g--img-display-visible#{$name} {
+            display: block;
+        }
+    }
+}

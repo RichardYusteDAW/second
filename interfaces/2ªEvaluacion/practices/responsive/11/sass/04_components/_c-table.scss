@@ -1,0 +1,23 @@
+.c-table {
+
+    &--border {
+        border: 2px solid black;
+    }
+
+    &--shadow {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    &__header {
+
+        &--bg-color-danger {
+            background-color: red;
+        }
+    }
+
+}
+
+.c-table th,
+.c-table td {
+    text-align: center;
+}

@@ -1,0 +1,13 @@
+:root {
+    @each $witdh in $widths {
+        --width-#{$witdh}: #{$witdh}px;
+    }
+
+    @each $witdh in $widths {
+        --min-width-#{$witdh}: #{$witdh}px;
+    }
+
+    @each $witdh in $widths {
+        --max-width-#{$witdh}: #{$witdh}px;
+    }
+}

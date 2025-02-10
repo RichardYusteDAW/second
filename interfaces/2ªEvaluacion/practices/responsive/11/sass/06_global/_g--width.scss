@@ -1,0 +1,50 @@
+@each $width in $widths {
+    .g--width-#{$width} {
+        width: #{$width}px;
+    }
+}
+
+@each $name, $value in $breakpoints {
+    @media(min-width: $value) {
+
+        @each $width in $widths {
+            .g--width-#{$width}#{$name} {
+                width: var(--width-#{$width});
+            }
+        }
+    }
+}
+
+// @each $width in $widths {
+//     .g--min-width-#{$width} {
+//         min-width: #{$width}px;
+//     }
+// }
+
+// @each $breakpoint, $value in $breakpoints {
+//     @media(min-width: $value) {
+
+//         @each $width in $widths {
+//             .g--min-width-#{$width}#{$breakpoint} {
+//                 min-width: var(--min-width-#{$width});
+//             }
+//         }
+//     }
+// }
+
+// @each $width in $widths {
+//     .g--max-width-#{$width} {
+//         max-width: #{$width}px;
+//     }
+// }
+
+// @each $breakpoint, $value in $breakpoints {
+//     @media(min-width: $value) {
+
+//         @each $width in $widths {
+//             .g--max-width-#{$width}#{$breakpoint} {
+//                 max-width: var(--max-width-#{$width});
+//             }
+//         }
+//     }
+// }

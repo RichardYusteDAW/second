@@ -1,0 +1,55 @@
+.c-menu {
+    display: flex;
+    flex-direction: row;
+
+    & ul {
+        list-style-type: none;
+    }
+
+    &__hamburger {
+        display: none;
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__item {
+        padding: 10px;
+        color: #ffffff;
+        background-color: #c0c0c0;
+    }
+
+}
+
+@media (max-width: 499px) {
+
+    .c-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        &__hamburger {
+            display: block;
+        }
+
+        &__items {
+            flex-direction: column;
+        }
+
+        &__item {
+            padding-left: 2px;
+            background-color: #00ff00;
+        }
+
+        &__items--movil-visible {
+            display: block;
+        }
+
+        &__items--movil-hide {
+            display: none;
+        }
+    }
+
+}
