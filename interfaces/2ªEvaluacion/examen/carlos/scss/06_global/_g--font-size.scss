@@ -1,0 +1,15 @@
+@each $name, $value in $font-size {
+    .g--font-size-#{$name} {
+        font-size: var(--font-size-#{$name})
+    }
+}
+
+@each $name-breakpoint, $value-breakpoint in $breakpoints {
+    @media (min-width: #{$value-breakpoint}px) {
+        @each $name, $value in $font-size {
+            .g--font-size-#{$name}\@#{$name-breakpoint} {
+                font-size: var(--font-size-#{$name})
+            }
+        }
+    }
+}

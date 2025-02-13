@@ -1,0 +1,31 @@
+@each $name, $value in $widths {
+    .g--width-#{$name} {
+        width: var(--width-#{$name})
+    }
+}
+
+@for $i from 1 through 10 {
+    .g--width-#{$i * 10} {
+        width: var(--width-#{$i * 10})
+    }
+}
+
+@each $name-breakpoint, $value-breakpoint in $breakpoints {
+    @media (min-width: #{$value-breakpoint}px) {
+        @each $name, $value in $widths {
+            .g--width-#{$name}\@#{$name-breakpoint} {
+                width: var(--width-#{$name})
+            }
+        }
+    }
+}
+
+@each $name-breakpoint, $value-breakpoint in $breakpoints {
+    @media (min-width: #{$value-breakpoint}px) {
+        @for $i from 1 through 10 {
+            .g--width-#{$i * 10}\@#{$name-breakpoint} {
+                width: var(--width-#{$i * 10})
+            }
+        }
+    }
+}

@@ -1,0 +1,106 @@
+.c-body {
+    background-color: #f5f1f1;
+}
+
+.c-formulario {
+    font-family: sans-serif;
+    margin: 50px;
+    align-items: center;
+}
+
+.c-formulario__titulo {
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    grid-column: 1 / -1;
+    margin-top: 10px;
+}
+
+.c-formulario__contenido {
+    font-size: 16px;
+    color: #646464;
+}
+
+.c-formulario__datos-input {
+    border: 1px solid #c5c3c3;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.c-formulario__datos-textarea {
+    border: 1px solid #c5c3c3;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.c-formulario__detalles {
+    background-color: #ffffffab;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    margin-top: 30px;
+    height: 70%;
+}
+
+.c-formulario__detalles-titulo {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.c-formulario__detalles-fecha {
+    color: #39b5b9;
+}
+
+.c-formulario__detalles-hr {
+    width: 90%;
+    height: 0px;
+}
+
+.c-formulario__detalles-precio {
+    color: #39b5b9;
+    font-weight: 550;
+}
+
+/* Layout classes */
+.l-columns {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+    .l-columns--2\@tablet {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .l-columns__area-span-2\@tablet {
+        grid-column: span 2;
+    }
+}
+
+@media (min-width: 1024px) {
+    .l-columns--2\@desktop {
+        grid-template-columns: 3fr 1fr;
+        align-items: stretch;
+    }
+
+    .l-columns--1\@desktop {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+    }
+
+    .c-formulario__detalles-fecha {
+        grid-row: 2;
+    }
+
+    .c-formulario__detalles-hr {
+        grid-row: 3;
+    }
+
+    .c-formulario__detalles-precio {
+        grid-row: 4;
+    }
+}

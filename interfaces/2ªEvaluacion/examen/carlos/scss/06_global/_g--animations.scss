@@ -1,0 +1,23 @@
+.g--animation-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@each $name, $value in $breakpoints {
+    @media (min-width: #{$value}px) {
+        .g--animation--fade-in\@#{$name} {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    }
+}
+
+.g--animation-rotate {
+    animation: rotate 0.5s ease-in-out forwards;
+}
+
+@each $name, $value in $breakpoints {
+    @media (min-width: #{$value}px) {
+        .g--animation--rotate\@#{$name} {
+            animation: rotate 0.5s ease-in-out forwards;
+        }
+    }
+}

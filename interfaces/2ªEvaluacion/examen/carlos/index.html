@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejercicio 4</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="c-body">
+    <div class="l-grid l-grid--cols-1 l-grid--cols-2@desktop">
+        <div class="c-form">
+            <div class="c-form__title">Introduce tus datos</div>
+            <div class="l-grid l-grid--cols-1 l-grid--cols-2@tablet">
+                <div class="c-form__field">
+                    <label for="edit-name">Nombre</label>
+                    <input class="c-form__input" type="text" id="edit-name" name="name" value="" size="60"
+                        maxlength="20" required="required">
+                </div>
+                <div class="c-form__field">
+                    <label for="edit-surname1">Apellido 1</label>
+                    <input class="c-form__input" type="text" id="edit-surname1" name="surname1" value="" size="60"
+                        maxlength="20" required="required">
+                </div>
+                <div class="c-form__field">
+                    <label for="edit-surname2">Apellido 2</label>
+                    <input class="c-form__input" type="text" id="edit-surname2" name="surname2" value="" size="60"
+                        maxlength="20">
+                </div>
+                <div class="c-form__field">
+                    <label for="edit-phone--2">Teléfono</label>
+                    <input class="c-form__input" type="text" id="edit-phone--2" name="phone" value="" size="60"
+                        maxlength="10" required="required">
+                </div>
+                <div class="c-form__field">
+                    <label for="mail_form" class="control-label js-form-required form-required">Email</label>
+                    <input class="c-form__input" type="email" id="mail_form" name="email" value="" size="60"
+                        maxlength="50" required="required">
+                </div>
+                <div class="c-form__field">
+                    <label for="mail_confirm_form">Confirmar el email</label>
+                    <input class="c-form__input" type="email" id="mail_confirm_form" name="email_confirmation" value=""
+                        size="60" maxlength="50" required="required">
+                </div>
+                <div class="c-form__field l-grid--cols-span-1 l-grid--cols-span-2@tablet">
+                    <label for="edit-user-comments" class="control-label">Comentarios </label>
+                    <textarea class="c-form__input" id="edit-user-comments" name="user_comments" rows="8" cols="60"
+                        maxlength="200"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="l-grid g--background-color-blue-90">
+            <div class="l-flex l-flex--vertical l-flex--align-items-center l-flex--justify-around">
+                <h3 class="g--font-size-xl">Detalles de la reserva</h3>
+                <div class="g--color-blue-50">
+                    <div>Llegada 23/02/2024</div>
+                    <div>Salida 25/02/2024</div>
+                </div>
+                <hr style="width: 90%; height: 0px;">
+            </div>
+
+
+            <div class="l-flex l-flex--justify-around l-flex--align-items-start g--color-blue-50 g--font-weight-bold">
+                <div class="g--animation--rotate@fulldesktop">Precio total</div>
+                <div>484,00 €</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
