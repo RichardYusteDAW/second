@@ -1,0 +1,47 @@
+@each $name, $value in $margins {
+    .g--margin-#{$name} {
+        margin: var(--margin-#{$name})
+    }
+
+    .g--margin-top-#{$name} {
+        margin-top: var(--margin-#{$name})
+    }
+
+    .g--margin-bottom-#{$name} {
+        margin-bottom: var(--margin-#{$name})
+    }
+
+    .g--margin-right-#{$name} {
+        margin-right: var(--margin-#{$name})
+    }
+
+    .g--margin-left-#{$name} {
+        margin-left: var(--margin-#{$name})
+    }
+}
+
+@each $name-breakpoint, $value-breakpoint in $breakpoints {
+    @media (min-width: #{$value-breakpoint}) {
+        @each $name, $value in $margins {
+            .g--margin-#{$name}\@#{$name-breakpoint} {
+                margin: var(--margin-#{$name})
+            }
+
+            .g--margin-top-#{$name}\@#{$name-breakpoint} {
+                margin-top: var(--margin-#{$name})
+            }
+
+            .g--margin-bottom-#{$name}\@#{$name-breakpoint} {
+                margin-bottom: var(--margin-#{$name})
+            }
+
+            .g--margin-right-#{$name}\@#{$name-breakpoint} {
+                margin-right: var(--margin-#{$name})
+            }
+
+            .g--margin-left-#{$name}\@#{$name-breakpoint} {
+                margin-left: var(--margin-#{$name})
+            }
+        }
+    }
+}

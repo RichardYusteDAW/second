@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    position: absolute;
+    top: 20%;
+}
+
+.cuadrado {
+    width: 100px;
+    height: 100px;
+}
+
+.c1 {
+    background-color: red;
+    transition: transform 3s;
+}
+
+.c2 {
+    background-color: green;
+}
+
+.c3 {
+    background-color: yellow;
+    transition: transform 3s;
+}
+
+@media(min-width: 500px) {
+
+    .c1,
+    .c3 {
+        transform: translateY(-50px);
+    }
+}
+
+@media(min-width: 800px) {
+
+    .c1,
+    .c3 {
+        transform: translateY(-100px);
+    }
+}

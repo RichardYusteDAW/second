@@ -1,0 +1,51 @@
+/* =========== CUADRADO =========== */
+.c-cuadrado {
+    --c-cuadrado-width-big: var(--width-4xl);
+    --c-cuadrado-height-big: var(--height-4xl);
+    --c-cuadrado-color-primary: var(--color-green-50);
+    --c-cuadrado-color-danger: var(--color-red-50);
+    --c-cuadrado-color-warning: var(--color-yellow-50);
+    --c-cuadrado-color-secondary: var(--color-blue-90);
+
+
+    width: var(--c-cuadrado-width-big);
+    height: var(--c-cuadrado-height-big);
+
+
+    &--background-color-primary {
+        background-color: var(--c-cuadrado-color-primary);
+    }
+
+    &--background-color-danger {
+        background-color: var(--c-cuadrado-color-danger);
+    }
+
+    &--background-color-warning {
+        background-color: var(--c-cuadrado-color-warning);
+    }
+
+    &--transform-translate-medium {
+        transition: transform 3s;
+        transform: translateY(- 50px);
+    }
+
+    &--transform-translate-complete {
+        transition: transform 3s;
+        transform: translateY(- 100px);
+    }
+
+    @each $name-breakpoints, $value-breakpoints in $breakpoints {
+        @media (min-width: $value-breakpoints) {
+
+            &--transform-translate-medium\@#{$name-breakpoints} {
+                transition: transform 3s;
+                transform: translateY(- 50px);
+            }
+
+            &--transform-translate-complete\@#{$name-breakpoints} {
+                transition: transform 3s;
+                transform: translateY(- 100px);
+            }
+        }
+    }
+}

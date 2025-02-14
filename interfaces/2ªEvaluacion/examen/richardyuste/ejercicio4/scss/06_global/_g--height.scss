@@ -1,0 +1,5 @@
+@each $name, $value in $heights {
+    .g--height-#{$name} {
+        height: var(--height-#{$name})
+    }
+}

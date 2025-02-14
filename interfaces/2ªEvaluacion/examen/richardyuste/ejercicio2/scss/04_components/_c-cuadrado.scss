@@ -1,0 +1,57 @@
+/* =========== CUADRADO =========== */
+.c-cuadrado {
+    --c-cuadrado-width-big: var(--width-5xl);
+    --c-cuadrado-height-big: var(--height-5xl);
+    --c-cuadrado-color-primary: var(--color-blue-50);
+    --c-cuadrado-color-secondary: var(--color-blue-90);
+
+    width: var(--c-cuadrado-width-big);
+    height: var(--c-cuadrado-height-big);
+    background-color: var(--c-cuadrado-color-primary);
+    color: var(--c-cuadrado-color-secondary);
+
+    &--animation-moverse {
+        animation: moverse 3s;
+    }
+
+    &--animation-girar {
+        animation: girar 1s alternate 2;
+    }
+
+    @for $i from 1 through 10 {
+        &--duration-#{$i} {
+            animation-duration: #{$i}s;
+        }
+    }
+
+    @each $value in $timing {
+        &--timing-#{$value} {
+            animation-timing-function: $value;
+        }
+    }
+
+    @each $name-breakpoints, $value-breakpoints in $breakpoints {
+        @media (min-width: $value-breakpoints) {
+
+            &--animation-moverse\@#{$name-breakpoints} {
+                animation: moverse 3s;
+            }
+
+            &--animation-girar\@#{$name-breakpoints} {
+                animation: girar 1s alternate 2;
+            }
+
+            @for $i from 1 through 10 {
+                &--duration-#{$i}\@#{$name-breakpoints} {
+                    animation-duration: #{$i}s;
+                }
+            }
+
+            @each $value in $timing {
+                &--timing-#{$value}\@#{$name-breakpoints} {
+                    animation-timing-function: $value;
+                }
+            }
+        }
+    }
+}
