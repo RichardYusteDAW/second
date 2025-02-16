@@ -1,0 +1,13 @@
+<!--HTML para el componente padre panelTareas.component -->
+
+<br>
+<h3>Panel de Tareas</h3>
+<!--Boton para volver a tareas -->
+<button class="btn btn-primary text-center mb-3" routerLink="/tareas">Volver a Tareas</button>
+
+<div class="row row-cols-1 row-cols-md-6 g-4">
+    @for( tarea of tareas; track tarea.id){
+    <!--llamada al hijo tarea component por cada tarea disponible -->
+    <app-tarea [tarea]="tarea" (borrar)="borrar($event)"></app-tarea>
+    }
+</div>

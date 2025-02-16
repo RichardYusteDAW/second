@@ -1,0 +1,12 @@
+<!--HTML para el componente tarea hija -->
+<div class="card" style="width: 12rem;">
+    <div class="card-body">
+        <h5 class="card-title">Tarea {{ tarea.id }} </h5> <!-- Id de la tarea -->
+        <p class="card-text"> {{ tarea.nombre }} </p> <!-- nombre de la tarea -->
+        <p class="card-text"> {{ tarea.estado }} </p> <!-- estado de la tarea -->
+        <div class="text-center">
+            <button class="btn btn-danger" (click)="borrarTarea(tarea.id)">Borrar</button>
+            <!-- boton para eliminar la tarea -->
+        </div>
+    </div>
+</div>

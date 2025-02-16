@@ -1,0 +1,24 @@
+{
+    "tareas": [
+        {
+            "id": "1",
+            "nombre": "Examen Cliente",
+            "estado": "Pendiente"
+        },
+        {
+            "id": "2",
+            "nombre": "Examen Servidor",
+            "estado": "Pendiente"
+        },
+        {
+            "id": "3",
+            "nombre": "Examen Interfaces",
+            "estado": "Pendiente"
+        },
+        {
+            "id": "4",
+            "nombre": "Examen Despliegue",
+            "estado": "Realizada"
+        }
+    ]
+}
